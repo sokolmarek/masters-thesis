@@ -1,0 +1,81 @@
+Obory umělé inteligence, jako strojové učení nebo neuronové sítě, často vyžadují
+v reálných podmínkách pečlivou přípravu a předzpracování dat nebo sestavení a
+trénování modelů. V dnešní době však existuje velké množství nástrojů a
+knihoven, které tyto kroky implementují a značně tak zvyšují efektivitu vývoje
+patřičných aplikací. Tato kapitola popisuje zásadní nástroje použité pro účely
+této práce.
+
+\subsection{Python a R}
+\label{subsec:python_r}
+Mezi nejpopulárnější open-source programovací jazyky v oblasti strojového učení
+a data science, které byly zároveň použity v této práci, patří
+Python\footnote{https://www.python.org} a R\footnote{https://www.r-project.org}.
+Pro předzpracování dat, strojové učení a neuronové sítě byl použit
+Python 3.7 s využitím platformy Google Colab.
+
+Explorační a statistická analýza dat byla realizována prostřednictvím jazyka R
+(verze 4.2.1, Funny-Looking Kid) na laptopu \textit{HP Spectre x360} s
+procesorem \textit{i7-8705G}, 32~GB DDR4 RAM a grafickou kartou \textit{RX Vega
+M GL}. I přestože R není na rozdíl od Pythonu univerzálním vysokoúrovňovým
+programovacím jazykem a využívá se především pro statistické modelování, je díky
+bohaté komunitě a velkému množství knihoven nedílnou součástí oblasti strojového
+učení a data science. 
+
+\subsection{Google Colab a Jupyter Notebook}
+\label{subsec:jupyter_colab}
+Na základě velkého objemu dat ke zpracování bylo využito platformy Google
+Colab\footnote{https://colab.research.google.com}. Jedná se o cloudové
+interaktivní výpočetní prostředí, které běží na virtuálním stroji a umožňuje
+vzdálené spuštění kódu s využitím prostředků jako \textit{NVIDIA Tesla
+V100/P100} s 24~GB VRAM. Jinými slovy jde o hostovanou webovou aplikaci jménem
+Jupyter Notebook\footnote{https://jupyter.org}, která umožňuje vytvářet a sdílet
+dokumenty (zápisníky). Tyto dokumenty jsou rozděleny do buněk, které lze
+spouštět v libovolném pořadí (live kód), což zajišťuje efektivnější
+prototypování.
+
+\subsection{Neurokit}
+\label{subsec:neurokit}
+Knihovna Neurokit2~\cite{Makowski2021neurokit} poskytuje pokročilé metody pro
+zpracování a vizualizaci biosignálu. Jednotlivé metody zároveň nabízejí možnost
+si vybrat z mnoha implementovaných algoritmů, například pro detekci QRS
+komplexu. V této práci byla knihovna použita pro předzpracování respirační,
+elektrodermální a srdeční aktivity včetně zpracování HRV.
+
+\subsection{Tidyverse a Easystats}
+\label{subsec:tidyverse_easystats}
+Knihovny tidyverse~\cite{tidyverse} a easystats~\cite{easystats} rozšiřují jazyk
+R o mnoho funkcionalit primárně pro potřeby statistického modelování a
+strojového učení. Usnadňují a zrychlují proces tvorby modelů díky dobře
+zdokumentovanému ekosystému balíčků. V této práci sloužili knihovny ke
+statistické analýze velkého souboru dat. 
+
+\subsection{Scikit-learn, TensorFlow a Keras}
+\label{subsec:scitkit_tensor_keras}
+Scikit-learn~\cite{sklearn_api} je balíček jazyka Python pro prediktivní analýzu
+dat a strojové učení, který byl v této práci použit pro extrakci a normalizaci
+příznaků. Dále pro porovnávání, validaci a výběr parametrů a modelů.
+
+% TensorFlow is an open-source framework developed at Google for machine learning
+% applications. Its main focus is on defining the architecture and training of
+% deep neural networks. It is highly optimized for the execution of low level
+% tensor operations on CPU, GPU, or TPU. 
+
+% Keras is a high-level API that acts as an interface for the TensorFlow
+% framework. It enables faster prototyping of ANNs by providing abstractions and
+% building blocks for developing the models. It also provides the implementation
+% of several popular CNN architectures along with their weights, making transfer
+% learning more accessible. The simplest way of defining Keras models is by using
+% the Sequential model API, which is essentially a linear stack of defined layers.
+% The alternative is adopting the Keras functional API, which allows for building
+% arbitrary graphs of layers with multiple inputs and outputs or using residual
+% skipping connections.
+
+\subsection{InfluxDB}
+\label{subsec:influx}
+InfluxDB\footnote{https://www.influxdata.com} je open-source platforma
+poskytující databázi pro časové řady. Zahrnuje rozhraní (API) pro standardní
+databázové dotazy. Součástí je i grafické uživatelské rozhraní (GUI) s
+modulárními uživatelskými panely pro monitorování dat v reálném čase. Tato
+platforma (InfluxDB OSS 2.4) byla využita v rámci experimentální části práce k
+uchovávání a vizualizaci dat.
+

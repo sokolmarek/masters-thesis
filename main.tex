@@ -1,0 +1,354 @@
+%% Template for diploma thesis | FBMI CTU
+% Modified on the basis of the thesis requirements 2022
+%
+% Author:	Marek Sokol
+% Contact:	sokolma5@fbmi.cvut.cz
+%
+
+% arara: lualatexmk: { shell : yes }
+% arara: makeglossaries
+% arara: biber
+% arara: lualatexmk: { shell : yes }
+% arara: lualatexmk: { shell : yes }
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Preamble
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\documentclass[a4paper,12pt,czech,oneside]{memoir}
+\setlrmarginsandblock{3.5cm}{2.5cm}{*}
+\setulmarginsandblock{2.5cm}{2.5cm}{1}
+\checkandfixthelayout
+
+% Packages
+\usepackage[main=czech,english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage[no-math]{fontspec}
+\usepackage{unicode-math}
+% \usepackage{newcomputermodern}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage{dirtree}
+\usepackage{siunitx}
+\usepackage{luavlna}
+\usepackage[unicode,pdfusetitle,hidelinks]{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage[flushleft]{threeparttable}
+\usepackage{tocloft}
+\usepackage{booktabs}
+% \usepackage{array}
+\usepackage{footnote}
+% \usepackage[bottom]{footmisc}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage[xparse]{tcolorbox}
+\usepackage{etoolbox}
+% \usepackage{showframe}
+
+% Graphics and plots
+% \usepackage{pgfplots}
+% \usepackage{tikz}
+% \usetikzlibrary{arrows.meta, bending}
+% \usetikzlibrary{matrix,positioning}
+
+% Support for acronyms
+\usepackage[nopostdot,symbols,acronym,nonumberlist,toc,automake,nolangwarn,section]{glossaries-extra}
+\usepackage{glossary-longextra}
+\glsaddkey{unit}{\glsentrytext{\glslabel}}{\glsentryunit}{\GLsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+\glstocfalse
+\makeglossaries
+\loadglsentries{glossary.tex}
+\renewcommand*{\acronymname}{Seznam zkratek}
+\renewcommand*{\glssymbolsgroupname}{Seznam symbolů}
+\renewcommand*{\entryname}{Zkratka}
+\renewcommand*{\descriptionname}{Význam}
+
+% Czech quotes 
+\usepackage{csquotes}
+\def\uv#1{„#1“}
+\DeclareQuoteStyle{czech}
+		{\quotedblbase}			% opening outer mark
+		{\textquotedblleft}		% closing outer mark
+		{\textquoteleft}		% opening inner mark
+		{\textquoteright}		% closing inner mark
+\setquotestyle{czech}
+
+% Citations
+\usepackage[backend=biber,style=iso-numeric,citestyle=numeric-comp]{biblatex}
+\addbibresource{library.bib}
+
+% Line breaks in URL
+% \def \UrlBreaks {\do\/\do\-}
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\graphicspath{{assets/}} 	
+
+\clubpenalty 10000
+\widowpenalty 10000
+
+% Use per-chapter numbering
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\numberwithin{equation}{chapter}
+\counterwithout*{footnote}{chapter}
+
+% Change toc style
+% \renewcommand{\cfttoctitlefont}{\Huge\bfseries\sffamily}
+% \renewcommand{\cftaftertoctitle}{\hfill}
+% \renewcommand{\cftchapdotsep}{\cftdotsep}
+% \setlength{\cftbeforetoctitleskip}{20pt}
+% \setlength{\cftaftertoctitleskip}{30pt}
+
+% Use sans-serif and smaller font for captions
+\usepackage{caption}
+\captionsetup{
+	font = {small, sf},
+	labelfont = {bf},
+	figurewithin = chapter,
+  	tablewithin = chapter
+}
+
+% Adjust boxes size (math)
+\setlength{\fboxsep}{8pt}
+
+% Tune hyphenation
+\pretolerance=1500
+\tolerance=1000
+
+% Try to minimalize widows and orphans
+\clubpenalty 10000
+\widowpenalty 10000
+
+% Set assets extensions and path
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\graphicspath{{assets/}}
+
+% Formatting according to requirements
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0.75cm}
+\DisemulatePackage{setspace}
+\usepackage{setspace}
+\setstretch{1.20}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\makeoddfoot{ruled}{}{\thepage}{}
+\makeevenfoot{ruled}{}{\thepage}{}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% General commands
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+% Remove indents before chapter headings (mainly for book class)
+% \DeclareRobustCommand{\chapterstyletitle}[1]{
+% 	\@makechapterhead{#1}
+% 	\noindent
+% }
+
+% end of preambles
+
+%% Names
+\newcommand{\autor}{Bc. Marek Sokol}
+\newcommand{\vedouci}{Mgr. Ksenia Sedova, Ph.D.}
+\newcommand{\nazev}{Hodnocení kognitivní zátěže v extrémním prostředí}
+\newcommand{\nazevENG}{Assessment of cognitive load in extreme environment}
+\newcommand{\typ}{Diplomová práce}
+\newcommand{\rok}{2022}
+\newcommand{\program}{Biomedicínské inženýrství}
+\newcommand{\fakulta}{FAKULTA BIOMEDICÍNSKÉHO INŽENÝRSTVÍ}
+\newcommand{\cvut}{ČESKÉ VYSOKÉ UČENÍ TECHNICKÉ V~PRAZE}
+\newcommand{\katedra}{Katedra biomedicínské techniky}
+
+\begin{document}
+\pagestyle{empty}
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Title page
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\begin{titlingpage}
+	\begin{center}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.2\textwidth]{symbol_cvut_konturova_verze}
+		\end{figure}
+		\textsf{\large{\textbf{\cvut}}}
+		{\color{NavyBlue}\makebox[\linewidth]{\rule[.2\baselineskip]{\textwidth}{0.4mm}}}
+		\textsf{\normalsize{\textbf{\fakulta}}}\\
+
+		\textsf{\textbf{\katedra}}
+
+		\vfill
+
+		\textsf{\Large{\textbf{\nazev}}}
+
+		\vspace{36pt}
+
+		\textsf{\Large{\textbf{\nazevENG}}}
+
+		\vspace{48pt}
+
+		\textsf{\typ}
+
+		\vfill
+
+	\end{center}
+	\textsf{Studijní program: \program}
+
+	\vspace{12pt}
+
+	\noindent\textsf{Vedoucí práce: \vedouci}
+
+	\vspace{24pt}
+
+	\begin{center}
+		\textsf{\textbf{\autor}} \\ [0.5cm]
+		{\color{NavyBlue}\makebox[\linewidth]{\rule{\textwidth}{0.4mm}}}
+		\textsf{\textbf{Kladno \rok}}
+	\end{center}
+\end{titlingpage}
+
+% Insert pdf assignment
+% \includepdf{assets/assignment.pdf}
+
+% Declaration
+\null\vfill
+\section*{Prohlášení}
+Prohlašuji, že jsem bakalářskou práci s názvem \uv{\nazev} vypracoval/a
+samostatně a~použil/a k~tomu úplný výčet citací použitých pramenů, které uvádím
+v seznamu přiloženém k~bakalářské práci.
+
+\hspace{-0.75cm}Nemám závažný důvod proti užití tohoto školního díla ve smyslu
+\S 60 Zákona č.121/2000~Sb., o~právu autorském, o~právech souvisejících s právem
+autorským a~o~změně některých zákonů (autorský zákon), ve znění pozdějších
+předpisů.
+\vspace{1em}
+
+\hspace{-0.75cm} V Kladně dne~\makebox[\widthof{V Kladně dne~}]{.\dotfill}
+\hfill
+\begin{tabular}[t]{@{}c@{}}
+	\makebox[12em]{\dotfill} \\
+	\textbf{\autor}
+\end{tabular}
+\clearpage
+
+
+% Copyright
+\null\vfill
+
+\noindent České vysoké učení technické v~Praze
+
+\noindent Fakulta biomedicínského inženýrství
+
+\noindent \textcopyright{} \rok~\autor. Všechna práva vyhrazena.
+
+\noindent \textit{Tato práce vznikla jako školní dílo na Českém vysokém učení
+	technickém v~Praze, Fakultě biomedicínského inženýrství. Práce je chráněna
+	právními předpisy a mezinárodními úmluvami o právu autorském a právech
+	souvisejících s právem autorským. K jejímu užití, s výjimkou bezúplatných
+	zákonných licencí a nad rámec oprávnění uvedených v Prohlášení na předchozí
+	straně, je nezbytný souhlas autora.}
+
+\subsection*{Odkaz na tuto práci} Sokol, Marek. \textit{\nazev}. \typ. Praha: České vysoké učení technické v Praze, Fakulta biomedicínského inženýrství, 2022. Dostupné z: $\langle$\url{www.github.com/}$\rangle$.
+\clearpage
+
+% Acknowledgements
+\null\vfill
+\section*{Poděkování}
+\input{chapters/podekovani.tex}
+\clearpage
+
+% Abstracts
+\null\vfill
+\section*{Abstrakt}
+\subsection*{\nazev:}
+\input{chapters/abstract/abstract_cs.tex}
+\subsection*{Klíčová slova}
+%#TODO: Czech keywords
+\clearpage
+
+\null\vfill
+\section*{Abstract}
+\subsection*{\nazevENG:}
+\input{chapters/abstract/abstract_en.tex}
+\subsection*{Key words}
+%#TODO: English keywords
+\clearpage
+
+% Numberings starts from here
+\pagestyle{plain}
+
+% Insert content
+\chapterstyle{default}
+\setlength\beforechapskip{-\baselineskip}
+\setlength\afterchapskip{10pt}
+\renewcommand{\contentsname}{\sffamily Obsah}
+\tableofcontents*
+
+\glsaddall
+\clearpage
+
+% Glossaries
+\chapter*{\sffamily Seznam symbolů a zkratek}
+\addcontentsline{toc}{chapter}{Seznam symbolů a zkratek}
+% \printsymbols[style=namedescunit]
+\printacronyms[style=long-name-desc]
+\clearpage
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Content
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\chapterstyle{madsen}
+\pagestyle{ruled}
+% \setlength\beforechapskip{-\baselineskip}
+
+\chapter{Úvod}
+\input{chapters/01_uvod}
+\clearpage
+
+\chapter{Přehled současného stavu}
+\input{chapters/02_prehled_soucasneho_stavu}
+\clearpage
+
+\chapter{Cíle práce}
+\input{chapters/03_cile_prace}
+\clearpage
+
+\chapter{Metody}
+\input{chapters/04_metody}
+\clearpage
+
+\chapter{Výsledky}
+\input{chapters/05_vysledky}
+\clearpage
+
+\chapter{Diskuse}
+\input{chapters/06_diskuse}
+\clearpage
+
+\chapter{Závěr}
+\input{chapters/07_zaver}
+\clearpage
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Citations
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\chapterstyle{madsen}
+\setlength\beforechapskip{-\baselineskip}
+
+% \renewcommand{\refname}{Seznam použité literatury}
+% \addcontentsline{toc}{chapter}{Seznam použité literatury}
+\printbibliography
+\clearpage
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Attachements
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+\begin{appendices}
+	\input{chapters/prilohy}
+\end{appendices}
+
+\end{document}
