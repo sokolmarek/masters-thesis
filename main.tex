@@ -22,9 +22,8 @@
 
 % Packages
 \usepackage[main=czech,english]{babel}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{dsfont}
+\usepackage{mathtools, amssymb}
+% \usepackage{dsfont}
 \usepackage[no-math]{fontspec}
 \usepackage{unicode-math}
 % \usepackage{newcomputermodern}
@@ -36,11 +35,14 @@
 \usepackage[unicode,pdfusetitle,hidelinks]{hyperref}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{subcaption}
+% \usepackage{subfigure}
 \usepackage{graphicx}
 \usepackage{pdfpages}
 \usepackage[flushleft]{threeparttable}
 \usepackage{tocloft}
 \usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[ruled,lined,linesnumbered,czech,onelanguage]{algorithm2e}
 % \usepackage{array}
 \usepackage{footnote}
 % \usepackage[bottom]{footmisc}
@@ -48,14 +50,13 @@
 \usepackage{enumitem}
 \usepackage{xurl}
 \usepackage[xparse]{tcolorbox}
-\usepackage{etoolbox}
+% \usepackage{etoolbox}
 % \usepackage{showframe}
 
 % Graphics and plots
 % \usepackage{pgfplots}
-% \usepackage{tikz}
-% \usetikzlibrary{arrows.meta, bending}
-% \usetikzlibrary{matrix,positioning}
+\usepackage{tikz}
+\usetikzlibrary{calc,matrix,positioning,shapes.geometric,shapes.multipart,decorations.pathreplacing,babel}
 
 % Support for acronyms
 \usepackage[nopostdot,symbols,acronym,nonumberlist,toc,automake,nolangwarn,section]{glossaries-extra}

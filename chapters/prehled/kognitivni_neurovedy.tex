@@ -146,15 +146,15 @@ kognitivní zátěží nebo o množství vynaloženého mentálního
 úsilí~\cite{Wang2019,Schnotz2007}. K subjektivnímu hodnocení se dále využívají
 specifické dotazníky, mezi které patří například NASA-TLX~\cite{Schnotz2007}.
 Jedná se o vícerozměrnou stupnici používanou k měření pracovní zátěže operátorů
-v rámci úkonů například během vesmírných analogových misí~\cite{Sandra2006}.
+v rámci úkonů, například během vesmírných analogových misí~\cite{Sandra2006}.
 Tyto metody ale nejsou předmětem této práce a již byly detailně popsány
 v~\cite{Schnotz2007}.
 
 \begin{figure}[!htb]
     \begin{center}
-        \includegraphics[width=0.75\linewidth]{figures/physiological_measures}
-        \caption{Běžné fyziologické a fyzické měření související s \gls{CL} (Přeloženo
-            a převzato z~\cite{Giannakakis2022})}
+        \includegraphics[width=0.85\linewidth]{figures/physiological_measures}
+        \caption{Vybrané proměnné související s \gls{CL} (Přeloženo a převzato
+            z~\cite{Giannakakis2022})}
         \label{fig:physiological_measures}
     \end{center}
 \end{figure}
@@ -171,65 +171,38 @@ Nejčastěji využívaným biosignálem je srdeční aktivita, konkrétně varia
 srdeční frekvence, které se často používá v kombinaci s
 elektrodermální aktivitou~\cite{Wang2019}.
 
-Za konvenční metodu detekce \gls{CL} by se dalo považovat jednoduché porovnávání
-trendů parametrů s baseline, vypočtených například z variability srdečního
-rytmu. Z variability srdeční frekvence je však v současnosti možné vypočítat
-desítky parametrů, se kterými je v těchto úlohách nutné velmi opatrně zacházet.
+Z variability srdeční frekvence je však v současnosti možné vypočítat desítky
+parametrů, se kterými je v těchto úlohách nutné velmi opatrně zacházet.
 Jednotlivé \gls{HRV} parametry společně s jejich pravděpodobným významem byly
 již popsány v~\cite{Haapalainen2010,Rohila2020,Pham2021,Bouny2021}. Blíže je
 problematika \gls{HRV} parametrů popsána v samotné
 podkapitole~\ref{subsec:hrv_indices}.
 
-\begin{table}[h]
-    \centering
-    \caption{Veřejně dostupné datasety sledující kognitivní zátěž (Upraveno a
-        převzato z~\cite{Gjoreski2020})}
-    \label{tab:cl_datasets}
-    \scriptsize
-    \begin{tabular}{lcp{9cm}}
-        \toprule
-        \textbf{Dataset}      & \textbf{Probandi} & \textbf{Biosignály}                                                          \\ \midrule
-        Ascertain             & 58                & ECG, EDA, EEG, aktivační jednotky obličeje                                   \\
-        Amigos                & 40                & EEG, ECG, GSR, video obličeje                                                \\
-        DEAP                  & 32                & ECG, EDA, EEG, EMG, EOG, RSP, TEMP, video obličeje                           \\
-        DECAF-hudba           & 30                & ECG, EMG, EOG, MEG, near-infrared video obličeje                             \\
-        DECAF-video           & 30                & ECG, EMG, EOG, MEG, near-infrared video obličeje                             \\
-        Mahnob                & 30                & ECG, EDA EEG, RSP, TEMP, video, sledování očí, zvuk                          \\
-        Emotions              & 1                 & ECG, EDA, EMG, RSP                                                           \\
-        Laughter              & 34                & ACC, EDA, PPG, TEMP                                                          \\ \midrule
-        Pracovní zátěž řidiče & 10                & GSR, HR, TEMP                                                                \\
-        Řidičský stres        & 24                & ECG, EDA, EMG, RESP                                                          \\
-        Rozptýlení řidiče     & 64                & GSR, HR, TEMP ECG, EDA, EMG, RSP EDA,HR, RSP, výrazy obličeje, sledování očí \\ \midrule
-        CLAS                  & 59                & ACC, ECG, PPG, EDA                                                           \\
-        Stress-math           & 21                & ACC, EDA, HR, TEMP, BVP ACC, EDA, HR, TEMP, BVP                              \\
-        Non-EEG               & 20                & ACC, EDA, HR, TEMP, BVP ACC, EDA, HR, TEMP, SpO2                             \\
-        WESAD                 & 15                & ACC, EDA, TEMP, BVP, EMG, RSP                                                \\ \midrule
-        CogLoad               & 23                & ACC, EDA, TEMP, RR                                                           \\
-        Snake                 & 23                & ACC, EDA, TEMP, RR                                                           \\ \bottomrule
-    \end{tabular}
-\end{table}
-
-
-
-
-To this end, we train binary classifiers based on Logistic Regression, (Boosted)
-Decision Trees, Random Forests, and Support Vector Machines. We find that, while
-ML models trained directly on the raw sensor measurements are better than random
-guessing, there are substantial further accuracy improvements to be gained
-through feature engineering.
-
-In ML, substantial improvements in accuracy are often achieved by preprocessing
-raw feature vectors before model training.
-
-feature transformation, feature extraction, and feature selection techniques
-
-Cognitive load (CL), which is originally a psychological term to describe how
-much working memory resources are used, is used as a metric to enable the design
-of intelligent devices that adapt their interactions with the user. To this end,
-it is important for the device to be aware of the user’s current CL.
-
-These studies also explored a variety of machine learning (ML) methods including
-K-nearest neighbors (KNN), artificial neural net­ work (ANN), support vector
-machine (SVM), naïve Bayes (NB), decision tree (DT), linear discriminant
-analysis (LDA), and logistic regression (see Chapter 4 for an overview of these
-methods).
+% \begin{table}[h]
+%     \centering
+%     \caption{Veřejně dostupné datasety sledující kognitivní zátěž (Upraveno a
+%         převzato z~\cite{Gjoreski2020})}
+%     \label{tab:cl_datasets}
+%     \scriptsize
+%     \begin{tabular}{lcp{9cm}}
+%         \toprule
+%         \textbf{Dataset}      & \textbf{Probandi} & \textbf{Biosignály}                                                          \\ \midrule
+%         Ascertain             & 58                & ECG, EDA, EEG, aktivační jednotky obličeje                                   \\
+%         Amigos                & 40                & EEG, ECG, GSR, video obličeje                                                \\
+%         DEAP                  & 32                & ECG, EDA, EEG, EMG, EOG, RSP, TEMP, video obličeje                           \\
+%         DECAF-hudba           & 30                & ECG, EMG, EOG, MEG, near-infrared video obličeje                             \\
+%         DECAF-video           & 30                & ECG, EMG, EOG, MEG, near-infrared video obličeje                             \\
+%         Mahnob                & 30                & ECG, EDA EEG, RSP, TEMP, video, sledování očí, zvuk                          \\
+%         Emotions              & 1                 & ECG, EDA, EMG, RSP                                                           \\
+%         Laughter              & 34                & ACC, EDA, PPG, TEMP                                                          \\ \midrule
+%         Pracovní zátěž řidiče & 10                & GSR, HR, TEMP                                                                \\
+%         Řidičský stres        & 24                & ECG, EDA, EMG, RESP                                                          \\
+%         Rozptýlení řidiče     & 64                & GSR, HR, TEMP ECG, EDA, EMG, RSP EDA,HR, RSP, výrazy obličeje, sledování očí \\ \midrule
+%         \textbf{CLAS}         & 59                & ACC, ECG, PPG, EDA                                                           \\
+%         Stress-math           & 21                & ACC, EDA, HR, TEMP, BVP ACC, EDA, HR, TEMP, BVP                              \\
+%         Non-EEG               & 20                & ACC, EDA, HR, TEMP, BVP ACC, EDA, HR, TEMP, SpO2                             \\
+%         \textbf{WESAD}        & 15                & ACC, EDA, TEMP, BVP, EMG, RSP                                                \\ \midrule
+%         CogLoad               & 23                & ACC, EDA, TEMP, RR                                                           \\
+%         Snake                 & 23                & ACC, EDA, TEMP, RR                                                           \\ \bottomrule
+%     \end{tabular}
+% \end{table}
