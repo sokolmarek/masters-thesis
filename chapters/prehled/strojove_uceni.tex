@@ -1,9 +1,9 @@
 Strojové učení (anglicky Machine Learning, \gls{ML}) představuje odvětví umělé
-inteligence, které se zaměřuje na vytváření matematických modelů a zvýšení
-jejich výkonu pomocí využití předchozích zkušeností. Tyto zkušenosti se
-získávají z dostupných historických dat (trénovacích dat), která se využívají k
-formulaci pravidel a identifikaci charakteristických rysů nebo vztahů v datech.
-Proces učení zahrnuje techniky, které vyplývají z  oborů informatiky,
+inteligence, které se zaměřuje na vytváření matematických modelů a zvyšování
+jejich přesnosti predikce na základě předchozích zkušeností. Tyto zkušenosti se
+získávají retrospektivně z dostupných dat (trénovacích dat), která se využívají
+k formulaci pravidel a identifikaci charakteristických rysů nebo vztahů v
+datech. Proces učení zahrnuje techniky, které vyplývají z  oborů informatiky,
 statistiky, pravděpodobnosti nebo optimalizace. Využití algoritmů strojového
 učení se neustále rozšiřuje v mnoha oblastech díky rostoucí dostupnosti online
 dat a snižování nákladů na výpočetní zdroje. Rozsah oblastí použití zahrnuje
@@ -49,7 +49,7 @@ Vyhodnocování výkonu natrénovaného modelu je v tomto případě, bez označ
 dat, často náročné. Běžnou úlohou pro tento typ učení je shlukování, které
 seskupuje podobné data do shluků. Shlukování se používá například pro segmentaci
 obrazových dat a provádí se pomocí algoritmů, jako je hustotní prostorové
-shlukování (\gls{DBSCAN}) nebo k-means.
+shlukování (\gls{DBSCAN}), k-means nebo hierarchické shlukování.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -408,7 +408,7 @@ k optimalizaci vah spojení mezi neurony běžně využívá gradientní sestup
                 \node at (-0.6,1.4){\scriptsize $w[4]$};
             \end{scope}
         \end{tikzpicture}
-        \caption{Aktualizace \gls{GD}~\cite{gradientdescent}}
+        \caption{Postup \gls{GD}~\cite{gradientdescent}}
         \label{fig:gd}
     \end{minipage}
 \end{figure}
