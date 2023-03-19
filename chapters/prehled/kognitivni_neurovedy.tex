@@ -126,14 +126,13 @@ protože se vychází z předpokladu, že veškeré změny v kognitivních funkc
 člověka se odrážejí v jeho fyziologii~\cite{Vanneste2021}. To znamená, že žádná
 měřicí technika nemůže sama o sobě zachytit všechny aspekty kognitivních funkcí
 nebo o nich jednoznačně vypovídat. Problematika těchto vztahů je nadále
-rozebírána v kapitolách~\ref{subsec:detekce_CL}
-a~\ref{sec:neurovisceralni_integrace}. Na tuto vícerozměrnou povahu kognitivní
-zátěže poukázal Kramer et al.~\cite{Kramer1991}. Dále definoval kritéria:
-citlivost, diagnostičnost, rušivost, spolehlivost a obecnost použití, v rámci
-kterých bude mít každé fyziologické měření jinou povahu. V případě kognitivní
-zátěže a její spolehlivém hodnocení z fyziologických projevů je proto vhodný
-multimodální\footnote{Multimodálním přístupem je myšleno využití více
-    biosignálů} přístup, který může poskytnout její robustnější
+rozebírána v kapitole~\ref{sec:neurovisceralni_integrace}. Na tuto vícerozměrnou
+povahu kognitivní zátěže poukázal Kramer et al.~\cite{Kramer1991}. Dále
+definoval kritéria: citlivost, diagnostičnost, rušivost, spolehlivost a obecnost
+použití, v rámci kterých bude mít každé fyziologické měření jinou povahu. V
+případě kognitivní zátěže a její spolehlivém hodnocení z fyziologických projevů
+je proto vhodný multimodální\footnote{Multimodálním přístupem je myšleno využití
+více biosignálů.} přístup, který může poskytnout její robustnější
 reprezentaci~\cite{Chen2016}.
 
 \subsection{Detekce kognitivní zátěže}
@@ -144,10 +143,10 @@ na výkonnosti jedince. Subjektivní hodnocení vychází z předpokladu, že ho
 subjekt je schopen vnímat své vlastní kognitivní procesy a informovat o případně
 kognitivní zátěží nebo o množství vynaloženého mentálního
 úsilí~\cite{Wang2019,Schnotz2007}. K subjektivnímu hodnocení se dále využívají
-specifické dotazníky, mezi které patří například NASA-TLX~\cite{Schnotz2007}.
-Jedná se o vícerozměrnou stupnici používanou k měření pracovní zátěže operátorů
-v rámci úkonů, například během vesmírných analogových misí~\cite{Sandra2006}.
-Tyto metody ale nejsou předmětem této práce a již byly detailně popsány
+specifické dotazníky, mezi které patří například NASA-TLX. Jedná se o
+vícerozměrnou stupnici používanou k měření pracovní zátěže operátorů v rámci
+úkonů, například během vesmírných analogových misí~\cite{Sandra2006}. Tyto
+metody ale nejsou předmětem této práce a již byly detailně popsány
 v~\cite{Schnotz2007}.
 
 \begin{figure}[!htb]
@@ -167,16 +166,40 @@ detekovat kognitivní zátěž u různých subjektů. Proto se v tomto odvětví
 a velmi často využívají metody strojového učení v rámci kterých nachází výhodné
 uplatnění dříve zmíněný multimodální přístup. Biologická data využívaná pro
 účely detekce \gls{CL} lze vidět na Obr.~\ref{fig:physiological_measures}.
-Nejčastěji využívaným biosignálem je srdeční aktivita, konkrétně variabilita
-srdeční frekvence, které se často používá v kombinaci s
-elektrodermální aktivitou~\cite{Wang2019}.
 
-Z variability srdeční frekvence je však v současnosti možné vypočítat desítky
-parametrů, se kterými je v těchto úlohách nutné velmi opatrně zacházet.
-Jednotlivé \gls{HRV} parametry společně s jejich pravděpodobným významem byly
-již popsány v~\cite{Haapalainen2010,Rohila2020,Pham2021,Bouny2021}. Blíže je
-problematika \gls{HRV} parametrů popsána v samotné
-podkapitole~\ref{subsec:hrv_indices}.
+Vzhledem k tomu, že je strojové učení širokou oblastí, byla tomuto tématu
+věnována samostatná sekce~\ref{sec:machine_learning}. Od roku 2010 je hojně
+využívána metoda učení s učitelem (viz~\ref{subsubsec:supervised_learning}) pro
+účely klasifikace různých patologických stavů a symptomů~\cite{Ishaque2021}.
+Nejčastěji využívaným biosignálem je srdeční aktivita, konkrétně variabilita
+srdeční frekvence, které se často používá v kombinaci s elektrodermální
+aktivitou~\cite{Wang2019}. Použité příznaky pro klasifikaci (anglicky features)
+však hrají důležitou roli při rozlišování základní funkce spojené s jakýmkoli
+fyziologickým signálem. Z variability srdeční frekvence je v současnosti možné
+vypočítat desítky parametrů, resp. příznaků, se kterými je v těchto úlohách
+nutné velmi opatrně zacházet. Jednotlivé \gls{HRV} parametry společně s jejich
+pravděpodobným významem byly již popsány
+v~\cite{Haapalainen2010,Rohila2020,Pham2021,Bouny2021}. Blíže je problematika
+\gls{HRV} parametrů popsána v samotné podkapitole~\ref{subsec:hrv_indices}.
+
+Dříve mezi často používané metody pro účely klasifikace patřili hlavně
+rozhodovací stromy (\gls{DT}), lineární diskriminační analýza (\gls{LDA}) nebo
+metoda podpůrných vektorů (\gls{SVM})~\cite{Ishaque2021}. Od roku 2018 se ve
+výzkumu HRV však stále častěji používá hluboké učení, jehož cílem je zlepšit
+automatickou klasifikaci v reálném čase. Tyto techniky poskytují efektivnější
+způsob extrakce relevantních informací a zvyšují přesnost klasifikace a současně
+snižují počet příznaků potřebných pro klasifikaci v reálném
+čase~\cite{Hwang2018,He2019}. O rok později se stalo novým trendem používání
+technik učení bez učitele pro klasifikaci psychického stresu s využitím
+technologie autoenkodéru~\cite{Oskooei2019}. Dále se mimo jiné začaly hojně
+používat samoorganizující mapy (\gls{SOM}), které dokáží efektivně redukovat
+dimenzionalitu dat a zároveň indikovat nejcennější\footnote{Implikuje jak moc
+přispívá každý příznak k predikci modelu.} příznaky pro klasifikaci kognitivní
+zátěže s vysokou přesností~\cite{Cho2017}. Jelikož ale neexistuje žádný
+konsensus jak předzpracovávat biosignály, jaké využít příznaky nebo z jaké
+metodiky pro detekci CL vycházet, tak se stále zkouší nejasné variace různých
+algoritmů se snahou zvýšit skóre predikce. Velkým problémem je také nedostatek
+veřejně dostupných dat pro tyto účely.
 
 % \begin{table}[h]
 %     \centering
