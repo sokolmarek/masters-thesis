@@ -9,16 +9,43 @@ povrchu Měsíce. Blíže jsou dílčí kompartmenty popsány v následujících
 Mise primárně sloužila pro zkoumání vlivu osobnostních charakteristik a vnějších
 faktorů na dynamiku týmu při dlouhodobém pobytu v \gls{ICE} prostředí (projekt
 TAČR ÉTA č. TL05000228). Mise DIANA byla podpořena Evropskou kosmickou
-agenturou, protože by potenciálně mohla umožnit výcvik astronautů právě simulací
+agenturou, vzhledem k jejímu potenciálu pro výcvik astronautů simulací
 extrémního prostředí. 
 \input{chapters/metody/projekt_hydronaut}
 
-\section{Explorační analýza}
+\section{Použité datasety}
+\label{sec:datasety}
+Pro účely diplomové práce bylo použito několik veřejně dostupných datasetů
+včetně dat z mise DIANA. V následujících sekcích jsou stručně rozebrány
+jednotlivé datasety.
+\input{chapters/metody/datasety}
+
+\section{Zpracování biosignálů}
+\label{sec:zpracovani_biosignalu}
+Důležitým krokem při analýze biosignálů je jejich zpracování. V této sekci jsou
+popsány použité algoritmy, které byly implementovány v programovacím jazyce
+Python, využitím knihovny \textit{Neurokit2} (viz sekce~\ref{subsec:neurokit}).
+\input{chapters/metody/zpracovani_biosignalu}
+
+\section{Zpracování dat z mise DIANA}
+\label{sec:zpracovani_dat_diana}
+\input{chapters/metody/zpracovani_dat_diana}
+
+\section{Explorační analýza dat}
 \label{sec:exploracni_analyza}
+\input{chapters/metody/exploracni_analyza}
+
+\section{Konvenční parametrická detekce CL}
+\label{sec:kovencni_detekce}
+\input{chapters/metody/konvencni_detekce}
+
+\section{Detekce CL využitím vícerozměrných časoprostorových kauzálních vzorů}
+\label{sec:hybridni_detekce}
+\input{chapters/metody/hybridni_detekce}
 
 \section{Statistické metody}
 \label{sec:statisticke_metody}
-\input{chapters/metody/statisticke_metody.tex}
+\input{chapters/metody/statisticke_metody}
 
 % \section{}
 % \label{sec:}

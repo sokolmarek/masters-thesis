@@ -1,0 +1,65 @@
+\subsection{WESAD}
+\label{subsec:wesad}
+Dataset WESAD~\cite{wesadDataset} (\textit{Wearable Stress and Affect
+Detection}) je multimodální dataset navržený pro výzkum v oblasti detekce stresu
+a emocí za použití nositelných senzorů. Tento dataset byl vytvořen s cílem
+přispět k vývoji pokročilých algoritmů strojového učení pro analýzu
+fyziologických signálů a rozpoznání emocí. WESAD obsahuje data získaná od 15
+účastníků, přičemž každý z nich prošel sérií experimentů v laboratorních
+podmínkách.
+
+Data byla v datasetu získána ze dvou nositelných zařízení. Prvním zařízením byl
+\textit{RespiBAN}\footnote{Zařízení \textit{RespiBAN} již není vyráběno},
+nositelný senzor umístěný na hrudi se vzorkovací frekvencí 700~Hz, který
+zaznamenával elektrokardiogram, elektrodermální aktivitu, elektromyogram,
+respirační signál, a teplotu těla. Druhé zařízení byl chytrý náramek
+\textit{Empatica E4}\footnote{\url{https://www.empatica.com/research/e4}}, který
+zaznamenává krevní tlak (64~Hz), elektrodermální aktivitu (4~Hz), teplotu těla
+(4~Hz) a tříosou akceleraci (32~Hz). Experiment, který byl proveden pro sběr
+dat, zahrnoval celkem čtyři fáze:
+\begin{enumerate}
+    \item \textbf{Základní úroveň (Baseline condition)} --- účastník byl požádán, aby
+    seděl/stál v klidu po dobu 20 minut.
+    \item  \textbf{Stresový úkol (Stress condition)} --- účastník musel pět minut
+    přednášet před publikem a poté vyřešit matematický úkol, který byl navržen
+    tak, aby vyvolal stres.
+    \item  \textbf{Relaxační úkol (Amusement condition)} --- účastník sledoval
+    komediální video, které mělo vyvolat příjemné emoce.
+    \item  \textbf{Řízená meditace (Meditation)} --- účastník prováděl řízenou
+    meditaci, jejíž cílem bylo navození do stavu blízkého neutrálnímu
+    afektivnímu stavu.
+\end{enumerate}
+
+WESAD poskytuje časově synchronizovaná, předzpracovaná a anotovaná data z těchto
+nositelných senzorů. Pro účely diplomové práce byly použity signály ze zařízení
+\textit{RespiBAN}, konkrétně srdeční, respirační a elektrodermální aktivita. Pro
+úlohy detekce kognitivní zátěže byla základní úroveň označena jako klidový stav
+a stresové úkoly byly označeny jako stav kognitivní zátěže.
+
+\subsection{CLAS}
+\label{subsec:clas}
+Dataset CLAS~\cite{clasDataset} (\textit{Cognitive Load, Affect, and Stress
+Recognition}) je podobně jako WESAD multimodální dataset vytvořený pro výzkum v
+oblasti rozpoznávání kognitivní zátěže a emocí za použití nositelných senzorů a
+dalších datových zdrojů. Dataset zahrnuje data získaná od 62 účastníků, kteří
+byli vystaveni různým úkolům a podnětům navrženým tak, aby vyvolaly různé úrovně
+kognitivní zátěže a emocí. Mezi tyto podněty patřily například matematické úlohy
+nebo Stroopův test. Každý účastník byl zároveň měřen i v klidu (dataset označuje
+jako Baseline). Během přechodů mezi jednotlivými úkoly bylo účastním puštěno
+neutrální video nebo byl účastník požádán, aby si vyplnil dotazník (dataset
+označuje jako Neutral). 
+
+Fyziologická data v rámci tohoto datasetu byla měřena zařízením
+\textit{Shimmer3}\footnote{\url{https://shimmersensing.com}} se vzorkovací
+frekvencí 256~Hz. Mezi měřené biologické signály patří elektrokardiogram,
+elektrodermální aktivita a fotoplethysmogram. Pro úlohy detekce kognitivní
+zátěže byl Baseline stav označen jako klidový stav a stresové úkoly byly
+označeny jako stav kognitivní zátěže. 
+
+\subsection{Data z vesmírné analogové mise DIANA}
+\label{subsec:data_diana}
+Pro potřeby diplomové práce poskytla \gls{FF UPOL} data z vesmírné analogové
+mise DIANA. Součástí dat jsou týdenní 24 hodinové záznamy biologických signálů,
+kamerových záznamů a anotace v podobě časů kognitivních úloh pro každého člena
+posádek. Využitými signály v této práci jsou elektrokardiogram spolu s
+elektrodermální a respirační aktivitou.
