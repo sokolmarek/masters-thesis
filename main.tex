@@ -53,9 +53,12 @@
 % \usepackage{showframe}
 
 % Graphics and plots
-% \usepackage{pgfplots}
 \usepackage{tikz}
 \usetikzlibrary{calc,matrix,positioning,shapes.geometric,shapes.multipart,decorations.pathreplacing,babel}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{dateplot}
 
 % Support for acronyms
 \usepackage[nopostdot,symbols,acronym,nonumberlist,toc,automake,nolangwarn,section]{glossaries-extra}
@@ -82,15 +85,13 @@
 % Citations
 \usepackage[backend=biber,style=iso-numeric,citestyle=numeric-comp]{biblatex}
 \addbibresource{library.bib}
+\renewcommand*{\bibfont}{\footnotesize}
+
+% Theorems
+\newtheorem{theorem}{Teorém}
 
 % Line breaks in URL
 % \def \UrlBreaks {\do\/\do\-}
-
-\DeclareGraphicsExtensions{.pdf,.png,.jpg}
-\graphicspath{{assets/}} 	
-
-\clubpenalty 10000
-\widowpenalty 10000
 
 % Use per-chapter numbering
 \setcounter{secnumdepth}{3}

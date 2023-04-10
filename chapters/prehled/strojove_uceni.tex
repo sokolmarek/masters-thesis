@@ -343,19 +343,19 @@ jejímž hledáním je potřeba učinit předpoklad o jaký typ funkce se jedná
 (lineární, polynomická, aj.). Tímto předpokladem vzniká vymezení na určitý
 prostor hypotéz, označovaný $\mathcal{H}$, které velmi ovlivňuje generalizaci.
 
-S vymezením přichází na řadu ztrátová funkce $L:\mathcal{H} \rightarrow
-    \mathbb{R}$, jež přiřazuje ztrátu každému $h \in \mathcal{H}$. Ztrátu si lze
-představit jako číslo, které vypovídá o tom jak přesně je nalezená $h$
-aproximována vzhledem k použitým datům. Se ztrátovou funkcí tak vzniká nový
-optimalizační problem:
+S vymezením přichází na řadu ztrátová funkce $\mathcal{L}:\mathcal{H}
+    \rightarrow \mathbb{R}$, jež přiřazuje ztrátu každému $h \in \mathcal{H}$.
+    Ztrátu si lze představit jako číslo, které vypovídá o tom jak přesně je
+    nalezená $h$ aproximována vzhledem k použitým datům. Se ztrátovou funkcí tak
+    vzniká nový optimalizační problem:
 \begin{equation}
-    \arg\min_{h \in \mathcal{H}} L(h) = \arg\min_{h \in \mathcal{H}} \frac{1}{n}\sum_{i=1}^nl(\textbf{x}_i,y|h)
+    \arg\min_{h \in \mathcal{H}} \mathcal{L}(h) = \arg\min_{h \in \mathcal{H}} \frac{1}{n}\sum_{i=1}^nl(\textbf{x}_i,y|h)
 \end{equation}
-kde $L$ je ztráta pro danou $h$ v rámci používaných dat a $l$ je ztráta pro
-dvojici vstupu a výstupu při dané $h$. Díky takovému způsobu hodnocení je
-umožněno modelu se učit. Existuje řada ztrátových funkcí, jejichž použití závisí
-na typu problému (regrese, klasifikace, aj.). Tyto funkce společně s
-detailnějším popisem optimalizačního problému již byly popsány
+kde $\mathcal{L}$ je ztráta pro danou $h$ v rámci používaných dat a $l$ je
+ztráta pro dvojici vstupu a výstupu při dané $h$. Díky takovému způsobu
+hodnocení je umožněno modelu se učit. Existuje řada ztrátových funkcí, jejichž
+použití závisí na typu problému (regrese, klasifikace, aj.). Tyto funkce
+společně s detailnějším popisem optimalizačního problému již byly popsány
 v~\cite{Murphy2012}.
 
 \subsubsection{Numerická optimalizace}

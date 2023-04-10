@@ -1,17 +1,116 @@
 \subsection{Lineární smíšené modely}
 \label{subsec:lm_modely}
 
+\subsection{Grangerova kauzalita}
+\label{subsec:granger}
+Grangerova kauzalita byla v této práci použita, k hodnocení příčinných vztahů v
+rámci fyziologických signálů a k zachycení jejich interakcí v závislosti na
+čase. Grangerovo pojetí vychází z myšlenky, že příčina by měla být nápomocná při
+předpovídání budoucích vlivů, a to nad rámec toho, co lze předpovědět pouze na
+základě jejich vlastních minulých hodnot~\cite{Granger1969}.
+
+Formálně, časová řada $X$ je nazvána \enquote{Grangerovou kauzalitou} jiné
+časové řady $Y$, jestliže regrese pro $Y$ z hlediska minulých hodnot $Y$ a $X$
+je statisticky významně přesnější než regrese pouze minulých hodnot $Y$. Nechť
+$\{x_t\}_{t=1}^T$ jsou zpožděné vzorky řady $X$ a $\{y_t\}_{t=1}^T$
+řady $Y$ (dále jen jako vektory $\overrightarrow{x_t}$ a $\overrightarrow{y_t}$).
+Poté je prvním krokem Grangerova testu následující regrese~\cite{Arnold2007}:
+\begin{equation}
+    \begin{gathered}
+        y_t \approx A \cdot y_{t-1}+B \cdot x_{t-1}^{\vec{t}} \\
+        y_t \approx A \cdot y_{t-1}
+    \end{gathered}
+\end{equation}
+po které je možné aplikovat různé statistické testy pro získání p-hodnoty, díky
+které je možné rozhodnout o výše zmíněné statistický významné přesnosti.
+
+Běžně se Grangerova kauzalita aplikuje v rámci modelování časových řad ve smyslu
+kombinatorického testování všech příznaků za účely konstrukce výstupního
+příznakového kauzálního grafu (resp. kauzální matice, viz
+sekce~\ref{sec:hybridni_detekce}). Takové řešení by ale pro poměrně velký počet
+fyziologických příznaků bylo extrémně výpočetně náročné, a proto bylo dále
+uznáno za nevhodné.
+
+Řešením se zde naskytla regrese, kterou lze využít pro identifikaci podmnožiny
+příznaků, na které je daný příznak podmíněně závislý. To vychází z faktu, že
+nejlepší regresor pro danou proměnnou s nejmenší kvadratickou chybou bude mít
+teoreticky nenulové koeficienty pouze pro proměnné v okolí\footnote{Statisticky
+    \enquote{okolí} proměnné implikuje podmnožinu proměnných, které s ní úzce
+    souvisejí.}~\cite{Schindler2013,Arnold2007}. Pro tento regresní problém byl
+zvolen Lasso algoritmus, jež je uveden do souvislosti v následující sekci.
+
 \subsection{Lasso regrese}
 \label{subsec:lasso}
+\gls{Lasso} (Least Absolute Shrinkage and Selection Operator) je široce
+používaná technika lineární regrese pro výběr a regularizaci proměnných využitím
+$\ell_1$ penalizačního členu. Formálně, výstup $\vec{w}$ minimalizuje součet
+průměrné kvadratické chyby regrese pro $y$:
+\begin{equation}
+    \vec{w}=\arg \min \frac{1}{n} \sum_{(\vec{x}, y) \in X}|\vec{w} \cdot \vec{x}-y|^2+\lambda\|\vec{w}\|_1
+\end{equation}
+kde $X$ je vstupní příznak, $n$ je počet vzorků v $X$ a $\lambda$ je penalizační
+člen určující míru regularizace koeficientů. S rostoucí hodnotou $\lambda$ se
+více koeficientů smršťuje směrem k nule, což vede k řídkému modelu s menším
+počtem prediktorů a naopak~\cite{Tibshirani1996}. Ve smyslu tvorby kauzálních
+matic poskytuje Lasso množinu časových proměnných, které při regresi $y_t$ podle
+zpožděných proměnných $x_{t'}$, kde $t'=\{t-T,...,t -1\}$ pro všechna $x \in X$,
+nabývají právě nenulového koeficientu Grangerovy kauzality.
+
+Nicméně Bahadori a Liu dokázali v~\cite{Bahadori2013}, že Grangerova kauzalita
+je v rámci použití vícerozměrných dat inkonzistentní a není dobře schopna
+zachytit nelineární vztahy nebo složité struktury závislostí. Vzhledem k tomu,
+že data využívané v této práci jsou vícerozměrná a reprezentují biosignály, v
+rámci kterých mohou existovat právě nelineární vztahy nebo komplexní
+hierarchické relace, byl využit přístup Kopula-Granger. S využitím Lasso ukázali
+v~\cite{Bahadori2013} jeho konzistenci na vícerozměrných datech i jeho schopnost
+efektivně zachytit nelinearitu v datech (viz
+sekce~\ref{subsec:kauzalni_matice}).
 
 \subsection{Teorie kopulí}
 \label{subsec:teorie_kopul}
+Vzhledem k využití Kopula-Granger přístupu pro tvorbu vícerozměrných kauzálních
+matic je žádoucí stručně představit kopula funkce. V teorii pravděpodobnosti a
+statistice je kopula pravděpodobnostní distribuční funkcí, jež popisuje
+závislost mezi jednotlivými marginálními distribucemi a poskytuje způsob jak
+modelovat právě společnou distribuci náhodných veličin bez specifikace samotných
+distribucí těchto veličin. Základem teorie kopulí je Sklarův teorém, který říká,
+že jakákoli více-dimenzionální distribuce může být zapsána jako kopula
+aplikovaná na její marginální distribuce:
 
-\subsection{Grangerova kauzalita}
-\label{subsec:granger}
+\begin{theorem}[Sklarův teorém]
+    \label{theorem:sklar}
+    Nechť $F$ je vícerozměrná distribuční funkce s marginálními distribucemi
+    $F_1, F_2, \ldots, F_n$. Pak existuje kopula $C$ taková, že:
+    \begin{equation}
+        F\left(x_1, x_2, \ldots, x_n\right)=C\left(F_1\left(x_1\right), F_2\left(x_2\right), \ldots, F_n\left(x_n\right)\right)
+    \end{equation}
+    Kopula $C$ je jednoznačná, pokud marginální distribuce $F_1, F_2, \ldots, F_n$ jsou spojité.
+\end{theorem}
 
-\subsection{Lasso-Grangerova metoda}
-\label{subsec:lasso_granger}
+Kopula-Granger model, ve kterém jsou v této práci kopula funkcí mapovány
+marginální distribuce fyziologických událostí do kopula prostoru je popsán v
+sekci~\ref{subsec:kauzalni_matice}. Pro shrnutí vychází tento model z
+následujících kroků~\cite{Guy2016}:
+\begin{enumerate}
+    \item Nalezení empirického marginálního rozdělení pro fyziologickou událost
+          $\hat{F_i}$.
+    \item Mapování pozorování do kopula prostoru:
+          $\hat{f}_i\left(x_t^i\right)=\hat{\mu}_i+\hat{\sigma}_i.
+          \Phi^{-1}\left(\hat{F}_i\left(x_t^i\right)\right)$.
+    \item Nalezení Grangerovy kauzality v rámci $\hat{f}_i\left(x_t^i\right)$.
+\end{enumerate}
+přičemž je dále brán v potaz Winsorizovaný\footnote{Winsorizace nebo Winsorova
+transformace je transformace statistických dat omezením extrémních hodnot, aby
+se snížil vliv případných odlehlých hodnot} odhad použité distribuční funkce,
+podle~\cite{Bahadori2013}, aby se zabránilo velkým číslům
+$\Phi^{-1}\left(0^{+}\right)$\footnote{$\Phi^{-1}$ je inverzní kumulativní
+distribuční funkce standardního normálního rozdělení.} and
+$\Phi^{-1}\left(1^{-}\right)$:
+\begin{equation}
+    \tilde{F}_j= \begin{cases}\delta_n, & \text { if } \hat{F}\left(x^j\right)<\delta_n \\ \hat{F}\left(x^j\right) & \text { if } \delta_n \leq \hat{F}\left(x^j\right)<1-\delta_n \\ \left(1-\delta_n\right) & \text { if } \hat{F}\left(x^j\right)>1-\delta_n .\end{cases}
+\end{equation}
 
 \subsection{Metriky hodnocení v strojovém učení}
 \label{subsec:ml_metriky}
+
+
