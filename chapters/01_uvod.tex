@@ -1,14 +1,20 @@
 Sledování a hodnocení kognitivní zátěže v extrémním prostředí, jako je například
-vesmír, je důležité pro zajištění bezpečnosti a úspěchu jednotlivců a týmů
+vesmír, je kritické pro zajištění bezpečnosti a úspěchu jednotlivců a týmů
 působících v takovém prostředí během náročných a důležitých úkonů. Monitorování
 kognitivních funkcí pomocí tradičních metod, jako je dotazníkové hodnocení nebo
 behaviorální analýza, může být v izolovaném, uzavřeném a extrémním prostředí
 nepraktické až neproveditelné kvůli například komunikačním a časovým omezením.
 Proto čím dál více vzrůstá zájem o využití periferních biosignálů, jako je
-například elektrická srdeční aktivita nebo kožní vodivost, k hodnocení
-kognitivní zátěže v reálném čase. Interpretace těchto biosignálů v souvislosti s
-kognitivní zátěží je však nejasná a náročná vzhledem k tomu, že se do
-periferních biosignálu promítají veškeré kognitivní funkce. 
+například elektrická srdeční nebo elektrodermální aktivita, k hodnocení
+kognitivní zátěže v reálném čase. 
+
+Paradigma většiny dosavadních přístupů detekce těží primárně z extrahovaných
+příznaků v podobě statistických ukazatelů nebo často například parametrů
+vypočtených z variability srdeční frekvence. Interpretace těchto parametrů v
+souvislosti s kognitivní zátěží je však nejasná a náročná vzhledem k tomu, že se
+do periferních biosignálu promítají veškeré kognitivní funkce. Velké množství
+těchto parametrů také vyžaduje poměrně dlouhé časové úseky pro jejich výpočet a
+jsou velmi citlivé na různorodé typy artefaktů artefakty.
 
 Jako klíčem k interpretaci těchto vztahů se jeví inkorporace komplexního modelu
 neuroviscerální integrace, který vychází ze skutečnosti, že autonomní nervový
@@ -16,21 +22,30 @@ systém hraje klíčovou roli v regulaci periferní fyziologie a poskytuje
 teoretický rámec pro pochopení vztahů mezi periferními biosignály s kognitivními
 funkcemi. Obecně tento model předpokládá, že kognitivní zátěž několikaúrovňově
 moduluje aktivitu autonomního nervového systému, což vede právě ke změnám
-periferní fyziologie.
+periferní fyziologie. Rozklíčování interpretace takovým způsobem by ale
+vyžadovalo velké množství patřičně popsaných dat, bylo velmi časově náročné a
+pravděpodobně by trpělo nedostatečnou generalizací.
 
-Navzdory potenciálu periferních biosignálů jako indikátorů kognitivní zátěže v
-extrémních prostředích nadále zůstává při interpretaci jejich vlastností několik
-problémů. Patří mezi ně například individuální rozdíly v charakteru biosignálů,
-vliv faktorů prostředí nebo nedostatečná standardizace sběru a analýzy dat. Z
-periferních biosignálu lze zároveň vypočíst nesčetné množství matematických
-ukazatelů ale nedostatek systematického porovnávání těchto ukazatelů činí
-interpretaci a vyhodnocování výsledků zdlouhavým a pochybným. Řešení těchto
-problémů je zásadní pro vývoj spolehlivých a platných metod pro hodnocení
-kognitivní zátěže.
+Nedostatky předešlého přístupu překonávají metody hlubokého učení, jejichž
+vstupem jsou samotné biosignály, ze kterých jsou potřebné příznaky pro účely
+detekce kognitivní zátěže extrahovány automaticky. Takové typy detektorů jsou
+často robustní a schopny v datech nalézt nespočetné množství relací. Ve výsledku
+je tedy pro účely rozpoznání kognitivní zátěže extrahováno a použito ohromné
+množství parametrů. Nevýhodou tohoto přístupu je tím pádem často vysoká
+výpočetní náročnost, a zároveň jeho prisma, které nijak nezohledňuje kauzalitu
+mezi použitými fyziologickými příznaky, naopak vychází z předpokladu jejich
+nezávislosti. Tento fakt znovu činí interpretaci a determinismus zásadních
+okolností v rámci hodnocení kognitivní zátěže stěžejními. Obecně se mezi další
+problémy také řadí například individuální rozdíly v charakteru biosignálů, vliv
+faktorů prostředí nebo nedostatečná standardizace sběru a analýzy dat. Řešení
+těchto problémů je také zásadní pro vývoj spolehlivých a platných metod pro
+hodnocení kognitivní zátěže.
 
-Tato práce se zabývá využitím periferních biosignálů pro hodnocení kognitivní
-zátěže v extrémním prostředí. Konkrétně analyzovanými periferními biosignály
-jsou srdeční, elektrodermální a respirační aktivita. Dále se také práce zabývá
-problémy spojenými s interpretací příznaků vybraných biosignálů a navrhuje možná
-řešení k jejich překonání.
+Tato práce představuje nový způsob hodnocení kognitivní zátěže pomocí takzvaných
+vícerozměrných časoprostorových kauzálních vzorů společně s využitím kapsulární
+sítě. Tyto vzory zachycují temporální příčinné relace a umožňují unikátní
+kódování specifického kognitivního stavu v podobě charakteristické konfigurace v
+prostorové doméně.
+
+
 

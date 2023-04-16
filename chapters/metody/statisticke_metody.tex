@@ -1,5 +1,30 @@
 \subsection{Lineární smíšené modely}
-\label{subsec:lm_modely}
+\label{subsec:lmm}
+Pro hodnocení dat z mise DIANA bylo využito \gls{LMM}. Tyto modely představují
+flexibilní statistický nástroj pro analýzu dat s korelovanými nebo vnořenými
+strukturami. Jedná se o rozšíření lineárních regresních modelů, které umožňují
+zahrnutí jak fixních, tak náhodných efektů.
+
+Základní myšlenkou za LMM je modelování vztahu mezi závislou proměnnou $Y$ a
+jedním nebo více nezávislými proměnnými $X$, zatímco bere v úvahu skutečnost, že
+data mohou mít hierarchickou strukturu, s pozorováními vnořenými v různých
+skupinách. To se provádí specifikací lineární rovnice, která zahrnuje jak fixní,
+tak náhodné efekty:
+\begin{equation}
+    Y = \beta_0 + \sum \beta_i X_i + u + \epsilon
+\end{equation}
+kde $\beta$ jsou koeficienty pro fixní efekty, $u$ je náhodný efekt a $\epsilon$
+je chybový člen. Předpokládá se, že náhodný efekt $u$ se řídí normálním
+rozdělením se střední hodnotou nula a rozptylem $\sigma_u^2$ a že je nezávislý
+na chybovém členu $\epsilon$, který se rovněž řídí normálním rozdělením se
+střední hodnotou nula a rozptylem $\sigma_\epsilon^2$. 
+
+V případě například pozorování závislé proměnné $Y_{ij}$ pro $i$-té pozorování v
+$j$-té skupině bude náhodný efekt $u$ představovat variabilitu mezi skupinami a
+je do modelu zahrnut proto, aby zohlednil skutečnost, že pozorování v rámci
+jedné skupiny si budou pravděpodobně podobnější než pozorování v jiných
+skupinách. Problematika \gls{LMM} je každopádně velmi obsáhla a překračuje
+rozsahem tuto práci. Rozebrána byla podrobně už v literatuře~\cite{West2022}. 
 
 \subsection{Grangerova kauzalita}
 \label{subsec:granger}
@@ -21,8 +46,8 @@ Poté je prvním krokem Grangerova testu následující regrese~\cite{Arnold2007
         y_t \approx A \cdot y_{t-1}
     \end{gathered}
 \end{equation}
-po které je možné aplikovat různé statistické testy pro získání p-hodnoty, díky
-které je možné rozhodnout o výše zmíněné statistický významné přesnosti.
+po které je možné aplikovat různé statistické testy pro získání p-hodnoty a
+následně je možné rozhodnout o výše zmíněné statistický významné přesnosti.
 
 Běžně se Grangerova kauzalita aplikuje v rámci modelování časových řad ve smyslu
 kombinatorického testování všech příznaků za účely konstrukce výstupního
@@ -70,25 +95,29 @@ sekce~\ref{subsec:kauzalni_matice}).
 \label{subsec:teorie_kopul}
 Vzhledem k využití Kopula-Granger přístupu pro tvorbu vícerozměrných kauzálních
 matic je žádoucí stručně představit kopula funkce. V teorii pravděpodobnosti a
-statistice je kopula pravděpodobnostní distribuční funkcí, jež popisuje
-závislost mezi jednotlivými marginálními distribucemi a poskytuje způsob jak
-modelovat právě společnou distribuci náhodných veličin bez specifikace samotných
-distribucí těchto veličin. Základem teorie kopulí je Sklarův teorém, který říká,
-že jakákoli více-dimenzionální distribuce může být zapsána jako kopula
-aplikovaná na její marginální distribuce:
+statistice je kopule $C$ vícerozměrnou kumulativní distribuční funkcí, jež
+popisuje závislost mezi jednotlivými marginálními distribucemi a poskytuje
+způsob jak modelovat právě společnou distribuci náhodných veličin bez
+specifikace samotných distribucí těchto veličin. Formálně, je
+$C:[0,1]^{d}\rightarrow [0,1]$ $d$-dimenzionální kopulou, pokud je $C$ sdílenou
+\gls{CDF} $d$-dimenzionálního náhodného vektoru na jednotkové krychli
+$[0,1]^{d}$ s rovnoměrnými marginály. Základem teorie kopulí je Sklarův teorém,
+který říká, že jakákoli více-dimenzionální distribuce může být zapsána jako
+kopule aplikovaná na její marginální distribuce:
 
 \begin{theorem}[Sklarův teorém]
     \label{theorem:sklar}
     Nechť $F$ je vícerozměrná distribuční funkce s marginálními distribucemi
-    $F_1, F_2, \ldots, F_n$. Pak existuje kopula $C$ taková, že:
+    $F_1, F_2, \ldots, F_n$. Pak existuje kopule $C$ taková, že:
     \begin{equation}
         F\left(x_1, x_2, \ldots, x_n\right)=C\left(F_1\left(x_1\right), F_2\left(x_2\right), \ldots, F_n\left(x_n\right)\right)
     \end{equation}
-    Kopula $C$ je jednoznačná, pokud marginální distribuce $F_1, F_2, \ldots, F_n$ jsou spojité.
+    Kopule $C$ je jednoznačná, pokud marginální distribuce $F_1, F_2, \ldots, F_n$ jsou spojité.
 \end{theorem}
 
-Kopula-Granger model, ve kterém jsou v této práci kopula funkcí mapovány
-marginální distribuce fyziologických událostí do kopula prostoru je popsán v
+Kopula-Granger model (resp. Grangerův Non-paranormální model, G-NPN), v rámci
+kterého jsou v této práci kopula funkcí mapovány marginální distribuce na úrovni
+fyziologických událostí do kopula prostoru, je popsán v
 sekci~\ref{subsec:kauzalni_matice}. Pro shrnutí vychází tento model z
 následujících kroků~\cite{Guy2016}:
 \begin{enumerate}
@@ -96,15 +125,15 @@ následujících kroků~\cite{Guy2016}:
           $\hat{F_i}$.
     \item Mapování pozorování do kopula prostoru:
           $\hat{f}_i\left(x_t^i\right)=\hat{\mu}_i+\hat{\sigma}_i.
-          \Phi^{-1}\left(\hat{F}_i\left(x_t^i\right)\right)$.
+              \Phi^{-1}\left(\hat{F}_i\left(x_t^i\right)\right)$.
     \item Nalezení Grangerovy kauzality v rámci $\hat{f}_i\left(x_t^i\right)$.
 \end{enumerate}
 přičemž je dále brán v potaz Winsorizovaný\footnote{Winsorizace nebo Winsorova
-transformace je transformace statistických dat omezením extrémních hodnot, aby
-se snížil vliv případných odlehlých hodnot} odhad použité distribuční funkce,
+    transformace je transformace statistických dat omezením extrémních hodnot, aby
+    se snížil vliv případných odlehlých hodnot} odhad použité distribuční funkce,
 podle~\cite{Bahadori2013}, aby se zabránilo velkým číslům
 $\Phi^{-1}\left(0^{+}\right)$\footnote{$\Phi^{-1}$ je inverzní kumulativní
-distribuční funkce standardního normálního rozdělení.} and
+    distribuční funkce standardního normálního rozdělení.} and
 $\Phi^{-1}\left(1^{-}\right)$:
 \begin{equation}
     \tilde{F}_j= \begin{cases}\delta_n, & \text { if } \hat{F}\left(x^j\right)<\delta_n \\ \hat{F}\left(x^j\right) & \text { if } \delta_n \leq \hat{F}\left(x^j\right)<1-\delta_n \\ \left(1-\delta_n\right) & \text { if } \hat{F}\left(x^j\right)>1-\delta_n .\end{cases}

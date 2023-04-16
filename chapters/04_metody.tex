@@ -17,7 +17,7 @@ extrémního prostředí.
 \label{sec:datasety}
 Pro účely diplomové práce bylo použito několik veřejně dostupných datasetů
 včetně dat z mise DIANA. V následujících sekcích jsou stručně rozebrány
-jednotlivé datasety, přičemž první dva sloužily primárně pro účely detekce
+jednotlivé datasety, přičemž první dva sloužily primárně pro účely hodnocení
 kognitivní zátěže.
 \input{chapters/metody/datasety}
 
@@ -35,7 +35,7 @@ záložního souboru obsahující snímek databáze InfluxDB (viz
 sekce~\ref{subsec:influx}). Tento snímek byl použit pro obnovu databáze, která
 obsahovala veškeré data s časovými značkami. Pro export a práci s daty byla
 využita Python knihovna
-\textit{InfluxDB-Python}\footnote{https://github.com/influxdata/influxdb-python},
+\textit{InfluxDB-Python}\footnote{\url{https://github.com/influxdata/influxdb-python}},
 jež poskytuje rozhraní mezi InfluxDB a programovacím jazykem Python. 
 \label{sec:zpracovani_dat_diana}
 \input{chapters/metody/zpracovani_dat_diana}
@@ -45,18 +45,21 @@ jež poskytuje rozhraní mezi InfluxDB a programovacím jazykem Python.
 V této sekci je rozebrán proces zpracování a zkoumání souborů dat, konkrétně
 datasetů CLAS a WESAD, jehož cílem bylo identifikovat vzorce, vztahy a trendy,
 které nemusí být okamžitě zřejmé. Cílem explorační analýzy bylo získat poznatky
-a vytvořit hypotézy o datech, které napomáhali při tvorbě paradigmatu detekce \gls{CL}.
+a vytvořit hypotézy o datech, které napomáhali při tvorbě paradigmatu hodnocení \gls{CL}.
 \input{chapters/metody/exploracni_analyza}
 
-\section{Detekce CL využitím vícerozměrných časoprostorových kauzálních vzorů}
+\section{Hodnocení CL využitím vícerozměrných časoprostorových kauzálních vzorů}
 \label{sec:hybridni_detekce}
-V této podkapitole je popsán postup realizace nového multimodálního přístupu pro
-detekci kognitivní zátěže pomocí periferních biosignálů (\gls{EKG}, \gls{RSP},
+V této podkapitole je popsán postup realizace multimodálního přístupu pro
+hodnocení kognitivní zátěže pomocí periferních biosignálů (\gls{EKG}, \gls{RSP},
 \gls{EDA}), které bylo vytvořeného v rámci této diplomové práce.
 \input{chapters/metody/hybridni_detekce}
 
 \section{Statistické metody}
 \label{sec:statisticke_metody}
+V této sekci jsou stručně popsány statistické metody použité pro účely této
+práce. Zvolení a vhodnost konkrétních metod pro účely hodnocení kognitivní
+zátěže je rozebráno v samotné diskuzi.
 \input{chapters/metody/statisticke_metody}
 
 % \section{}

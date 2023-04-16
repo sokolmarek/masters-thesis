@@ -1,4 +1,4 @@
-\subsection{Definice problému}
+\subsection{Formulace problému}
 \label{subsec:definice_problemu}
 V předešlé sekci byl popsán proces předzpracování dat, jehož výsledkem je nová
 multidimenzionální množina segmentovaných fyziologických signálů $\mathcal{F}$.
@@ -7,14 +7,14 @@ o kanálech $c$. Vybraný segment z kanálu $c$ reprezentuje časovou řadu, jej
 každý vzorek je zachycen v určitém čase $t$, a představuje průběh fyziologické
 události (\gls{NPF} událost).
 
-Mezi jednotlivými pozorovanými fyziologickými událostmi $X^i$, lze modelovat
+V rámci jednotlivých pozorovaných fyziologických událostí $X^i$, lze modelovat
 časově kauzální vztahy, které lze díky Grangerově kauzalitě (viz
-sekce~\ref{subsec:granger}) matematicky popsat unikátním orientovaným grafem --
-definovanou množinou vrcholů a hran. Tím je umožněno temporální kódování
-specifického příčinného kognitivního stavu pro konkrétní segment vybraného
-kanálu $c$. Nelze však předpokládat, že je tak zachycena veškerá komplexní
-dynamika, která je ve biosignálech přítomna, včetně toho, že nemusí být plně
-zachyceny interakce napříč kanály $c$.
+sekce~\ref{subsec:granger}) matematicky popsat unikátním orientovaným grafem
+$G=(V,E)$ -- definovanou uspořádanou množinou vrcholů a hran. Tím je umožněno
+temporální kódování specifického příčinného kognitivního stavu pro konkrétní
+segment vybraného kanálu $c$. Nelze však předpokládat, že je tak zachycena
+veškerá komplexní dynamika, která je ve biosignálech přítomna, včetně toho, že
+nemusí být plně zachyceny interakce napříč kanály $c$.
 
 Tento problém je kompenzován použitím vícerozměrných časoprostorových vzorů
 (\gls{GAF}, Gramian Angular Fields) odvozených z Gramových matic. Tyto vzory
@@ -74,20 +74,21 @@ kumulativní distribuční funkce (\gls{CDF}) Gaussova rozdělení. V neposledn�
 lze konstruovat temporální kauzální graf analýzou relací mezi $Z_{i}^t$. Pro
 účely tvorby grafického řešení v podobě kauzální matice $T \times T$ obsahující
 odhady koeficientů $\hat{\beta}_i$ byla adaptována regularizovaná regrese
-podle~\cite{Bahdori2012}:
+podle~\cite{Bahdori2012}. Nechť vybraná fyziologická událost $X^i = \{x_t^i : t
+= 0,...,T\}$, poté lze získat koeficienty následovně:
 \begin{equation}
-    \hat{\beta}_i(\lambda)=\arg \min _{\beta_i}\left(\sum_{t=1}^T\left\|x_i^t-X_{t, L}^{\text {lag}} \beta_i\right\|^2+\lambda\left\|\beta_i\right\|_1\right)
+    \hat{\beta}_i(\lambda)=\arg \min _{\beta_i}\left(\sum_{t=1}^T\left\|x_i^t-X_{t, L}^{lag} \beta_i\right\|^2+\lambda\left\|\beta_i\right\|_1\right)
 \end{equation}
-kde $x_i^t$ představuje pozorovanou hodnotu v časové řadě a $X_{t, L}^{\text {lag}}$
-reprezentuje spojený vektor všech zpožděných pozorování. Tvorba
-kauzálních matic byla realizována v programovém prostředí Matlab s využitím
-knihovny \textit{GLMNET}\footnote{\url{https://hastie.su.domains/glmnet_matlab}},
-která umožňuje specifikovat různé typy regresních modelů. Hodnota časového
-zpoždění byla určena na základě Akaikeho informačního kritéria (\gls{AIC}) jako
-$L = 4$. Během každého výpočtu bylo pomocí zmíněné knihovny realizováno i
-automatické ladění hodnot penalizačního parametru $\lambda \in m_i$, kde $m_i =
-    10^{a + (i-1)d}$ pro $i = {1, 2, ..., 6}$ a $d = \frac{b-a}{n-1}$. Hodnoty $a$ a
-$b$ byly nastaveny na -3 a 2.
+kde $X_{lag}^{t, L}$ reprezentuje spojený vektor všech zpožděných pozorování s
+maximálním zpožděním $L$ až do času $t$. Tvorba kauzálních matic byla
+realizována v programovém prostředí Matlab s využitím knihovny
+\textit{GLMNET}\footnote{\url{https://hastie.su.domains/glmnet_matlab}}, která
+umožňuje specifikovat různé typy regresních modelů. Hodnota časového zpoždění
+byla určena na základě Akaikeho informačního kritéria (\gls{AIC}) jako $L = 4$.
+Během každého výpočtu bylo pomocí zmíněné knihovny realizováno i automatické
+ladění hodnot penalizačního parametru $\lambda \in m_i$, kde $m_i = 10^{a +
+(i-1)d}$ pro $i = {1, 2, ..., 6}$ a $d = \frac{b-a}{n-1}$. Hodnoty $a$ a $b$
+byly nastaveny na -3 a 2.
 
 \subsection{Konstrukce časoprostorových polí}
 \label{subsec:gadf}
@@ -156,12 +157,12 @@ kde každý prvek odpovídá sinové funkci úhlového sinusového rozdílu v r�
 časových bodech. Výpočet a tvorba těchto příznaků, časoprostorových vzorů, byla
 implementována v programovacím jazyce Python.
 
-\subsection{Augmentace dat}
+\subsection{Augmentace dat využitím SMOTENN}
 \label{subsec:augmentace_dat}
 
 \subsection{Kapsulární neuronová síť}
 \label{subsec:kapsularni_sit}
-Pro potřeby realizace úloh klasifikace (resp. detekce kognitivní zátěže), byla
+Pro potřeby realizace úloh klasifikace (resp. hodnocení kognitivní zátěže), byla
 navržena architektura kapsulární neuronové sítě postavená na řešení, které
 představili Mazzia et al.~\cite{Mazzia2021}, \textit{Efficient-CapsNet}.
 Celkovou architekturu lze vidět na obrázku~\ref{fig:architektura}.
@@ -246,6 +247,11 @@ jeho globálnějším rysům.
 
 \subsection{Self-attention směrování}
 \label{subsec:dynamicke_smerovani}
+Kapsulární síť byla také v této práci zvolena, vzhledem k její architektuře
+napodobující lidskou biologii, a tím pádem schopností lépe modelovat komplexní
+vztahy v datech. To vyplývá z použitého nového přístupu neiterativního
+paralelního směrování kapslí, které bylo představeno a popsáno
+v~\cite{Mazzia2021}.
 
 \subsection{Marginální ztrátová funkce}
 \label{subsec:marginalni_funkce}

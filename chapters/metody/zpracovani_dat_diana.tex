@@ -6,10 +6,10 @@ v~\cite{Castaldo2019,Kim2021,Pecchia2018,Shaffer2020,Tervonen2021}. Zpracování
 biosignálu vycházelo z metodiky popsané v sekci~\ref{sec:zpracovani_biosignalu}.
 U každého segmentu proběhlo hodnocení jeho kvality podle dvou kritérií:
 \begin{itemize}
-    \item Hodnocení kvality \gls{EKG} signálu pomocí heuristické fúze a fuzzy
-    komplexního hodnocení podle~\cite{Zhao2018}.
-    \item Hodnocení detekovaných R vln z hlediska časové kontroly náhlých
-    nefyziologických změn v po sobě jdoucích R-R intervalech.
+      \item Hodnocení kvality \gls{EKG} signálu pomocí heuristické fúze a fuzzy
+            komplexního hodnocení podle~\cite{Zhao2018}.
+      \item Hodnocení detekovaných R vln z hlediska časové kontroly náhlých
+            nefyziologických změn v po sobě jdoucích R-R intervalech.
 \end{itemize}
 Segmenty které vykazovali nežádoucí anomálie v rámci hodnotících kritérií byly
 vyřazeny. Ze segmentů bylo dále vypočteno následně přes 100 různých parametrů
@@ -31,9 +31,56 @@ se odstranili odlehlé hodnoty na základě absolutní odchylky mediánu od medi
 
 \subsection{Sledované veličiny}
 \label{subsec:sledovane_veliciny}
-Pro účely analýzy \gls{NPF} adaptace probandů v průběhu mise byly vybrány a
-sledovány především následující \gls{HRV} parametry:
+Pro účely analýzy \gls{NPF} adaptace subjektů v průběhu mise byly na
+základě~\cite{Pereira2017,Shaffer2017} vybrány a sledovány především následující
+\gls{HRV} parametry:
+\begin{itemize}
+      \item \textbf{SDNN} --- Standardní odchylka normálních R--R intervalů (tedy
+            N--N).
+      \item \textbf{RMSSD} --- Odmocnina ze středního kvadratického rozdílu mezi
+            po sobě následujícími N--N intervaly.
+      \item \textbf{pNN50} --- Procento po sobě následujících N--N intervalů,
+            které se od sebe liší o více než 50~ms.
+      \item \textbf{HF} --- Vysokofrekvenční složka výkonu variability srdeční
+            frekvence.
+\end{itemize}
 
-\subsection{Tvorba hypotetických LMM modelů}
+\subsection{Analýza dat mise}
+\label{subsec:analyza_diana}
+Vzhledem k nereprezentativnosti a nepopsanosti dat byly primárně pro potřeby
+jejich analýzy namísto statistických testů a dalších nástrojů použity zejména
+vizuální metody. Pro zobrazení denního vývoje v rámci sledovaných parametrů byly
+vypočtené parametry agregovány mediánem na úrovní hodin i dnů. Vizualizace byla
+v tomto případě spojena i s výsledky statistického modelování popsaného v
+následující sekci. Pro účely vizuální analýzy byly použity i krabicové grafy.
+
+Dále byly identifikovány, exportovány a vizualizovány segmenty biosignálů v
+časech, kdy subjekt vykonával \gls{NPF} baterii testů. Segmenty byly
+vizualizovány taktéž využitím krabicových grafů. Výsledky v rámci vizuálních
+analýz se nacházejí v sekci~\ref{sec:vysledky_vizual} a dále jsou probírány v
+samotné diskuzi.
+
+\subsection{Hypotetické modelování dat}
 \label{subsec:tvorba_modelů}
+Ke zkoumání vztahu mezi vybraným sledovaným parametrem napříč jednotlivými dny v
+rámci obou skupin, mateřské lodi a přistávacího modulu, byl vytvořen
+víceúrovňový lineární smíšený model. Nechť $Y$ je hodnota závislé proměnné (tj.
+\enquote{vybraný sledovaný parametr}). Po zahrnutí interakce dnů a skupin lze
+lineární smíšený model zjednodušeně vyjádřit následovně:
+\begin{equation}
+      Y = \beta_{0}+\beta_{1} {d}+\beta_{2} {s}+\beta_{3} {d} {s} + u_{0} + u_{1}d + \epsilon, \quad \epsilon \sim \mathcal{N}\left(0, \sigma^2\right)
+\end{equation}
+kde $\beta_i$ jsou koeficienty fixních efektů, $\epsilon$ je člen reziduální
+chyby a $d, s$ označují fixní efekty den a skupinu. Náhodné efekty jsou označeny
+jako $u_0, u_1$. Dále je přítomna zmíněna interakce v podobě zahrnutí
+interakčního členu $d \cdot s$. To znamená, že kromě samostatného modelování
+vlivu \enquote{dne} a \enquote{skupiny} model zohledňuje také případnou
+interakci mezi nimi. Jinými slovy, model počítá s možností, že vliv
+\enquote{dne} na proměnnou odezvy (závislou proměnnou) se může lišit v
+závislosti na úrovni \enquote{skupiny}. Zároveň díky zvoleným náhodným efektům
+je dovoleno individuálním rozdílům u každého subjektu na úrovni dnů.
 
+Výsledky modelování jsou uvedeny v sekci~\ref{sec:vysledky_lmm} a rozebrány v
+diskuzi. Modelování bylo realizováno v programovém jazyce R. Vzhledem k tomu, že
+se lineární smíšené modely řadí mezi statistické metody, tak jsou samostatně
+popsány v sekci~\ref{sec:statisticke_metody}.

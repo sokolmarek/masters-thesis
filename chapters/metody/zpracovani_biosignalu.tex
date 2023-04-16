@@ -60,15 +60,16 @@ datasety:
 \end{table}
 
 Byly vybrány různorodé datasety za účelem zjištění adaptability algoritmu. Pro
-statistické zpracování bylo využito lineárních smíšených modelů (\gls{LMM}). Použité
-statistické metody jsou podrobněji popsány v kapitole~\ref{sec:statisticke_metody}.
-Pro srovnání metod byl v programovacím jazyce R vytvořen následující statistický model:
+statistické zpracování bylo využito lineárních smíšených modelů (\gls{LMM}).
+Použité statistické metody jsou podrobněji popsány v
+kapitole~\ref{sec:statisticke_metody}. Pro srovnání metod byl v programovacím
+jazyce R vytvořen následující statistický model:
 \begin{equation}
-    \text{Skore} = \beta_0 + \beta_1\text{Metoda} + u_{\text{Dataset}} + u_{\text{Participant}} + \epsilon
+    \text{Skóre} = \beta_0 + \beta_1\text{Metoda} + u_{\text{Dataset}} + u_{\text{Participant}} + \epsilon
 \end{equation}
 který specifikuje lineární smíšený model pomocí funkce \texttt{lmer} z balíku
 \texttt{lme4}\footnote{\url{https://github.com/lme4/lme4}}. Model byl použit k
-predikci závislé proměnné Skore na fixním efektu $Metoda$ a dvou náhodných
+predikci závislé proměnné Skóre na fixním efektu $Metoda$ a dvou náhodných
 efektech: $Dataset$ a $Participant$. Dále problematice této sekce není věnována
 pozornost, jelikož není předmětem této práce. 
 
@@ -114,11 +115,11 @@ tonická složka pomocí dolní a horní propusti o mezních frekvencích 0,05~\
 Dále byl použit Savitzky-Golayův frekvenčně neselektivní filtr k dalšímu
 vyhlazení fázické složky za účelem hledání \gls{SCR} vrcholků. K detekti
 vrcholků byla využita funkce \texttt{find\_peaks()} z knihovny
-Scipy\footnote{https://docs.scipy.org}. Kritérium pro detekci vrcholků bylo
-definováno jako konzistentní nárůst o 0,5s následovaný stejným poklesem.
+Scipy\footnote{\url{https://docs.scipy.org}}. Kritérium pro detekci vrcholků
+bylo definováno jako konzistentní nárůst o 0,5s následovaný stejným poklesem.
 Výsledek aplikované metody lze vidět na Obrázku~\ref{fig:eda_test}.
 
-\subsection{Neurokit}
+\subsection*{Neurokit}
 \label{subsec:neurokit}
 Knihovna \textit{Neurokit2}\footnote{\url{https://neuropsychology.github.io/NeuroKit}},
 na jejíž vývoji se podílím, poskytuje pokročilé metody pro zpracování a

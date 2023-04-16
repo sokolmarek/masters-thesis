@@ -13,11 +13,11 @@ informace o dýchání z elektrokardiogramu. Knihovna \textit{Neurokit2} poskytu
 implementaci algoritmu podle~\cite{VanGent2019}, jež byla pro tyto účely
 použita.
 
-Následně byly všechny signály (\gls{EKG}, \gls{RSP}, \gls{EDA}) segmentovány na
-5s, 5s s 50\% překryvem a 1s úseky. Z těchto segmentů byly poté vytvořeny
-příznaky pro účely strojového učení. Blíže je tvorba těchto příznaků a jejich
-využití popsáno v sekci~\ref{sec:hybridni_detekce}. Byly ponechány pouze ty
-segmenty, které svojí třídou korespondovaly žádanému kognitivnímu stavu.
+Následně byly všechny signály segmentovány na 5s, 5s s 50\% překryvem a 1s
+úseky. Z těchto segmentů byly poté vytvořeny příznaky pro účely strojového
+učení. Blíže je tvorba těchto příznaků a jejich využití popsáno v
+sekci~\ref{sec:hybridni_detekce}. Byly ponechány pouze ty segmenty, které svojí
+třídou korespondovaly žádanému kognitivnímu stavu.
 
 \begin{figure}[h]
     \centering
@@ -50,10 +50,12 @@ segmenty, které svojí třídou korespondovaly žádanému kognitivnímu stavu.
                 .3 merged\_1s.pkl.
                 .3 merged\_5s.pkl.
                 .3 merged\_5s\_2s.pkl.
+                .3 $\vdots$.
                 .2 CLAS.
                 .3 merged\_1s.pkl.
                 .3 merged\_5s.pkl.
                 .3 merged\_5s\_2s.pkl.
+                .3 $\vdots$.
             }
             \caption{Zpracované datasety}
             \label{subfig:tree2}
@@ -74,7 +76,7 @@ datasetů, bylo nahlíženo na jejich distribuce, a byly vyšetřeny případné
 nebo neplatné hodnot. Tato šetření byla provedena i na individuální úrovni. Celý
 postup s vizualizovanými výsledky se nachází v datové příloze, v podobě
 interaktivního prostředí Jupyter Notebook\footnote{\url{https://jupyter.org}} s
-názvem \texttt{exploratory\_analysis\_example}.
+názvem souboru \texttt{exploratory\_analysis\_example}.
 
 \begin{figure}[h]
     \begin{subfigure}[h]{0.48\linewidth}
@@ -109,9 +111,9 @@ oranžově vyznačeny body, jež odpovídají kognitivní zátěži.
         \includegraphics[width=\linewidth]{figures/clas_umap}
         \caption{CLAS}
     \end{subfigure}
-    \caption{Vizualizace projekcí UMAP extrahovaných příznaků z datasetu WESAD
+    \caption{Vizualizace UMAP projekcí extrahovaných příznaků z datasetu WESAD
     do 2D (vlevo) a 3D latentního prostoru (vpravo). Oranžově třída 1 a modře
-    třída 1.}
+    třída 0}
     \label{fig:umap}
 \end{figure}
 
