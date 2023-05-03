@@ -9,22 +9,23 @@ Základní myšlenkou za LMM je modelování vztahu mezi závislou proměnnou $Y
 jedním nebo více nezávislými proměnnými $X$, zatímco bere v úvahu skutečnost, že
 data mohou mít hierarchickou strukturu, s pozorováními vnořenými v různých
 skupinách. To se provádí specifikací lineární rovnice, která zahrnuje jak fixní,
-tak náhodné efekty:
+tak náhodné efekty (resp. vektory těchto veličin):
 \begin{equation}
     Y = \beta_0 + \sum \beta_i X_i + u + \epsilon
 \end{equation}
-kde $\beta$ jsou koeficienty pro fixní efekty, $u$ je náhodný efekt a $\epsilon$
-je chybový člen. Předpokládá se, že náhodný efekt $u$ se řídí normálním
-rozdělením se střední hodnotou nula a rozptylem $\sigma_u^2$ a že je nezávislý
-na chybovém členu $\epsilon$, který se rovněž řídí normálním rozdělením se
-střední hodnotou nula a rozptylem $\sigma_\epsilon^2$. 
+kde $\beta_0$ je intercept, $\beta$ je vektor koeficientů pro fixní efekty, $u$
+je vektor náhodných efektů a $\epsilon$ je chybový člen. Předpokládá se, že
+náhodný efekt $u$ se řídí normálním rozdělením se střední hodnotou nula a
+rozptylem $\sigma_u^2$ a že je nezávislý na chybovém členu $\epsilon$, který se
+rovněž řídí normálním rozdělením se střední hodnotou nula a rozptylem
+$\sigma_\epsilon^2$.
 
 V případě například pozorování závislé proměnné $Y_{ij}$ pro $i$-té pozorování v
 $j$-té skupině bude náhodný efekt $u$ představovat variabilitu mezi skupinami a
 je do modelu zahrnut proto, aby zohlednil skutečnost, že pozorování v rámci
 jedné skupiny si budou pravděpodobně podobnější než pozorování v jiných
 skupinách. Problematika \gls{LMM} je každopádně velmi obsáhla a překračuje
-rozsahem tuto práci. Rozebrána byla podrobně už v literatuře~\cite{West2022}. 
+rozsahem tuto práci. Rozebrána byla podrobně už v literatuře~\cite{West2022}.
 
 \subsection{Grangerova kauzalita}
 \label{subsec:granger}
@@ -141,5 +142,93 @@ $\Phi^{-1}\left(1^{-}\right)$:
 
 \subsection{Metriky hodnocení v strojovém učení}
 \label{subsec:ml_metriky}
+Pro potřeby porovnání a vyhodnocení výkonnosti (přesnosti) realizovaných modelů
+strojového učení bylo zvoleno několik hodnotících metrik. Tato kapitola se
+zabývá použitými metrikami v této práci a jejich významem při posuzování modelů.
 
+\subsubsection{Přesnost}
+Přesnost je měřítkem, které hodnotí schopnost modelu správně předpovídat
+označení tříd v souboru dat. Vypočítá se jako poměr počtu správných předpovědí k
+celkovému počtu předpovědí provedených modelem:
+\begin{equation}
+    \text{Přesnost} = \frac{\text{Počet správně predikovaných tříd}}{\text{Celkový počet predickí}} = \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+kde TP, TN, FP a FN představují počet pravdivě pozitivních, pravdivě
+negativních, falešně pozitivních a falešně negativních výsledků.
 
+Přesnost je často používanou metrikou pro hodnocení modelů, protože poskytuje
+jednoduché měřítko toho, jak dobře model celkově funguje. Vysoká hodnota
+přesnosti naznačuje, že model je schopen správně předpovídat velkou část souboru
+dat, zatímco nízká hodnota přesnosti naznačuje, že model není příliš efektivní
+při predikci tříd. Tato metrika však může být zavádějící ve chvíli, kdy jsou
+třídy nevyvážené. V takových případech může mít model, který vždy předpovídá
+většinovou třídu, vysokou hodnotu přesnosti, i když si vede špatně u menšinové
+třídy.
+
+\subsubsection{Pravdivě pozitivní míra}
+Pravdivě pozitivní míra (\gls{TPR}, true positive rate), neboli senzitivita, je
+podíl pravdivě pozitivních předpovědí (TP) z celkového počtu pozitivních
+předpovědí (TP + falešně negativní předpovědi, tedy TP + FN). Matematicky je
+přesnost definována jako:
+\begin{equation}
+    TPR = \frac{TP}{TP + FN}
+\end{equation}
+
+Vysoké \gls{TPR} znamená, že model dobře identifikuje pozitivní případy a
+minimalizuje falešně negativní, zatímco nízké \gls{TPR} naznačuje, že model není
+příliš účinný při identifikaci pozitivních tříd.
+
+\subsubsection{Pravdivě negativní míra}
+Pravdivě negativní míra (\gls{TNR}, true negative rate), neboli specificita,
+označuje podíl skutečně negativních případů, které jsou správně identifikovány
+jako negativní. Jinými slovy, \gls{TNR} měří schopnost modelu správně
+identifikovat negativní třídu a lze vypočítat:
+\begin{equation}
+    TNR = \frac{TN}{TN + FP}
+\end{equation}
+
+Vysoké \gls{TNR} znamená, že model dobře identifikuje negativní třídy a
+minimalizuje falešně pozitivní výsledky, zatímco nízké \gls{TNR} naznačuje, že
+model není příliš účinný při identifikaci negativních případů.
+
+% \subsubsection{Senzitivita}
+% Senzitivita, známá také jako úplnost, hodnotí schopnost modelu správně
+% identifikovat pozitivní případy ze všech skutečných pozitivních případů.
+% Senzitivita se vypočítá jako poměr pravdivě pozitivních případů (TP) k součtu
+% pravdivě pozitivních a falešně negativních případů (FN):
+% \begin{equation}
+%     \text{Senzitivita} = \frac{TP}{TP + FN}
+% \end{equation}
+
+% Vysoká hodnota senzitivity tedy naznačuje, že model je schopen detekovat většinu
+% pozitivních tříd a naopak.
+
+% \subsubsection{F1-skóre}
+% F1-skóre je harmonický průměr TPR a senzitivity. Matematicky je F1-skóre
+% definováno jako:
+% \begin{equation}
+%     F1 = 2 \times \frac{TPR \times \text{Senzitivita}}{TPR + \text{Senzitivita}}.
+% \end{equation}
+
+% Tato metrika je užitečné zejména v případech, kdy jsou třídy nevyvážené, což
+% znamená, že existuje výrazně více případů jedné třídy než druhé, protože bere v
+% úvahu jak falešně pozitivní, tak falešně negativní výsledky.
+
+\subsubsection{Křivka ROC}
+\gls{ROC} (Receiver Operating Characteristic) křivka je grafická metoda pro
+vyhodnocení výkonosti binárního klasifikačního modelu. Tato křivka zobrazuje
+vztah mezi dvěma parametry: \gls{TPR} a falešnou pozitivní mírou (\gls{FPR},
+false positive rate). \gls{TPR} odpovídá přesnosti modelu při detekci
+pozitivních případů, zatímco FPR zahrnuje chybně klasifikované negativní
+případy.
+
+\gls{ROC} křivka se skládá z mnoha bodů, přičemž každý bod představuje jinou
+úroveň rozhodovacího prahu (threshold) pro klasifikaci pozitivních a negativních
+případů. \gls{TPR} a \gls{FPR} se poté vypočítávají pro každý z těchto prahů a
+vykreslí se na grafu. Ideální křivka ROC je tvořena body s TPR rovnoměrně
+rostoucími k jedné a \gls{FPR} rovnoměrně rostoucími k nule, což by znamenalo,
+že model dokáže rozlišovat mezi pozitivními a negativními případy s vysokou
+přesností. Křivka se používá například k porovnávání výkonu různých
+klasifikačních modelů. Vyšší oblast pod křivkou (\gls{AUC}, Area Under Curve)
+indikuje, že model má lepší výkon, zatímco nižší \gls{AUC} může naznačovat, že
+model má menší přesnost.

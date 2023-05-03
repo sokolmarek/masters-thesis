@@ -32,15 +32,14 @@ aproximovat mapovací funkci $h$, která predikuje výstupní proměnnou na zák
 vstupní proměnné $X$. K aproximaci mapovací funkce jsou použita označená
 trénovací data, která se skládají z $n$ párů vstupních a výstupních proměnných.
 Cílem je získat přesné predikce jak pro trénovací, tak pro úplně nová data.
-Formálně lze tedy tvrdit, že hledáme funkci:
+Formálně lze tedy tvrdit, že hledáme zobrazení:
 \begin{equation}
     h:\mathbb{R}^d \rightarrow \mathcal{C}
 \end{equation}
 tak, že pro každou novou dvojici vstupu a výstupu $(x,y)$ vybranou z
-$\mathcal{P}$ platí $h(X) ≈ y$, kde $\mathbb{R}^d$ je je $d$-rozměrný příznakový
+$\mathcal{P}$ platí $h(X) ≈ y$, kde $\mathbb{R}^d$ je $d$-rozměrný příznakový
 prostor a $\mathcal{C}$ je prostor všech možných anotací. Zároveň předpokládáme,
-že tyto dvojice pocházejí z neznámého rozdělení
-$\mathcal{P}$~\cite{Murphy2012}.
+že tyto dvojice pocházejí z neznámého rozdělení $\mathcal{P}$~\cite{Murphy2012}.
 
 \subsubsection{Učení bez učitele}
 Cílem učení bez učitele je najít vzory v neanotovaných datech bez definovaného
@@ -128,7 +127,7 @@ shlukování (\gls{DBSCAN}), k-means nebo hierarchické shlukování.
 \subsection{Trénování a testování modelů}
 Vyhodnocování modelů strojového učení je pro jejich úspěšnost klíčové. Aby bylo
 zajištěno, že model dokáže efektivně predikovat i nová data, nikoli pouze data
-využita během jeho trénování, provádí se tzv. \emph{train-test} rozdělení. To
+využitá během jeho trénování, provádí se tzv. \emph{train-test} rozdělení. To
 zahrnuje ponechání části dat jako testovací množiny, kterou model během
 trénování nepoužil, a její následné použití k vyhodnocení schopnosti modelu
 generalizace porovnáním jeho predikce se skutečnými hodnotami.
@@ -306,8 +305,8 @@ K hodnocení modelu lze použít různé metriky v závislosti na dané úloze.
 Vyhodnocování natrénovaného modelu je klíčovým aspektem procesu strojového
 učení. Vzhledem k tomu, že se tato práce zabývá především úlohou klasifikace
 učení s učitelem, nebudou zde popsány všechny hodnotící metriky. Vybrané a
-použité metriky jsou blíže popsány v samotných metodách, v kapitole~\ref{}.
-%# TODO: Doplnit referenci na kapitolu
+použité metriky jsou blíže popsány v samotných metodách, v
+kapitole~\ref{subsec:ml_metriky}.
 
 \subsection{Umělé neuronové sítě}
 Umělé neuronové sítě (anglicky Artificial Neural Networks, \gls{ANN}) jsou
@@ -345,7 +344,7 @@ prostor hypotéz, označovaný $\mathcal{H}$, které velmi ovlivňuje generaliza
 
 S vymezením přichází na řadu ztrátová funkce $\mathcal{L}:\mathcal{H}
     \rightarrow \mathbb{R}$, jež přiřazuje ztrátu každému $h \in \mathcal{H}$.
-    Ztrátu si lze představit jako číslo, které vypovídá o tom jak přesně je
+    Ztrátu si lze představit jako číslo, které vypovídá o tom, jak přesně je
     nalezená $h$ aproximována vzhledem k použitým datům. Se ztrátovou funkcí tak
     vzniká nový optimalizační problem:
 \begin{equation}
@@ -439,7 +438,7 @@ v~\cite{Goodfellow2016}.
 \subsubsection{Aktivační funkce}
 Aktivační funkce jsou jednou z nejdůležitějších součástí \gls{ANN}. Tyto funkce
 zpracovávají vstupní signály a generují výstupy neuronů, které se dále šíří do
-dalších vrstev sítě. Musí také splňovat některé předpoklady jako je
+dalších vrstev sítě. Musí také splňovat některé předpoklady, jako je
 diferencovatelnost. Aktivační funkce musí být také nelineární, aby se rozšířil
 rozsah mapovacích funkcí, které lze aproximovat. Existují různé aktivační
 funkce, které mají své výhody a nevýhody. Jejich výběr je podstatnou součástí

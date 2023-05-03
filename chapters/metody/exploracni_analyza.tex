@@ -89,7 +89,7 @@ názvem souboru \texttt{exploratory\_analysis\_example}.
         \caption{Rozdělení datasetu CLAS}
     \end{subfigure}
     \caption{Srovnání rozdělení tříd vybraných datasetů. Třída 0 vyjadřuje
-    klidový stav a třída 1 vyjadřuje kognitivní zátěž.}
+        klidový stav a třída 1 vyjadřuje kognitivní zátěž.}
     \label{fig:rozdeleni_trid}
 \end{figure}
 
@@ -112,8 +112,8 @@ oranžově vyznačeny body, jež odpovídají kognitivní zátěži.
         \caption{CLAS}
     \end{subfigure}
     \caption{Vizualizace UMAP projekcí extrahovaných příznaků z datasetu WESAD
-    do 2D (vlevo) a 3D latentního prostoru (vpravo). Oranžově třída 1 a modře
-    třída 0}
+        do 2D (vlevo) a 3D latentního prostoru (vpravo). Oranžově třída 1 a modře
+        třída 0}
     \label{fig:umap}
 \end{figure}
 
@@ -124,3 +124,47 @@ Obr.~\ref{fig:umap}. Výsledek 3D projekcí naznačuje potencionální lineárn�
 separovatelnost u malé části souboru. U zbytku souboru by bylo oddělení
 pravděpodobně zřetelnější ve vyšších dimenzích a možná nebude lineární. V úvahu
 tak přichází strojové učení.
+
+\subsection{Augmentace dat využitím SMOTE-Tomek}
+\label{subsec:augmentace_dat}
+Vzhledem k nevyváženosti tříd byla zvolena augmentace dat pomocí techniky
+SMOTE-Tomek~\cite{tomek}. Jedná se o hybridní metodu vzorkování, která kombinuje
+\gls{SMOTE}~\cite{smote} (Synthetic Minority Oversampling Technique) a
+algoritmus \textit{Tomek Links}. 
+
+\gls{SMOTE} je běžně používaná technika pro generování syntetických vzorků
+minoritní třídy vytvářením nových instancí, které jsou podobné existujícím
+instancím minoritní třídy. Metoda funguje tak, že vybere instanci minoritní
+třídy a najde $k$ jejích nejbližších sousedů v prostoru příznaků. Poté generuje
+nové syntetické instance interpolací mezi vybranou instancí a jejími $k$
+sousedy.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[h]{0.4\linewidth}
+        \includegraphics[width=\linewidth]{figures/smote1}
+        \caption{Rozhodovací funkce}
+    \end{subfigure}
+    \hspace{0.7cm}
+    \begin{subfigure}[h]{0.4\linewidth}
+        \includegraphics[width=\linewidth]{figures/smote2}
+        \caption{Převzorkování}
+    \end{subfigure}
+    \caption{Ukázka převzorkování metodou SMOTE-Tomek}
+    \label{fig:smote}
+\end{figure}
+
+Metoda SMOTE-Tomek kombinuje algoritmy SMOTE a Tomek Links. Nejprve dojde k
+nadvzorkování menšinové třídy pomocí SMOTE a poté k podvzorkování většinové
+třídy odstraněním takzvaných \enquote{\textit{Tomek Links}}. Nechť $\lVert x_i -
+x_j \rVert$ označuje euklidovskou vzdálenost mezi $x_i$ a $x_j$, kde $x_i$
+označuje vzorek, který patří do menšinové třídy, a $x_j$ označuje vzorek, který
+patří do většinové třídy. Pokud žádný vzorek $x_k$ nesplňuje následující
+podmínku:
+\begin{equation}
+    \lVert x_i - x_k \rVert < \lVert x_i - x_j \rVert \lor \lVert x_j - x_k \rVert < \lVert x_i - x_j \rVert
+\end{equation}
+pak dvojice $(x_i, x_j)$ je \enquote{\textit{Tomek Link}}. Metoda byla
+implementována v programovacím jazyce Python využitím knihovny
+\textit{imbalanced-learn}\footnote{\url{https://imbalanced-learn.org}}. Výsledné
+augmentované soubory dat se poté použily k tréninku klasifikačních modelů.

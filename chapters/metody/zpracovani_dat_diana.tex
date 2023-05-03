@@ -15,12 +15,12 @@ Segmenty které vykazovali nežádoucí anomálie v rámci hodnotících kritér
 vyřazeny. Ze segmentů bylo dále vypočteno následně přes 100 různých parametrů
 pro účely analýzy dat. Mezi tyto parametry patřily například běžné statistické
 charakteristiky (průměr, medián, směrodatná odchylka a další) nebo nelineární a
-časové \gls{HRV} parametry. Zpracované segmenty byly zároveň anotovány, a to z
-hlediska spánkového cyklu. Dále byly identifikovány a označeny v časech
+časové \gls{HRV} parametry. Dále byly identifikovány a označeny v časech
 kognitivních testů. Z časových důvodu nebyly pro účely této práce ostatní
 aktivity během mise anotovány, i přes dostupnost kamerových záznamů. Seznam
 všech počítaných parametrů je součástí přílohy v souboru
-\texttt{all\_params.csv}.
+\texttt{all\_params.csv}. Zpracování bylo uplatněno i pro data z pilotního
+měření pro účely srovnání sledovaných parametrů před misí a během mise.
 
 \subsection{Čistění dat}
 \label{subsec:cisteni_dat}
@@ -35,8 +35,8 @@ Pro účely analýzy \gls{NPF} adaptace subjektů v průběhu mise byly na
 základě~\cite{Pereira2017,Shaffer2017} vybrány a sledovány především následující
 \gls{HRV} parametry:
 \begin{itemize}
-      \item \textbf{SDNN} --- Standardní odchylka normálních R--R intervalů (tedy
-            N--N).
+      \item \textbf{SD2} --- Směrodatná odchylka Poincarého grafu podél přímky
+      totožnosti.
       \item \textbf{RMSSD} --- Odmocnina ze středního kvadratického rozdílu mezi
             po sobě následujícími N--N intervaly.
       \item \textbf{pNN50} --- Procento po sobě následujících N--N intervalů,
@@ -45,6 +45,16 @@ základě~\cite{Pereira2017,Shaffer2017} vybrány a sledovány především nás
             frekvence.
 \end{itemize}
 
+\begin{figure}[H]
+      \begin{center}
+            \includegraphics[width=1\linewidth]{figures/stats/hourly_params.pdf}
+            \caption{Příklad průběhu sledovaných veličin během týdne. Jedná se o
+             agregované hodnoty mediánem za každých 10 minut. Data jsou
+             proložena využitím loess regrese ($\alpha = 0,01$).}
+            \label{fig:params_example}
+      \end{center}
+\end{figure}
+
 \subsection{Analýza dat mise}
 \label{subsec:analyza_diana}
 Vzhledem k nereprezentativnosti a nepopsanosti dat byly primárně pro potřeby
@@ -52,7 +62,7 @@ jejich analýzy namísto statistických testů a dalších nástrojů použity z
 vizuální metody. Pro zobrazení denního vývoje v rámci sledovaných parametrů byly
 vypočtené parametry agregovány mediánem na úrovní hodin i dnů. Vizualizace byla
 v tomto případě spojena i s výsledky statistického modelování popsaného v
-následující sekci. Pro účely vizuální analýzy byly použity i krabicové grafy.
+následující sekci. Pro účely vizuální analýzy byly použity také krabicové grafy.
 
 Dále byly identifikovány, exportovány a vizualizovány segmenty biosignálů v
 časech, kdy subjekt vykonával \gls{NPF} baterii testů. Segmenty byly
@@ -60,22 +70,22 @@ vizualizovány taktéž využitím krabicových grafů. Výsledky v rámci vizu�
 analýz se nacházejí v sekci~\ref{sec:vysledky_vizual} a dále jsou probírány v
 samotné diskuzi.
 
-\subsection{Hypotetické modelování dat}
+\subsection{Statistické modelování}
 \label{subsec:tvorba_modelů}
 Ke zkoumání vztahu mezi vybraným sledovaným parametrem napříč jednotlivými dny v
 rámci obou skupin, mateřské lodi a přistávacího modulu, byl vytvořen
-víceúrovňový lineární smíšený model. Nechť $Y$ je hodnota závislé proměnné (tj.
+víceúrovňový lineární smíšený model. Nechť $Y$ je vektor odezvy (tj.
 \enquote{vybraný sledovaný parametr}). Po zahrnutí interakce dnů a skupin lze
-lineární smíšený model zjednodušeně vyjádřit následovně:
+lineární smíšený model zjednodušeně a vektorově vyjádřit následovně:
 \begin{equation}
       Y = \beta_{0}+\beta_{1} {d}+\beta_{2} {s}+\beta_{3} {d} {s} + u_{0} + u_{1}d + \epsilon, \quad \epsilon \sim \mathcal{N}\left(0, \sigma^2\right)
 \end{equation}
-kde $\beta_i$ jsou koeficienty fixních efektů, $\epsilon$ je člen reziduální
-chyby a $d, s$ označují fixní efekty den a skupinu. Náhodné efekty jsou označeny
-jako $u_0, u_1$. Dále je přítomna zmíněna interakce v podobě zahrnutí
-interakčního členu $d \cdot s$. To znamená, že kromě samostatného modelování
-vlivu \enquote{dne} a \enquote{skupiny} model zohledňuje také případnou
-interakci mezi nimi. Jinými slovy, model počítá s možností, že vliv
+kde $\beta_i$ jsou vektory koeficientů fixních efektů, $\epsilon$ je člen
+reziduální chyby a $d, s$ označují fixní efekty den a skupinu. Náhodné efekty
+jsou označeny jako $u_0, u_1$. Dále je přítomna zmíněna interakce v podobě
+zahrnutí interakčního členu $d \cdot s$. To znamená, že kromě samostatného
+modelování vlivu \enquote{dne} a \enquote{skupiny} model zohledňuje také
+případnou interakci mezi nimi. Jinými slovy, model počítá s možností, že vliv
 \enquote{dne} na proměnnou odezvy (závislou proměnnou) se může lišit v
 závislosti na úrovni \enquote{skupiny}. Zároveň díky zvoleným náhodným efektům
 je dovoleno individuálním rozdílům u každého subjektu na úrovni dnů.

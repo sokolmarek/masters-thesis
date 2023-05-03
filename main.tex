@@ -22,12 +22,10 @@
 
 % Packages
 \usepackage[main=czech,english]{babel}
+\usepackage{microtype}
 \usepackage{mathtools,amssymb}
-% \usepackage{dsfont}
 \usepackage[no-math]{fontspec}
 \usepackage{unicode-math}
-% \usepackage{newcomputermodern}
-\usepackage{microtype}
 \usepackage{float}
 \usepackage{dirtree}
 \usepackage{siunitx}
@@ -55,10 +53,6 @@
 % Graphics and plots
 \usepackage{tikz}
 \usetikzlibrary{calc,matrix,positioning,shapes.geometric,shapes.multipart,decorations.pathreplacing,babel}
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-\usepgfplotslibrary{groupplots}
-\usepgfplotslibrary{dateplot}
 
 % Support for acronyms
 \usepackage[nopostdot,symbols,acronym,nonumberlist,toc,automake,nolangwarn,section]{glossaries-extra}
@@ -158,11 +152,12 @@
 \newcommand{\nazev}{Hodnocení kognitivní zátěže v extrémním prostředí}
 \newcommand{\nazevENG}{Assessment of cognitive load in extreme environment}
 \newcommand{\typ}{Diplomová práce}
-\newcommand{\rok}{2022}
+\newcommand{\rok}{2023}
 \newcommand{\program}{Biomedicínské inženýrství}
 \newcommand{\fakulta}{FAKULTA BIOMEDICÍNSKÉHO INŽENÝRSTVÍ}
 \newcommand{\cvut}{ČESKÉ VYSOKÉ UČENÍ TECHNICKÉ V~PRAZE}
 \newcommand{\katedra}{Katedra biomedicínské techniky}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 \begin{document}
 \pagestyle{empty}
@@ -252,7 +247,10 @@ předpisů.
 	zákonných licencí a nad rámec oprávnění uvedených v Prohlášení na předchozí
 	straně, je nezbytný souhlas autora.}
 
-\subsection*{Odkaz na tuto práci} Sokol, Marek. \textit{\nazev}. \typ. Praha: České vysoké učení technické v Praze, Fakulta biomedicínského inženýrství, 2022. Dostupné z: $\langle$\url{www.github.com/}$\rangle$.
+\subsection*{Odkaz na tuto práci} Sokol, Marek. \textit{\nazev}. \typ. Praha:
+České vysoké učení technické v Praze, Fakulta biomedicínského inženýrství, 2022.
+Dostupné z:
+$\langle$\url{https://github.com/sokolmarek/masters-thesis}$\rangle$.
 \clearpage
 
 % Acknowledgements

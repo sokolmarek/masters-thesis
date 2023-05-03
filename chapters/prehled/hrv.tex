@@ -2,13 +2,13 @@ Variabilita srdeční frekvence (\gls{HRV}) vypovídá o časové variabilitě m
 jednotlivými srdečními stahy a umožňuje nahlédnout do regulace různých tělesných
 funkcí autonomním nervovým systémem. Následující kapitola se zabývá způsoby
 jakými je možné takové nahlédnutí realizovat a zároveň poukazuje na současné
-nedostatky této problematiky, které je třeba brát v potaz. Nejdříve je ale na
-místě uvést obecné objasnění vzniku a souvislosti variability srdeční frekvence
-s funkcionalitou srdce. Regulační pochody autonomního nervového systému spojené
-s \gls{HRV} byly popsány v minulé kapitole (zjednodušeně viz
+nedostatky této problematiky, které je třeba brát v úvahu. Nejdříve je na místě
+uvést obecné objasnění vzniku a souvislosti variability srdeční frekvence s
+funkcionalitou srdce. Regulační pochody autonomního nervového systému spojené s
+\gls{HRV} byly popsány v minulé kapitole (zjednodušeně viz
 Obr.~\ref{fig:hrv_diagram}D).
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/hrv_diagram}
         \caption{\textbf{(A)} Převodní systém srdeční; \textbf{(B)} Schéma
@@ -33,15 +33,15 @@ K detekci QRS komplexu se primárně využívá jeho pozitivní kmit neboli R vl
 která se v \gls{EKG} signálu za fyziologických podmínek vyskytuje periodicky, v
 závislosti na srdečním rytmu, konkrétně na autorytmických buňkách. Tyto srdeční
 buňky generují stimulační elektrické potenciály, jež iniciují srdeční stah.
-Hlavnimi dvěma iniciátory (pacemakerami), určující srdeční frekvenci, jsou
+Hlavními dvěma iniciátory (pacemakery), určující srdeční frekvenci, jsou
 sinoatriální (\gls{SA}) a atrioventrikulární (\gls{AV}) uzel. Převodní systém
 srdeční byl již podrobně popsán v~\cite{Stejfa2006,Weinhaus2005,Goldberger2017}
-a lze vidět na Obr.~\ref{fig:hrv_diagram}A. Za účelem detekce samotné se využívá
-mnoho algoritmů založených například na: vlnkové nebo Hilbertově transformaci,
-prahování nebo neuronových sítích. Každý algoritmus zároveň samozřejmě využívá a
-těží ze svého vlastního způsobu předzpracování EKG. Některé populární algoritmy
-popsali Porr a Howell v~\cite{Porr2019}. Fluktuaci časových diferencí mezi po
-sobě jdoucími R vlny a náležitou změnu HRV lze pozorovat na
+a lze jej vidět na Obr.~\ref{fig:hrv_diagram}A. Za účelem samotné detekce se
+využívá mnoho algoritmů založených například na: vlnkové nebo Hilbertově
+transformaci, prahování nebo neuronových sítích. Každý algoritmus zároveň
+samozřejmě využívá a těží ze svého vlastního způsobu předzpracování EKG. Některé
+populární algoritmy popsali Porr a Howell v~\cite{Porr2019}. Fluktuaci časových
+diferencí mezi po sobě jdoucími R vlny a náležitou změnu HRV lze pozorovat na
 Obr.~\ref{fig:hrv_diagram}C.
 
 \subsection{Trendy v analýze HRV}
@@ -55,14 +55,14 @@ patologií. Zlom ale nastal v 70. letech 20. století, kdy se k analýze začaly
 využívat R--R intervaly, a došlo tak k vývoji nových časových parametrů,
 například \gls{RMSSD}, pNN50 nebo SDNN, které se stále hojně využívají. Poté
 přišla na řadu spektrální a nelineární analýza, tedy frekvenční a nelineární
-parametry, které sebou přinesli i nový vizuální nadhled. V poslední době se
-používá hlavně časovo-frekvenční analýza, během které se aplikují spektrální
+parametry, které s sebou přinesly i nový vizuální nadhled. V poslední době se
+používá hlavně časově-frekvenční analýza, během které se aplikují spektrální
 metody na specificky dlouhá časová okna a získají se tak frekvenční parametry
 jako LF (Low Frequency) nebo HF (High Frequency). Je tak umožněno sledování
 okamžitých změn \gls{HRV}, což může účinně diagnostikovat například
 kardiovaskulární onemocnění~\cite{Shaffer2014,Ishaque2021}.
 
-\begin{table}[h!]
+\begin{table}[!htb]
     % \setlength{\tabcolsep}{10pt}
     \renewcommand{\arraystretch}{1.2}
     \scriptsize
@@ -73,8 +73,8 @@ kardiovaskulární onemocnění~\cite{Shaffer2014,Ishaque2021}.
         \begin{tabular}{p{2cm}p{12cm}}
             \toprule
             Parametr & Popis                                                                                                                                                        \\ \midrule
-            SDNN     & Směrodatná odchylka intervalu mezi dvěma normálními srdečními tepy (NN). NN měří celkový výkon. Snižuje se v reakci na \gls{CL}                              \\
-            RMSSD    & Střední kvadratická hodnota po sobě jdoucích rozdílů mezi normálními srdečními tepy. Primárně se řídí aktivitou \gls{PNS}                                    \\
+            SDNN     & Směrodatná odchylka intervalů mezi dvěma normálními srdečními tepy (N--N). N--N měří celkový výkon. Snižuje se v reakci na \gls{CL}                              \\
+            RMSSD    & Střední kvadratická hodnota po sobě jdoucích N--N intervalů. Primárně se řídí aktivitou \gls{PNS}                                    \\
             pNN50    & Vyjadřuje procento rozdílu spojeného s intervalem NN, který se liší o více než 50 ms. Korelace s aktivitou \gls{PNS}, RMSSD, HF                              \\
             SD1      & Nelineární proměnné odvozené z Poincarého grafu. Sdílí vysokou korelaci s HF, RMSSD. Snižuje se v důsledku \gls{CL}                                          \\
             SD2      & Nelineární proměnné odvozené z Poincarého grafu. Sdílí vysokou korelaci s LF. Zvyšuje se v reakci na \gls{CL}                                                \\
@@ -85,6 +85,7 @@ kardiovaskulární onemocnění~\cite{Shaffer2014,Ishaque2021}.
             HF       & Představuje frekvenční rozsah 0,15--0,40 Hz a označuje výhradně aktivitu \gls{PNS}                                                                           \\ \bottomrule
         \end{tabular}
         \begin{tablenotes}
+            \small
             \item [1] Výkonová spektrální hustota (anglicky Power Spectral
             Density) --- vyjadřuje výkon obsažený v určitém intervalu spojitého
             frekvenčního spektra
@@ -95,24 +96,23 @@ kardiovaskulární onemocnění~\cite{Shaffer2014,Ishaque2021}.
 Do další podskupiny lze zařadit způsoby měření \gls{HRV}. Od 90. let 20. století
 se výzkum \gls{HRV} rozšířil o analýzu využitím krevního tlaku a dýchání
 prostřednictvím fotopletysmografie (\gls{PPG}) a hrudních pásů. Došlo tak k
-prohloubení HRV výzkumu vzhledem k multimodálnímu přístupu měření. Od roku 2000
-se využitím dvanáctisvodového EKG začali v klinické praxi efektivněji analyzovat
-srdeční patologie. Současně se využívá nositelných technologií (tzv. wearables)
-v podobě například hodinek na zápěstí, které však často měřené parametry
-poskytují pouze agregovaně za určité časové úseky. Výhodou je sice jejich
-mobilita ale na úkor přesnosti poskytovaných dat. Detailní popis zmíněných
-podskupin společně s dalšími trendy byl již uveden v~\cite{Ishaque2021}.
+prohloubení HRV výzkumu vzhledem k multimodálnímu přístupu měření. Současně se
+využívá nositelných technologií (tzv. wearables) v podobě například hodinek na
+zápěstí, které však často měřené parametry poskytují pouze agregovaně za určité
+časové úseky. Výhodou těchto zařízení je sice jejich mobilita ale na úkor
+přesnosti poskytovaných dat. Detailní popis zmíněných podskupin společně s
+dalšími trendy byl již uveden v~\cite{Ishaque2021}.
 
 \subsection{Struktura HRV indexů}
 \label{subsec:hrv_indices}
 Vzhledem k popularitě analýzy \gls{HRV} napříč obory vznikla problematika
-týkající se interpretace dostupných metrik. Jedním z hlavních problémů je tedy
+týkající se interpretace dostupných metrik. Jedním z hlavních problémů je
 nedostatečné pochopení funkčního vztahu mezi \gls{HRV} ukazateli a
 fyziologickými procesy. Také se tyto ukazatele často používají zaměnitelně, což
-jen přispívá k nejasnostem ohledně jejich skutečného významu
-(funkce)~\cite{Fatisson2016,hayano2019}. Zároveň se často \gls{HRV} metriky
-používají kombinovaně. To představuje několik problémů při interpretaci výsledků
-výzkumu a může být příčinou nekonzistentních výsledků. Dalším problémem je
+jen přispívá k nejasnostem ohledně jejich skutečného
+významu~\cite{Fatisson2016,hayano2019}. Zároveň se často \gls{HRV} metriky
+používají kombinovaně. To představuje problém při interpretaci výsledků výzkumu
+a může být příčinou nekonzistentních výsledků. Dalším problémem je
 reprodukovatelnost, jelikož různé studie zkoumající stejný jev mohou při popisu
 vztahu s variabilitou srdeční frekvence vycházet z různých ukazatelů. Také se
 často nebere ohled na podobnost a překrývání mnoha těchto ukazatelů. Studie
@@ -132,10 +132,10 @@ spektru \gls{HRV}~\cite{Bigger1989,Malik1996,Ishaque2021,Acharya2006}.
 
 V posledních letech se parametry SD1 a SD2 konvenčně interpretují jako
 nelineární. Toto tvrzeni bylo však znehodnoceno matematickým důkazem, který
-potvrdil, že metriky RMSSD a SD1 jsou ekvivalentní. Tím pádem studie, které
-uvádějí tyto dva krátkodobé \gls{HRV} indexy často vágně dospívají k podobným
-statistickým výsledkům, aniž by tuto ekvivalenci
-rozpoznaly~\cite{Ciccone2017,Tam2021,Leite2015,Rohila2020,Peng2015}.
+potvrdil, že metriky RMSSD a SD1 jsou ekvivalentní~\cite{Ciccone2017}. Tím pádem
+studie, které uvádějí tyto dva krátkodobé \gls{HRV} indexy často vágně dospívají
+k podobným statistickým výsledkům, aniž by tuto ekvivalenci
+rozpoznaly~\cite{Tam2021,Leite2015,Rohila2020,Peng2015}.
 
 Některé studie navíc zaznamenaly podobnosti mezi poměrovými parametry SD1/SD2 a
 LF/HF při hodnocení rovnováhy mezi krátkodobou a dlouhodobou variabilitou

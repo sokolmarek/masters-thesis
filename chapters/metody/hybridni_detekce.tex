@@ -105,7 +105,7 @@ představili koncept této metody transformace časové řady do 2D obrazu v roc
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/polar}
-        \caption{Ukázka \gls{GAF} mapování na EKG segmentu~(Upraveno a převzato z~\cite{Zhou2021})}
+        \caption{Ukázka \gls{GAF} mapování na EKG segmentu}
         \label{fig:polar}
     \end{center}
 \end{figure}
@@ -156,9 +156,6 @@ maticí, která je kvazi-Gramovou maticí:
 kde každý prvek odpovídá sinové funkci úhlového sinusového rozdílu v různých
 časových bodech. Výpočet a tvorba těchto příznaků, časoprostorových vzorů, byla
 implementována v programovacím jazyce Python.
-
-\subsection{Augmentace dat využitím SMOTENN}
-\label{subsec:augmentace_dat}
 
 \subsection{Kapsulární neuronová síť}
 \label{subsec:kapsularni_sit}
@@ -255,13 +252,13 @@ v~\cite{Mazzia2021}.
 
 \subsection{Marginální ztrátová funkce}
 \label{subsec:marginalni_funkce}
-V případě této práce se jedná o binární a vícetřídový klasifikační problém, pro
-který by se za normálních okolností použila ztrátová funkce ve smyslu binární
-nebo kategorické křížové entropie. Tyto ztrátové funkce ale nezachycují
-sémantiku vektorů, jak je používána v kapslích. Pro tyto potřeby byla využita
-marginální ztrátová funkce, kde v případě klasifikace více tříd, je pro každou
-třídu reprezentovanou kapslí $n^L$ v poslední vrstvě $L$ vypočtena
-pravděpodobnost existence určité třídy následovně:
+V případě této práce se jedná o binární klasifikační problém, pro který by se za
+normálních okolností použila ztrátová funkce ve smyslu binární nebo kategorické
+křížové entropie. Tyto ztrátové funkce ale nezachycují sémantiku vektorů, jak je
+používána v kapslích. Pro tyto potřeby byla využita marginální ztrátová funkce,
+kde v případě klasifikace více tříd, je pro každou třídu reprezentovanou kapslí
+$n^L$ v poslední vrstvě $L$ vypočtena pravděpodobnost existence určité třídy
+následovně:
 \begin{equation}
     \mathcal{L}_{n^L}=T_{n^L} \max \left(0, m^{+}-\left\|u_n^L\right\|\right)^2+\lambda\left(1-T_{n^L}\right) \max \left(0,\left\|u_n^L\right\|-m^{-}\right)^2
 \end{equation}
@@ -272,3 +269,26 @@ fázi trénování.
 
 \subsection{Trénování a evaluace modelů}
 \label{subsec:trenovani_modelu}
+Trénovaní a evaluace modelů bylo realizováno využitím programovacího jazyka
+Python znovu ve spojení s interaktivním prostředím Jupyter Notebook. Pro tvorbu
+modelů byly využity dříve zmíněné knihovny \textit{TensorFlow} a \textit{Keras}.
+Trénování bylo akcelerováno pomocí grafické karty NVIDIA GeForce RTX 4080 s
+využitím \textit{CUDA
+Toolkitu}\footnote{\url{https://developer.nvidia.com/cuda-toolkit-archive}}
+společně s \textit{CuDNN}\footnote{\url{https://developer.nvidia.com/cudnn}}
+(NVIDIA CUDA® Deep Neural Network library) knihovnou. Pro účely trénování byly
+datasety rozděleny vždy v poměru 8:2 na trénovací a testovací množinu, přičemž
+validace probíhala během trénování využitím testovací množiny (resp. validační).
+Všechny uvedené přesnosti ve výsledcích jsou tím pádem validační přesnosti,
+nikoli trénovací. Pro trénování byl využit optimalizační algoritmus Adam s učící
+rychlostí $5 \times 10^{-4}$. Trénování probíhalo po dobu 100 epoch a batch size
+byl nastaven na 256. Pro zajištění rychlé konvergence optimalizátoru a co
+nejblíže globálnímu minimu ztrátové funkce, byla použita metoda žíhání
+(annealing) rychlosti učení (\gls{LR}, learning rate). Aby byla zachována výhoda
+rychlého času výpočtu s vysokým \gls{LR}, byla dynamicky snižována \gls{LR}
+každých $x$ kroků (epoch) v závislosti na tom, zda je to nutné (když se
+nezlepšuje přesnost). Bylo také realizováno kombinační srovnání příznaků ve
+smyslu použitých biosignálů. Veškeré výsledky jsou uvedeny v
+sekci~\ref{sec:vysledky_detekce_cl}. Bylo realizováno i srovnání se současným
+stavem. K evaluaci modelů byly využity hodnotící metriky, které jsou popsány v
+sekci~\ref{subsec:ml_metriky}.
