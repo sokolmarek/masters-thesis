@@ -69,11 +69,11 @@ subjekt Lander1 jsou hodnoty pro 1. den vypočítané za den druhý.
             & RMSSD                                 & (ms)                                & 78,67                               & 20,3                                & 72,11           & 16,44       & 63,76           & 20,35       \\
             & pNN50                                 & $(\%)$                              & 28,29                               & 8,25                                & 27,21           & 6,68        & 20,93           & 9,18        \\
             & HF                                    & ($\text{ms}^2$/Hz)                  & 0,03                                & 0,01                                & 0,03            & 0,02        & 0,03            & 0,02        \\ \midrule
-            \multirow[t]{4}{*}{Lander2}     & SD2                                  & (ms)                                & 66,53                               & 22,66                               & 58,02           & 11,35       & 84,63           & 28,7        \\
+            \multirow[t]{4}{*}{Lander3}     & SD2                                  & (ms)                                & 66,53                               & 22,66                               & 58,02           & 11,35       & 84,63           & 28,7        \\
             & RMSSD                                 & (ms)                                & 51,82                               & 18,35                               & 42,86           & 14,32       & 65,61           & 21,36       \\
             & pNN50                                 & $(\%)$                              & 19,96                               & 13,32                               & 17,04           & 15,61       & 27,75           & 18,59       \\
             & HF                                    & ($\text{ms}^2$/Hz)                  & 0,03                                & 0,02                                & 0,04            & 0,02        & 0,04            & 0,01        \\ \midrule
-            \multirow[t]{4}{*}{Lander3}     & SD2                                  & (ms)                                & 33,63                               & 8,59                                & 37,18           & 8,74        & 34,68           & 12,43       \\
+            \multirow[t]{4}{*}{Lander4}     & SD2                                  & (ms)                                & 33,63                               & 8,59                                & 37,18           & 8,74        & 34,68           & 12,43       \\
             & RMSSD                                 & (ms)                                & 30,27                               & 9,68                                & 32,49           & 9,01        & 31,09           & 20,71       \\
             & pNN50                                 & $(\%)$                              & 2,99                                & 1,67                                & 3,68            & 1,7         & 2,95            & 1,99        \\
             & HF                                    & ($\text{ms}^2$/Hz)                  & 0,05                                & 0,03                                & 0,03            & 0,02        & 0,04            & 0,03        \\ \midrule
@@ -170,11 +170,11 @@ modulu, konkrétně průměr a směrodatná odchylka.
             & RMSSD                                 & (ms)                           & 74,14                          & 44,08                          & 80,67           & 45,11       & 71,23           & 42,12       \\
             & pNN50                                 & $(\%)$                         & 18,42                          & 14,09                          & 24,02           & 14,27       & 13,46           & 12,07       \\
             & HF                                    & ($\text{ms}^2$/Hz)             & 0,04                           & 0,03                           & 0,05            & 0,04        & 0,03            & 0,03        \\ \midrule
-            \multirow[t]{4}{*}{Lander2} & SD2                                  & (ms)                           & 48,01                          & 22,92                          & 45,09           & 24,59       & 58,08           & 31,14       \\
+            \multirow[t]{4}{*}{Lander3} & SD2                                  & (ms)                           & 48,01                          & 22,92                          & 45,09           & 24,59       & 58,08           & 31,14       \\
             & RMSSD                                 & (ms)                           & 30,89                          & 13,43                          & 38,71           & 22,29       & 47,38           & 28,91        \\
             & pNN50                                 & $(\%)$                         & 5,41                           & 6,12                            & 7,07            & 6,77        & 11,74           & 8,68        \\
             & HF                                    & ($\text{ms}^2$/Hz)             & 0,03                           & 0,03                           & 0,04            & 0,03        & 0,04            & 0,04        \\ \midrule
-            \multirow[t]{4}{*}{Lander3} & SD2                                  & (ms)                           & 43,97                          & 33,01                          & 44,47           & 31,31        & 32,24           & 24,33       \\
+            \multirow[t]{4}{*}{Lander4} & SD2                                  & (ms)                           & 43,97                          & 33,01                          & 44,47           & 31,31        & 32,24           & 24,33       \\
             & RMSSD                                 & (ms)                           & 41,92                          & 34,36                          & 42,74           & 31,12        & 31,17           & 25,94       \\
             & pNN50                                 & $(\%)$                         & 2,97                           & 3,83                           & 4,04            & 4,53         & 2,01            & 3,02        \\
             & HF                                    & ($\text{ms}^2$/Hz)             & 0,06                           & 0,04                           & 0,06            & 0,04        & 0,05            & 0,04        \\
@@ -258,16 +258,13 @@ každého jedince ve formě krabicových grafů pro všechny sledované veličin
     \vspace{-20mm}
 \end{figure}
 
-\subsection{Srovnání s pilotním měřením}
-\label{sec:result_pilot}
-
 \subsection{Statistické modelování}
 \label{sec:vysledky_lmm}
 V této sekci jsou uvedeny výsledky statistického modelování sledovaných veličin
 využitím lineárních smíšených modelů (viz sekce~\ref{subsec:tvorba_modelů}
 a~\ref{subsec:lmm}). V Tabulce~\ref{tab:lmm_rmssd_SD2} jsou uvedeny výsledky
 \gls{LMM} pro parametry SD2 a RMSSD. V tabulkách označuje proměnná
-$\mathrm{N}_{\text{id}}$ počet pozorovaných subjektů. 
+$\mathrm{N}_{\text{id}}$ počet pozorovaných subjektů.
 
 \begin{table}[h]
     \catcode`\-=12
@@ -329,7 +326,7 @@ pNN50 a HF. V tabulkách opět označuje proměnná $\mathrm{N}_{\text{id}}$ po�
 pozorovaných subjektů. Byly vytvořeny i grafické reprezentace fixních efektů pro
 každý model zvlášť včetně příkladů grafů modelů lineárních smíšených efektů v
 rámci každého subjektu. Všechny grafy jsou uvedeny v návaznosti na patřičnou
-tabulku výsledků \gls{LMM}. 
+tabulku výsledků \gls{LMM}.
 
 \begin{table}[h]
     \catcode`\-=12
@@ -393,7 +390,7 @@ V této sekci jsou prezentovány výsledky části strojového učení. Nejprve 
 uvedeny výsledky trénování modelů využitím navržené metody pro hodnocení
 kognitivní zátěže (viz sekce~\ref{sec:hybridni_detekce}). Výsledky jsou uvedeny
 zvláště pro každý benchmarkovací dataset a poté pro sjednocené datasety. Popis
-jednotlivých datasetů se nachází v sekci~\ref{sec:datasety}. 
+jednotlivých datasetů se nachází v sekci~\ref{sec:datasety}.
 
 Poslední dvě části sekce jsou věnovány porovnání navrženého řešení se současným
 stavem a experimentálnímu ověření řešení. Ověření je realizováno na datech z
