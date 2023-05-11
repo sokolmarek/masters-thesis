@@ -3,7 +3,7 @@ analogové vesmírné mise DIANA včetně výsledků experimentů strojového u�
 Kapitola je primárně rozdělena na tři části, přičemž první
 sekce~\ref{sec:vysledky_qrs} uvádí pouze srovnání QRS detektorů
 (viz~\ref{subsubsec:vyberqrs}). Další část je věnována prezentaci výsledků
-zpracování dat z mise, primárně ve formě grafických výstupů jako je například
+zpracování dat z mise, primárně ve formě grafických výstupů, jako je například
 vývoj sledovaných statistických veličin během mise a v rámci baterie \gls{NPF}
 testů. V této části jsou také uvedeny výsledky ze statistického modelování
 využitím \gls{LMM} (viz sekce~\ref{subsec:tvorba_modelů}).
@@ -113,7 +113,7 @@ nachází předpona \enquote{ln}, jedná se o přirozený logaritmus dané veli�
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/stats/pointrange_sd2.pdf}
         \caption{Medián, horní a dolní kvartil (šedý rozsah) hodnot SD2 pro jednotlivé dny}
-        \label{fig:results_pointrange_rmssd}
+        \label{fig:results_pointrange_sd2}
     \end{center}
     \vspace{-10mm}
 \end{figure}
@@ -129,7 +129,7 @@ nachází předpona \enquote{ln}, jedná se o přirozený logaritmus dané veli�
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/stats/pointrange_pnn50.pdf}
         \caption{Medián, horní a dolní kvartil (šedý rozsah) hodnot pNN50 pro jednotlivé dny}
-        \label{fig:results_pointrange_rmssd}
+        \label{fig:results_pointrange_pnn50}
     \end{center}
     \vspace{-20mm}
 \end{figure}
@@ -138,7 +138,7 @@ nachází předpona \enquote{ln}, jedná se o přirozený logaritmus dané veli�
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/stats/pointrange_hf.pdf}
         \caption{Medián, horní a dolní kvartil (šedý rozsah) hodnot HF pro jednotlivé dny}
-        \label{fig:results_pointrange_rmssd}
+        \label{fig:results_pointrange_hf}
     \end{center}
 \end{figure}
 
@@ -146,7 +146,7 @@ nachází předpona \enquote{ln}, jedná se o přirozený logaritmus dané veli�
 \label{sec:result_cog_tests}
 Všichni jedinci byli během mise vystaveni \gls{NPF} stimulaci ve formě baterie
 kognitivních testů využitím nástroje Neurop (viz
-sekce~\ref{subsubsec:neuro_testy}). Testování proběhlo dle harmonogramu mise
+sekce~\ref{subsubsec:neuro_testy}). Testování proběhlo dle harmonogramu mise, 
 jehož příklad lze vidět na Obr.~\ref{fig:harmonogram}. Skupina přistávacího
 modulu podstoupila testování třikrát v průběhu mise. Jednotlivá testování pro
 tuto skupinu jsou dále v této sekci značeny následovně: F -- první testování, M
@@ -203,15 +203,15 @@ jsou uvedeny v Tabulce~\ref{tab:tests_params_mothership}.
             \multirow[t]{4}{*}{MotherShip1} & SD2                                  & (ms)                           & 31,63                          & 14,12          & 51,07           & 25,17       \\
             & RMSSD                                 & (ms)                           & 22,99                          & 11,9        & 41,28           & 26,39       \\
             & pNN50                                 & $(\%)$                         & 2,56                           & 3,89        & 5,68            & 6,97        \\
-            & HF                                    & ($ms^2$/Hz)                    & 0,04                           & 0,04        & 0,02            & 0,02        \\ \midrule
+            & HF                                    & ($\text{ms}^2$/Hz)                    & 0,04                           & 0,04        & 0,02            & 0,02        \\ \midrule
             \multirow[t]{4}{*}{MotherShip2} & SD2                                  & (ms)                           & 94,54                          & 38,23       & 72,81           & 36,67       \\
             & RMSSD                                 & (ms)                           & 76,61                           & 33,23       & 56,12            & 31,51       \\
             & pNN50                                 & $(\%)$                         & 33,55                          & 11,62       & 22,64           & 13,66       \\
-            & HF                                    & ($ms^2$/Hz)                    & 0,03                           & 0,03        & 0,03            & 0,03        \\ \midrule
+            & HF                                    & ($\text{ms}^2$/Hz)                    & 0,03                           & 0,03        & 0,03            & 0,03        \\ \midrule
             \multirow[t]{4}{*}{MotherShip3} & SD2                                  & (ms)                           & 64,67                          & 22,84       & 64,52           & 27,04       \\
             & RMSSD                                 & (ms)                           & 50,88                          & 15,73       & 46,57           & 22,13       \\
             & pNN50                                 & $(\%)$                         & 23,68                          & 6,88        & 17,55           & 8,92        \\
-            & HF                                    & ($ms^2$/Hz)                    & 0,03                           & 0,02        & 0,02            & 0,02        \\
+            & HF                                    & ($\text{ms}^2$/Hz)                    & 0,03                           & 0,02        & 0,02            & 0,02        \\
             \bottomrule
         \end{tabular*}
     \end{threeparttable}
@@ -403,7 +403,7 @@ V této sekci jsou uvedeny výsledky z trénování modelů na datasetu WESAD v 
 vybraných hodnotících metrik (viz sekce~\ref{subsec:ml_metriky}), matic záměn a
 ROC křivek. Matice záměn byly normalizovány na relativní četnosti v rámci
 sloupců. Matice pro augmentované (Aug.) verze datasetů jsou uvedeny v
-příloze~\ref{}.
+Příloze~\ref{appendix:b}.
 
 \begin{table}[h]
     \small
@@ -466,7 +466,7 @@ V této sekci jsou uvedeny výsledky z trénování modelů na datasetu CLAS v p
 vybraných hodnotících metrik (viz sekce~\ref{subsec:ml_metriky}), matic záměn a
 ROC křivek. Matice záměn byly normalizovány na relativní četnosti v rámci
 sloupců. Matice pro augmentované (Aug.) verze datasetů jsou uvedeny v
-příloze~\ref{}.
+Příloze~\ref{appendix:b}.
 
 \begin{table}[h]
     \small
@@ -524,11 +524,11 @@ příloze~\ref{}.
 
 \subsection{Hodnocení přesnosti modelů pro sjednocená data}
 \label{subsec:merged_models}
-V této sekci jsou uvedeny výsledky z trénování modelů na sloučených datesetech
+V této sekci jsou uvedeny výsledky z trénování modelů na sloučených datasetech
 (dále jen Merged) v podobě vybraných hodnotících metrik (viz
 sekce~\ref{subsec:ml_metriky}), matic záměn a ROC křivek. Matice záměn byly
 normalizovány na relativní četnosti v rámci sloupců. Matice pro augmentované
-(Aug.) verze datasetů jsou v příloze~\ref{}.
+(Aug.) verze datasetů jsou v příloze~\ref{appendix:b}.
 
 \begin{table}[h]
     \small
@@ -565,7 +565,7 @@ normalizovány na relativní četnosti v rámci sloupců. Matice pro augmentovan
         \includegraphics[width=\linewidth]{figures/merged/merged_1s}
         \caption{Merged-1s}
     \end{subfigure}
-    \caption{Matice záměn pro CLAS modely (0 = klidový stav, 1 = CL stav)}
+    \caption{Matice záměn pro Merged modely (0 = klidový stav, 1 = CL stav)}
     \label{fig:results_cm_merged}
 \end{figure}
 
@@ -637,7 +637,7 @@ jednu modalitu (primárně EKG).
             Rashid et al.~\cite{Rashid2023}         & WESAD   & 30s  & 93~\%     & 2023 \\
             Galarraga et al.~\cite{Galarraga2023}   & WESAD   & 20s  & 90~\%     & 2023 \\
             Henry et al.~\cite{Henry2023}           & WESAD   & 6s   & 81~\%     & 2023 \\
-            *Yong et al.~\cite{Yong2023}            & CLAS    & 5s   & 82~\%     & 2023 \\
+            *Yong et al.~\cite{Yong2023}            & CLAS    & 5s   & 75~\%     & 2023 \\
             Singh et al.~\cite{Singh2023}           & WESAD   & 5s   & 91~\%     & 2023 \\ \midrule
             \textbf{Autor práce}         & \textbf{WESAD}   & \textbf{5s}   & \textbf{97~\%}     & \textbf{2023} \\
             \textbf{Autor práce}         & \textbf{CLAS}    & \textbf{5s}   & \textbf{92~\%}     & \textbf{2023} \\
@@ -688,11 +688,32 @@ jednu modalitu (primárně EKG).
 
 \subsection{Testování na datech z mise DIANA}
 \label{subsec:ml_diana_data_test}
+Navržené řešení pro hodnocení kognitivní zátěže bylo otestováno na datech z
+analogové vesmírné mise. K testování byl využit model WESAD-5s. Metoda byla
+aplikována konkrétně na úseky dat v době \gls{NPF} stimulace. Označení sezení
+(F, M, L) odpovídají sekci~\ref{sec:result_cog_tests}. Na
+Obr.~\ref{fig:hydro_test} lze vidět bodové rozsahy, přičemž šedý rozsah
+představuje minimum a maximum a bod vyjadřuje průměrnou pravděpodobnost výskytu
+kognitivní zátěže pro dané sezení. Na Obr.~\ref{fig:hydro_test_bar} jsou
+ilustrovány relativní četnosti pravděpodobností výskytu kognitivní zátěže
+vyšších než 50 \%. Tyto ilustrace slouží pouze k vizuálnímu porovnání vztahu s
+výsledky v sekci~\ref{sec:result_cog_tests} a dále budou rozebrány v diskuzi.
 
 \begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/stats/hydro_test}
-        \caption{Test}
+        \caption{Průměr, minimum a maximum (šedý rozsah) pravděpodobností
+        výskytu kognitivní zátěže pro jednotlivá sezení využitím modelu
+        WESAD-5s}
         \label{fig:hydro_test}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+    \begin{center}
+        \includegraphics[width=1\linewidth]{figures/stats/hydro_test_bar}
+        \caption{Relativní frekvence pravděpodobností výskytu kognitivní zátěže
+        vyšších než 50~\% pro jednotlivá sezení využitím modelu WESAD-5s}
+        \label{fig:hydro_test_bar}
     \end{center}
 \end{figure}

@@ -33,15 +33,15 @@ K detekci QRS komplexu se primárně využívá jeho pozitivní kmit neboli R vl
 která se v \gls{EKG} signálu za fyziologických podmínek vyskytuje periodicky, v
 závislosti na srdečním rytmu, konkrétně na autorytmických buňkách. Tyto srdeční
 buňky generují stimulační elektrické potenciály, jež iniciují srdeční stah.
-Hlavními dvěma iniciátory (pacemakery), určující srdeční frekvenci, jsou
-sinoatriální (\gls{SA}) a atrioventrikulární (\gls{AV}) uzel. Převodní systém
-srdeční byl již podrobně popsán v~\cite{Stejfa2006,Weinhaus2005,Goldberger2017}
-a lze jej vidět na Obr.~\ref{fig:hrv_diagram}A. Za účelem samotné detekce se
-využívá mnoho algoritmů založených například na: vlnkové nebo Hilbertově
-transformaci, prahování nebo neuronových sítích. Každý algoritmus zároveň
-samozřejmě využívá a těží ze svého vlastního způsobu předzpracování EKG. Některé
-populární algoritmy popsali Porr a Howell v~\cite{Porr2019}. Fluktuaci časových
-diferencí mezi po sobě jdoucími R vlny a náležitou změnu HRV lze pozorovat na
+Hlavním iniciátorem (pacemakerem), určující srdeční frekvenci, je sinoatriální
+(\gls{SA}) uzel. Převodní systém srdeční byl již podrobně popsán
+v~\cite{Stejfa2006,Weinhaus2005,Goldberger2017} a lze jej vidět na
+Obr.~\ref{fig:hrv_diagram}A. Za účelem samotné detekce se využívá mnoho
+algoritmů založených například na: vlnkové nebo Hilbertově transformaci,
+prahování nebo neuronových sítích. Každý algoritmus zároveň samozřejmě využívá a
+těží ze svého vlastního způsobu předzpracování EKG. Některé populární algoritmy
+popsali Porr a Howell v~\cite{Porr2019}. Fluktuaci časových diferencí mezi po
+sobě jdoucími R vlny a náležitou změnu HRV lze pozorovat na
 Obr.~\ref{fig:hrv_diagram}C.
 
 \subsection{Trendy v analýze HRV}
@@ -73,9 +73,9 @@ kardiovaskulární onemocnění~\cite{Shaffer2014,Ishaque2021}.
         \begin{tabular}{p{2cm}p{12cm}}
             \toprule
             Parametr & Popis                                                                                                                                                        \\ \midrule
-            SDNN     & Směrodatná odchylka intervalů mezi dvěma normálními srdečními tepy (N--N). N--N měří celkový výkon. Snižuje se v reakci na \gls{CL}                              \\
+            SDNN     & Směrodatná odchylka intervalů mezi dvěma normálními srdečními tepy (N--N). Snižuje se v reakci na \gls{CL}                              \\
             RMSSD    & Střední kvadratická hodnota po sobě jdoucích N--N intervalů. Primárně se řídí aktivitou \gls{PNS}                                    \\
-            pNN50    & Vyjadřuje procento rozdílu spojeného s intervalem NN, který se liší o více než 50 ms. Korelace s aktivitou \gls{PNS}, RMSSD, HF                              \\
+            pNN50    & Vyjadřuje poměr rozdílů N--N intervalů, které se liší o více než 50 ms. Korelace s aktivitou \gls{PNS}, RMSSD, HF                              \\
             SD1      & Nelineární proměnné odvozené z Poincarého grafu. Sdílí vysokou korelaci s HF, RMSSD. Snižuje se v důsledku \gls{CL}                                          \\
             SD2      & Nelineární proměnné odvozené z Poincarého grafu. Sdílí vysokou korelaci s LF. Zvyšuje se v reakci na \gls{CL}                                                \\
             GSR std  & Směrodatná odchylka spojená s elektrodermální aktivitou. Zvyšuje se během \gls{CL}                                                                           \\
@@ -85,7 +85,7 @@ kardiovaskulární onemocnění~\cite{Shaffer2014,Ishaque2021}.
             HF       & Představuje frekvenční rozsah 0,15--0,40 Hz a označuje výhradně aktivitu \gls{PNS}                                                                           \\ \bottomrule
         \end{tabular}
         \begin{tablenotes}
-            \small
+            \scriptsize
             \item [1] Výkonová spektrální hustota (anglicky Power Spectral
             Density) --- vyjadřuje výkon obsažený v určitém intervalu spojitého
             frekvenčního spektra
@@ -112,7 +112,7 @@ fyziologickými procesy. Také se tyto ukazatele často používají zaměniteln
 jen přispívá k nejasnostem ohledně jejich skutečného
 významu~\cite{Fatisson2016,hayano2019}. Zároveň se často \gls{HRV} metriky
 používají kombinovaně. To představuje problém při interpretaci výsledků výzkumu
-a může být příčinou nekonzistentních výsledků. Dalším problémem je
+a může být příčinou nekonzistentních výsledků. Stěžejním procesem se také stává
 reprodukovatelnost, jelikož různé studie zkoumající stejný jev mohou při popisu
 vztahu s variabilitou srdeční frekvence vycházet z různých ukazatelů. Také se
 často nebere ohled na podobnost a překrývání mnoha těchto ukazatelů. Studie

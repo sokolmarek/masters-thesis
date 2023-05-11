@@ -13,23 +13,22 @@ tak náhodné efekty (resp. vektory těchto veličin):
 \begin{equation}
     Y = \beta_0 + \sum \beta_i X_i + u + \epsilon
 \end{equation}
-kde $\beta_0$ je intercept, $\beta$ je vektor koeficientů pro fixní efekty, $u$
-je vektor náhodných efektů a $\epsilon$ je chybový člen. Předpokládá se, že
-náhodný efekt $u$ se řídí normálním rozdělením se střední hodnotou nula a
-rozptylem $\sigma_u^2$ a že je nezávislý na chybovém členu $\epsilon$, který se
-rovněž řídí normálním rozdělením se střední hodnotou nula a rozptylem
-$\sigma_\epsilon^2$.
+kde $\beta$ je vektor koeficientů pro fixní efekty, $u$ je vektor náhodných
+efektů a $\epsilon$ je chybový člen. Předpokládá se, že náhodný efekt $u$ se
+řídí normálním rozdělením se střední hodnotou nula a rozptylem $\sigma_u^2$ a že
+je nezávislý na chybovém členu $\epsilon$, který se rovněž řídí normálním
+rozdělením se střední hodnotou nula a rozptylem $\sigma_\epsilon^2$.
 
 V případě například pozorování závislé proměnné $Y_{ij}$ pro $i$-té pozorování v
 $j$-té skupině bude náhodný efekt $u$ představovat variabilitu mezi skupinami a
 je do modelu zahrnut proto, aby zohlednil skutečnost, že pozorování v rámci
 jedné skupiny si budou pravděpodobně podobnější než pozorování v jiných
-skupinách. Problematika \gls{LMM} je každopádně velmi obsáhla a překračuje
-rozsahem tuto práci. Rozebrána byla podrobně už v literatuře~\cite{West2022}.
+skupinách. Problematika \gls{LMM} je každopádně velmi obsáhlá a překračuje
+rozsahem tuto práci. Rozebrána byla podrobně v literatuře~\cite{West2022}.
 
 \subsection{Grangerova kauzalita}
 \label{subsec:granger}
-Grangerova kauzalita byla v této práci použita, k hodnocení příčinných vztahů v
+Grangerova kauzalita byla v této práci použita k hodnocení příčinných vztahů v
 rámci fyziologických signálů a k zachycení jejich interakcí v závislosti na
 čase. Grangerovo pojetí vychází z myšlenky, že příčina by měla být nápomocná při
 předpovídání budoucích vlivů, a to nad rámec toho, co lze předpovědět pouze na
@@ -51,7 +50,7 @@ po které je možné aplikovat různé statistické testy pro získání p-hodno
 následně je možné rozhodnout o výše zmíněné statistický významné přesnosti.
 
 Běžně se Grangerova kauzalita aplikuje v rámci modelování časových řad ve smyslu
-kombinatorického testování všech příznaků za účely konstrukce výstupního
+kombinatorického testování všech příznaků za účelem konstrukce výstupního
 příznakového kauzálního grafu (resp. kauzální matice, viz
 sekce~\ref{sec:hybridni_detekce}). Takové řešení by ale pro poměrně velký počet
 fyziologických příznaků bylo extrémně výpočetně náročné, a proto bylo dále
@@ -63,7 +62,7 @@ nejlepší regresor pro danou proměnnou s nejmenší kvadratickou chybou bude m
 teoreticky nenulové koeficienty pouze pro proměnné v okolí\footnote{Statisticky
     \enquote{okolí} proměnné implikuje podmnožinu proměnných, které s ní úzce
     souvisejí.}~\cite{Schindler2013,Arnold2007}. Pro tento regresní problém byl
-zvolen Lasso algoritmus, jež je uveden do souvislosti v následující sekci.
+zvolen Lasso algoritmus, jenž je uveden do souvislosti v následující sekci.
 
 \subsection{Lasso regrese}
 \label{subsec:lasso}
@@ -85,7 +84,7 @@ nabývají právě nenulového koeficientu Grangerovy kauzality.
 Nicméně Bahadori a Liu dokázali v~\cite{Bahadori2013}, že Grangerova kauzalita
 je v rámci použití vícerozměrných dat inkonzistentní a není dobře schopna
 zachytit nelineární vztahy nebo složité struktury závislostí. Vzhledem k tomu,
-že data využívané v této práci jsou vícerozměrná a reprezentují biosignály, v
+že data využívaná v této práci jsou vícerozměrná a reprezentují biosignály, v
 rámci kterých mohou existovat právě nelineární vztahy nebo komplexní
 hierarchické relace, byl využit přístup Kopula-Granger. S využitím Lasso ukázali
 v~\cite{Bahadori2013} jeho konzistenci na vícerozměrných datech i jeho schopnost
@@ -98,7 +97,7 @@ Vzhledem k využití Kopula-Granger přístupu pro tvorbu vícerozměrných kauz
 matic je žádoucí stručně představit kopula funkce. V teorii pravděpodobnosti a
 statistice je kopule $C$ vícerozměrnou kumulativní distribuční funkcí, jež
 popisuje závislost mezi jednotlivými marginálními distribucemi a poskytuje
-způsob jak modelovat právě společnou distribuci náhodných veličin bez
+způsob, jak modelovat právě společnou distribuci náhodných veličin bez
 specifikace samotných distribucí těchto veličin. Formálně, je
 $C:[0,1]^{d}\rightarrow [0,1]$ $d$-dimenzionální kopulou, pokud je $C$ sdílenou
 \gls{CDF} $d$-dimenzionálního náhodného vektoru na jednotkové krychli
@@ -130,11 +129,11 @@ následujících kroků~\cite{Guy2016}:
     \item Nalezení Grangerovy kauzality v rámci $\hat{f}_i\left(x_t^i\right)$.
 \end{enumerate}
 přičemž je dále brán v potaz Winsorizovaný\footnote{Winsorizace nebo Winsorova
-    transformace je transformace statistických dat omezením extrémních hodnot, aby
-    se snížil vliv případných odlehlých hodnot} odhad použité distribuční funkce,
-podle~\cite{Bahadori2013}, aby se zabránilo velkým číslům
+transformace je transformace statistických dat omezením extrémních hodnot,
+aby se snížil vliv případných odlehlých hodnot} odhad použité distribuční
+funkce, podle~\cite{Bahadori2013}, aby se zabránilo velkým číslům
 $\Phi^{-1}\left(0^{+}\right)$\footnote{$\Phi^{-1}$ je inverzní kumulativní
-    distribuční funkce standardního normálního rozdělení.} and
+distribuční funkce standardního normálního rozdělení.} and
 $\Phi^{-1}\left(1^{-}\right)$:
 \begin{equation}
     \tilde{F}_j= \begin{cases}\delta_n, & \text { if } \hat{F}\left(x^j\right)<\delta_n \\ \hat{F}\left(x^j\right) & \text { if } \delta_n \leq \hat{F}\left(x^j\right)<1-\delta_n \\ \left(1-\delta_n\right) & \text { if } \hat{F}\left(x^j\right)>1-\delta_n .\end{cases}

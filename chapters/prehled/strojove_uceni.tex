@@ -17,7 +17,7 @@ literatuře~\cite{Aurelien2022,Murphy2012,Goodfellow2016}.
 
 \subsection{Typy systémů strojového učení}
 Různorodost scénářů strojového učení je charakterizována rozdíly v povaze
-trénovacích dat, způsobu trénování a kritériích hodnocení. Každý přístup je
+trénovacích dat, způsobem trénování a kritérii hodnocení. Každý přístup je
 vhodný pro řešení určité kategorie problémů a představuje své vlastní
 charakteristické výhody a omezení. V následujících podkapitolách jsou rozebrány
 primárně dvě nejrozšířenější formy přístupů k učení, tj. učení s učitelem
@@ -38,15 +38,15 @@ Formálně lze tedy tvrdit, že hledáme zobrazení:
 \end{equation}
 tak, že pro každou novou dvojici vstupu a výstupu $(x,y)$ vybranou z
 $\mathcal{P}$ platí $h(X) ≈ y$, kde $\mathbb{R}^d$ je $d$-rozměrný příznakový
-prostor a $\mathcal{C}$ je prostor všech možných anotací. Zároveň předpokládáme,
-že tyto dvojice pocházejí z neznámého rozdělení $\mathcal{P}$~\cite{Murphy2012}.
+prostor a $\mathcal{C}$ je prostor všech možných tříd. Zároveň předpokládáme, že
+tyto dvojice pocházejí z neznámého rozdělení $\mathcal{P}$~\cite{Murphy2012}.
 
 \subsubsection{Učení bez učitele}
 Cílem učení bez učitele je najít vzory v neanotovaných datech bez definovaného
 výstupu. Výsledkem tohoto typu učení mohou být struktury nebo vztahy v datech.
 Vyhodnocování výkonu natrénovaného modelu je v tomto případě, bez označených
 dat, často náročné. Běžnou úlohou pro tento typ učení je shlukování, které
-seskupuje podobné data do shluků. Shlukování se používá například pro segmentaci
+seskupuje podobná data do shluků. Shlukování se používá například pro segmentaci
 obrazových dat a provádí se pomocí algoritmů, jako je hustotní prostorové
 shlukování (\gls{DBSCAN}), k-means nebo hierarchické shlukování.
 
@@ -130,7 +130,7 @@ zajištěno, že model dokáže efektivně predikovat i nová data, nikoli pouze
 využitá během jeho trénování, provádí se tzv. \emph{train-test} rozdělení. To
 zahrnuje ponechání části dat jako testovací množiny, kterou model během
 trénování nepoužil, a její následné použití k vyhodnocení schopnosti modelu
-generalizace porovnáním jeho predikce se skutečnými hodnotami.
+generalizace porovnáním jeho predikce se skutečnými hodnotami. 
 
 Běžně se využívá rozdělení trénovací a testovací množiny v poměru 80:20 z
 náhodně vybraných dat. Dále se někdy využívá validační množina (15-20 \%
@@ -147,7 +147,9 @@ pouze jednu. Data mohla být tedy náhodně rozdělena nereprezentativním způs
 Odpovědí na tento problém je křížová validace (anglicky cross-validation,
 \gls{CV}), která eliminuje závislost na rozdělení dat. Cílem křížové validace je
 vyhodnotit a porovnat výkon různých modelů na stejném datovém souboru a najít
-tak optimální nastavení hyperparametrů pro daný model.
+tak optimální nastavení hyperparametrů pro daný model. Na
+Obr.~\ref{fig:cross-validation} je znázorněno obecné schéma procesu trénování s
+využitím křížové validace.
 
 Křížová validace se skládá ze tří hlavních kroků: rozdělení datového souboru na
 $k$ částí, trénování modelu na $k - 1$ částech dat a vyhodnocování výkonu modelu
@@ -256,11 +258,11 @@ požadované vzorce~\cite{Ghojogh2019}.
 
 \noindent Těmto problémům lze předcházet různými způsoby, například:
 \begin{itemize}
-    \item Použití vhodných metod regularizace (např. L1 nebo L2 regularizace).
-    \item Použití vhodného algoritmu strojového učení (např. kNN má tendenci k
-          nedoučení, zatímco složité modely jako např. neuronové sítě k přeučení).
-    \item Použití CV k hodnocení výkonu modelu a optimalizaci hyperparametrů.
-    \item Zvýšení počtu trénovacích dat.
+    \item použitím vhodných metod regularizace (např. L1 nebo L2 regularizace),
+    \item použitím vhodného algoritmu strojového učení (např. kNN má tendenci k
+          nedoučení, zatímco složité modely jako např. neuronové sítě k přeučení),
+    \item použitím CV k hodnocení výkonu modelu a optimalizaci hyperparametrů,
+    \item zvýšením počtu trénovacích dat.
 \end{itemize}
 
 \subsection{Optimalizace hyperparametrů}
@@ -282,12 +284,12 @@ výpočetně náročené~\cite{Liashchynskyi2019}.
 Alternativou k mřížkovému vyhledávání je náhodné vyhledávání (anglicky Random
 Search Method). Namísto úplného vyhodnocení všech kombinací jako v předešlé
 metodě kontroluje pouze určitý počet náhodných vzorků z hyperparametrického
-prostoru. Tato metoda je efektivnější než prohledávání v mřížce, přičemž
-poskytuje srovnatelné
-výsledky~\cite{anggoro2021,bergstra2012,Liashchynskyi2019}. Existují i další
-způsoby HPO mezi které se řadí například bayesovská optimalizace, genetické
-algoritmy nebo využití neuronových sítí. Jejich využití přichází v úvahu zejména
-u více-dimenzionálních problémů~\cite{Alibrahim2021,Liashchynskyi2019}.
+prostoru. Metoda je efektivnější než prohledávání v mřížce, přičemž poskytuje
+srovnatelné výsledky~\cite{anggoro2021,bergstra2012,Liashchynskyi2019}. Existují
+i další způsoby HPO mezi které se řadí například Bayesovská optimalizace,
+genetické algoritmy nebo využití neuronových sítí. Jejich využití přichází v
+úvahu zejména u více-dimenzionálních
+problémů~\cite{Alibrahim2021,Liashchynskyi2019}.
 
 \subsection{Kombinování modelů}
 Kombinované modely (anglicky Ensemble Models) skládají předpovědi z více různých
@@ -312,10 +314,12 @@ kapitole~\ref{subsec:ml_metriky}.
 Umělé neuronové sítě (anglicky Artificial Neural Networks, \gls{ANN}) jsou
 významným nástrojem pro strojové učení a jsou často používány pro řešení
 složitých úloh, jako jsou klasifikace, regrese, segmentace obrazu a jazykové
-zpracování. Jedná se výpočetní modely, který napodobují strukturu biologických
+zpracování. Jedná se o výpočetní modely, které napodobují strukturu biologických
 neuronů. Stejně jako biologické neurony zpracovávají \gls{ANN} vstupy, přenášejí
 impulsy a vytvářejí výstupy na základě aktivačních funkcí. Učení probíhá
 upravováním ANN vah spojení mezi neurony pomocí optimalizačních algoritmů.
+Srovnání umělé neuronové sítě s biologickým neuronem je znázorněno na
+Obr.~\ref{fig:ann_comparison}.
 
 \begin{figure}[!htb]
     \begin{center}
@@ -513,14 +517,14 @@ klasifikace~\cite{sharma2017}.
 Z předešlých kapitol vyplývá, že jedním z hlavních cílů učení neuronové sítě je
 minimalizace chyby predikce. Často ale dochází k přeučení neuronová sítě, tedy
 síť se naučí velmi přesně předpovídat data použitá pro trénování, ale ztrácí
-schopnost generalizace. To je způsobeno tím, že síť se snaží přizpůsobit se
-každému jednotlivému trénovacímu datovému bodu a následně nedokáže předpovídat
-data, která se od těch trénovacích liší. K tomuto jevu dochází, protože
-neuronová síť má příliš mnoho parametrů (viz~\ref{subsubsec:underoverfitting}).
-Řešením tohoto problému je použití regularizace. Regularizace je technika, která
-snižuje rozptyl modelu sítě, a snaží se tak minimalizovat riziko přeučení.
-Existuje několik technik regularizace, z nichž nejčastěji používanými jsou L1 a
-L2 regularizace, dropout a early stopping.
+schopnost generalizace. To je způsobeno tím, že síť se snaží přizpůsobit každému
+jednotlivému trénovacímu datovému bodu a následně nedokáže předpovídat data,
+která se od těch trénovacích liší. K tomuto jevu dochází, protože neuronová síť
+má příliš mnoho parametrů (viz~\ref{subsubsec:underoverfitting}). Řešením tohoto
+problému je použití regularizace. Regularizace je technika, která snižuje
+rozptyl modelu sítě, a snaží se tak minimalizovat riziko přeučení. Existuje
+několik technik regularizace, z nichž nejčastěji používanými jsou L1 a L2
+regularizace, dropout a early stopping.
 
 Metody regularizace L1 a L2 omezují optimalizační metody během procesu
 minimalizace ztrátové funkce modelu. Tato omezení penalizují váhy, což vede ke

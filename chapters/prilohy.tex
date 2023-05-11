@@ -1,0 +1,81 @@
+\includepdf[pages=1,scale=.75,offset=.5cm -2cm,pagecommand={\chapter{Informovaný souhlas}\label{appendix:a}}]{assets/consent.pdf}
+\includepdf[pages=2-,scale=.75,offset=.5cm 2cm,pagecommand={}]{assets/consent.pdf}
+
+\chapter{Matice záměn}
+\label{appendix:b}
+\vspace{-10mm}
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/wesad/wesad_5s_aug}
+        \caption{WESAD-5s}
+    \end{subfigure}
+    \hspace{0.05cm}
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/wesad/wesad_5s50_aug}
+        \caption{WESAD-5s50}
+    \end{subfigure}
+    \hspace{0.05cm}
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/wesad/wesad_1s_aug}
+        \caption{WESAD-1s}
+    \end{subfigure}
+    \caption{Matice záměn pro aug. WESAD modely (0 = klidový stav, 1 = CL stav)}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/clas/clas_5s_aug}
+        \caption{CLAS-5s}
+    \end{subfigure}
+    \hspace{0.05cm}
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/clas/clas_5s50_aug}
+        \caption{CLAS-5s50}
+    \end{subfigure}
+    \hspace{0.05cm}
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/clas/clas_1s_aug}
+        \caption{CLAS-1s}
+    \end{subfigure}
+    \caption{Matice záměn pro aug. CLAS modely (0 = klidový stav, 1 = CL stav)}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/merged/merged_5s_aug}
+        \caption{Merged-5s}
+    \end{subfigure}
+    \hspace{0.05cm}
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/merged/merged_5s50_aug}
+        \caption{Merged-5s50}
+    \end{subfigure}
+    \hspace{0.05cm}
+    \begin{subfigure}[h]{0.32\linewidth}
+        \includegraphics[width=\linewidth]{figures/merged/merged_1s_aug}
+        \caption{Merged-1s}
+    \end{subfigure}
+    \caption{Matice záměn pro aug. Merged modely (0 = klidový stav, 1 = CL stav)}
+    \vspace{-10mm}
+\end{figure}
+
+\chapter{Obsah přiloženého ZIP souboru}
+\begin{figure}[h]
+    \begin{minipage}{0.95\textwidth}
+        \dirtree{%
+            .1 /.
+            .2 thesis.
+            .3 src.zip\DTcomment{Archív obsahující zdrojové soubory DP}.
+            .2 scripts.
+            .3 Python\DTcomment{Skripty pro navrženou metodu hodnocení CL}.
+            .4 $\vdots$.
+            .3 Matlab\DTcomment{Skripty pro tvorbu kauzálních vícerozměrných matic}.
+            .4 $\vdots$.
+            .3 R\DTcomment{Skripty pro statistickou analýzu a modelování}.
+            .4 $\vdots$.
+        }
+    \end{minipage}
+\end{figure}

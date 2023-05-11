@@ -7,17 +7,19 @@ biosignálů tak, aby měly průměrnou hodnotu nula a směrodatnou odchylku jed
 bylo dosaženo odečtením střední hodnoty biosignálu od každé jeho hodnoty a
 následným vydělením směrodatnou odchylkou.
 
-Vzhledem k tomu, že dataset CLAS neobsahuje signál RSP, byl tento signál
+Vzhledem k tomu, že dataset CLAS neobsahuje respirační signál, byl tento signál
 vytvořen pomocí metody \gls{EDR} (ECG-Derived Respiration). Jedná se o extrakci
 informace o dýchání z elektrokardiogramu. Knihovna \textit{Neurokit2} poskytuje
 implementaci algoritmu podle~\cite{VanGent2019}, jež byla pro tyto účely
 použita.
 
-Následně byly všechny signály segmentovány na 5s, 5s s 50\% překryvem a 1s
+Následně byly všechny biosignály segmentovány na 5s, 5s s 50\% překryvem a 1s
 úseky. Z těchto segmentů byly poté vytvořeny příznaky pro účely strojového
 učení. Blíže je tvorba těchto příznaků a jejich využití popsáno v
 sekci~\ref{sec:hybridni_detekce}. Byly ponechány pouze ty segmenty, které svojí
-třídou korespondovaly žádanému kognitivnímu stavu.
+třídou korespondovaly žádanému kognitivnímu stavu. Na
+Obr.~\ref{fig:struktura_datasetu} lze vidět strukturu datasetů před a po
+zpracování.
 
 \begin{figure}[h]
     \centering
@@ -72,13 +74,18 @@ Oba datasety byly po předzpracování zkoumány pomocí nástrojů knihovny
 například základními statistickými údaji, kde byla brána primárně zřetel na
 rozdělení tříd. Na Obr.~\ref{fig:rozdeleni_trid} lze tak vidět, že oba datasety
 vykazují výraznou nevyváženost tříd. Dále byly korelovány jednotlivé signály
-datasetů, bylo nahlíženo na jejich distribuce, a byly vyšetřeny případné záporné
-nebo neplatné hodnot. Tato šetření byla provedena i na individuální úrovni. Celý
-postup s vizualizovanými výsledky se nachází v datové příloze, v podobě
-interaktivního prostředí Jupyter Notebook\footnote{\url{https://jupyter.org}} s
-názvem souboru \texttt{exploratory\_analysis\_example}.
+datasetů, bylo nahlíženo na jejich distribuce a byly vyšetřeny případné záporné
+nebo neplatné hodnoty. Tato šetření byla provedena i na individuální úrovni
+subjektů. Celý postup s vizualizovanými výsledky se nachází v datové příloze v
+podobě Jupyter Notebooku\footnote{\url{https://jupyter.org}} s názvem souboru
+\texttt{exploratory\_analysis\_example.ipynb}.
 
-\begin{figure}[h]
+Jupyter Notebook je interaktivního prostředí, které umožňuje vytvářet a sdílet
+dokumenty (zápisníky). Tyto dokumenty jsou rozděleny do buněk, které lze
+spouštět v libovolném pořadí (live kód), což zajišťuje efektivnější
+prototypování.
+
+\begin{figure}[!htb]
     \begin{subfigure}[h]{0.48\linewidth}
         \includegraphics[width=\linewidth]{figures/wesad_labels}
         \caption{Rozdělení datasetu WESAD}
@@ -89,19 +96,19 @@ názvem souboru \texttt{exploratory\_analysis\_example}.
         \caption{Rozdělení datasetu CLAS}
     \end{subfigure}
     \caption{Srovnání rozdělení tříd vybraných datasetů. Třída 0 vyjadřuje
-        klidový stav a třída 1 vyjadřuje kognitivní zátěž.}
+        klidový stav a třída 1 vyjadřuje kognitivní zátěž}
     \label{fig:rozdeleni_trid}
 \end{figure}
 
-Během explorace dat byla také zkoumána separovatelnost dat v
-nízkodimenzionálních prostorech použitím techniky \gls{UMAP}~\cite{umap2018}
-(Uniform Manifold Approximation and Projection) právě pro redukci
-dimenzionality. Cílem bylo vizualizovat soubor dat ve formě nižších dimenzí k
-získání přehledu o rozdělení tříd a nadhled nad smyslem a rozpoložení dat.
-Výsledky této vizualizace je možné vidět na Obr.~\ref{fig:umap}, kde jsou
-oranžově vyznačeny body, jež odpovídají kognitivní zátěži.
+Během explorace dat byla zkoumána separovatelnost dat v nízkodimenzionálních
+prostorech použitím techniky \gls{UMAP}~\cite{umap2018} (Uniform Manifold
+Approximation and Projection) pro redukci dimenzionality. Cílem bylo
+vizualizovat soubor dat ve formě nižších dimenzí k získání přehledu o rozdělení
+tříd a nadhled nad smyslem a rozpoložením dat. Výsledky této vizualizace je
+možné vidět na Obr.~\ref{fig:umap}, kde jsou oranžově vyznačeny body, jež
+odpovídají kognitivní zátěži.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{subfigure}[h]{0.48\linewidth}
         \includegraphics[width=\linewidth]{figures/wesad_umap}
         \caption{WESAD}
@@ -119,11 +126,10 @@ oranžově vyznačeny body, jež odpovídají kognitivní zátěži.
 
 V metodě bylo využito Euklidovské vzdálenostní metriky s hodnotou 0,1 a počtem
 sousedních bodů 15. Tyto nízké hodnoty byly zvoleny pro účely zachycení lokální
-struktury dat (potenciálně na úkor celkového obrazu), jak ukazuje
-Obr.~\ref{fig:umap}. Výsledek 3D projekcí naznačuje potencionální lineární
-separovatelnost u malé části souboru. U zbytku souboru by bylo oddělení
-pravděpodobně zřetelnější ve vyšších dimenzích a možná nebude lineární. V úvahu
-tak přichází strojové učení.
+struktury dat (na úkor celkového obrazu), jak ukazuje Obr.~\ref{fig:umap}.
+Výsledek 3D projekcí naznačuje potencionální lineární separovatelnost pouze u
+malé části souboru. U zbytku souboru by bylo oddělení pravděpodobně zřetelnější
+ve vyšších dimenzích. V úvahu tak přichází strojové učení.
 
 \subsection{Augmentace dat využitím SMOTE-Tomek}
 \label{subsec:augmentace_dat}
@@ -139,7 +145,7 @@ třídy a najde $k$ jejích nejbližších sousedů v prostoru příznaků. Pot�
 nové syntetické instance interpolací mezi vybranou instancí a jejími $k$
 sousedy.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \centering
     \begin{subfigure}[h]{0.4\linewidth}
         \includegraphics[width=\linewidth]{figures/smote1}

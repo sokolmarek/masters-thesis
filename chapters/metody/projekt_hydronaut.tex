@@ -108,9 +108,9 @@ některých součástí infrastruktury včetně harmonogramu mise.
 
 \subsubsection{Harmonogram mise}
 \label{subsubsec:harmonogram_mise}
-Harmonogram mise byl základním dokumentem, který definoval všechny činnosti v
-průběhu mise. Harmonogram byl rozepsaný na úroveň minut pro každého jednotlivého
-člena posádky. Ukázku harmonogramu lze vidět na Obr.~\ref{fig:harmonogram}.
+Harmonogram byl základním dokumentem, který definoval všechny činnosti v průběhu
+mise. Harmonogram byl rozepsaný na úroveň minut pro každého jednotlivého člena
+posádky. Ukázku harmonogramu lze vidět na Obr.~\ref{fig:harmonogram}.
 
 \begin{figure}[h]
     \begin{center}
@@ -122,9 +122,8 @@ průběhu mise. Harmonogram byl rozepsaný na úroveň minut pro každého jedno
     \end{center}
 \end{figure}
 
-Spolu s harmonogramem byly vytvořeny další dva dokumenty. První z nich byl plán
-směn a druhý byl dokument, do kterého se zaznamenávaly všechny významné
-události. Plán směn byl vytvořen interně pro každou instituci, jež byla součástí
+Spolu s harmonogramem byly vytvořeny plán směn a záznamy všech významných
+událostí. Plán směn byl vytvořen interně pro každou instituci, jež byla součástí
 mise. Každá směna sloužila primárně za účelem monitorování a dokumentace mise.
 
 \subsubsection{Řídicí věž}
@@ -159,7 +158,7 @@ realizována prostřednictvím následujících nástrojů:
     \item \textbf{Kognitivní úlohy v prostředí NEUROP-III} --- posádka opakovaně
           podstoupila náročné diagnostické kognitivní úlohy, zvláště zaměřené na
           sledování exekutivních funkcí primárně v oblasti impulzivního chování,
-          riskování, interference nebo inhibice ve smyslu Go-NOGO.
+          riskování, interference nebo inhibice ve smyslu Go/No-go.
     \item \textbf{Subjektivní hodnocení pomocí NASA TLX} --- jedná se o
           dlouholetý standard pro měření subjektivního vnímání mentální zátěže
           vzhledem ke konkrétním úkolům v pěti dimenzích: mentální náročnost, fyzická
@@ -171,11 +170,10 @@ realizována prostřednictvím následujících nástrojů:
 \label{subsec:monitorovani posadky}
 Během celého průběhu mise byla posádka neustále monitorována kamerovým systémem
 a měřena pomocí validovaných biometrických zařízení, které poskytovaly palubnímu
-počítači následující údaje o stavu posádky: tepová frekvence, dechová frekvence,
-kožní vodivost. Měření biosignálů je blíže popsáno v další sekci. Zároveň byly
-pomocí kamerových záznamů detekovány emoce posádky z výrazů tváře. Na
-Obr.~\ref{fig:monitoring} lze vidět snímky z monitorování posádky během mise
-DIANA.
+počítači údaje o stavu posádky: tepová frekvence, dechová frekvence a kožní
+vodivost. Zároveň byly pomocí kamerových záznamů detekovány emoce posádky z
+výrazů tváře. Na Obr.~\ref{fig:monitoring} lze vidět snímky z monitorování
+posádky během mise DIANA.
 
 \begin{figure}[h]
     \begin{subfigure}[h]{0.48\linewidth}
@@ -190,33 +188,32 @@ DIANA.
     \caption{Snímky z monitorování posádky během mise (zdroj: Hydronaut Project a.s.)}
 \end{figure}
 
-Data z biometrických jednotek byla pomocí bezdrátové síti WLAN (Wi-Fi 2,4 Ghz)
-přenášena na datový server a ukládána do InfluxDB. Ostatní kompartmenty mise,
-tak mohly živě sledovat fyziologický stav posádky. Díky real-time vizualizaci
-bylo také možné dohlížet na správností měření biologických signálů. Předcházelo
-se tak situacím jako: nesprávně nalepené či odlepené elektrody, přítomnost
+Data z biometrických jednotek byla pomocí bezdrátové sítě WLAN (Wi-Fi 2,4 GHz)
+přenášena na datový server a ukládána do InfluxDB. Ostatní kompartmenty mise tak
+mohly živě sledovat fyziologický stav posádky. Díky real-time vizualizaci bylo
+také možné dohlížet na správností měření biologických signálů. Předcházelo se
+tak situacím jako: nesprávně nalepené či odlepené elektrody, přítomnost
 elektromagnetického rušení ovlivňujícího měření nebo výpadky způsobené problémy
 s bezdrátovým připojením.
 
 \subsubsection{InfluxDB}
 \label{subsec:influx}
 InfluxDB\footnote{https://www.influxdata.com} je open-source platforma
-poskytující databázi pro časové řady. Zahrnuje rozhraní (API) pro standardní
-databázové dotazy. Součástí je i grafické uživatelské rozhraní (GUI) s
-modulárními uživatelskými panely pro monitorování dat v reálném čase. Tato
-platforma (InfluxDB OSS 2.4) byla využita v rámci mise k uchovávání a
-vizualizaci dat.
+poskytující databázi pro časové řady. Zahrnuje rozhraní (API) pro databázové
+dotazy. Součástí je i grafické uživatelské rozhraní (GUI) s modulárními
+uživatelskými panely pro monitorování dat v reálném čase. Platforma (InfluxDB
+OSS 2.4) byla využita v rámci mise k uchovávání a vizualizaci dat.
 
 \subsubsection{Měření biosignálů}
 \label{subsubsec:mereni_biosignalu}
 V minulé sekci byla zmínka o biometrických datech jako například tepová a
-dechová frekvence. Tyto data byla získána pomocí biometrických jednotek, které
-však neměří přímo tyto fyziologické indikátory ale biologické signály, konkrétně
-srdeční, respirační a elektrodermální aktivitu. Tyto biosignály byly měřeny u
-šesti jedinců, konkrétně u posádky mateřské lodi a přistávacího modulu. V
-následující sekci je detailněji rozebráno měřící zařízení.
+dechová frekvence. Tato data byla získána pomocí biometrických jednotek, které
+však neměří přímo tyto fyziologické indikátory ale biologické signály. Měřenými
+biosignály jsou: srdeční, respirační a elektrodermální aktivita. Biosignály byly
+zaznamenávaný u šesti jedinců, konkrétně u posádky mateřské lodi a přistávacího
+modulu. V následující sekci je detailněji rozebráno měřící zařízení.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/sensors}
         \caption{Ukázka měřících čidel na těle člena posádky uvnitř mateřské lodi}
@@ -226,27 +223,13 @@ následující sekci je detailněji rozebráno měřící zařízení.
 
 \subsubsection{Měřící zařízení}
 \label{subsubsec:merici_zarizeni}
-Pro měření biosignálu během mise byly použity validované telemedicínské jednotky
-BoRec (Body Recorder), které již dlouhodobě vyvíjíme ve výzkumné skupině
-Biomechaniky a asistivních technologií na Fakultě biomedicínského inženýrství
-(\gls{FBMI}), ČVUT v Praze. Vzorkovací frekvence zařízení je 250~Hz. Zařízení
-lze vidět na Obr.~\ref{fig:borec}.
+Pro měření biosignálu během simulované vesmírné mise byly použity validované
+telemedicínské jednotky BoRec (Body Recorder), které jsou dlouhodobě vyvíjené ve
+výzkumné skupině Biomechaniky a asistivních technologií na Fakultě
+biomedicínského inženýrství (\gls{FBMI}), ČVUT v Praze. Vzorkovací frekvence
+zařízení je 250~Hz. Zařízení je možné vidět vidět na Obr.~\ref{fig:borec}.
 
-Respirační aktivita byla měřena pomocí takzvaného dechového pásu, založeného na
-tenzometrickém principu. Elektrodermální aktivita byla měřena pomocí dvou
-elektrod na hrudi. Toto místo bylo pro potřeby mise vybráno na základě
-studie~\cite{Janssen2012}. Elektrická srdeční aktivita byla měřena využitím
-jednosvodového systému, přičemž byl svod zaznamenáván v konfiguraci II. Jednotka
-včetně snímačů biosignálů také obsahuje tlakové a gyroakcelometrické senzory.
-
-Bezdrátové připojení jednotek je zajištěno díky standardu IEEE 802.11 (Wi-Fi
-2,4~GHz). Komunikační protokol mezi zařízením a klientem na straně počítače je
-Modbus TCP~\cite{modbus}, který umožňuje přistup k senzorům jednotky a stažení
-dat z cyklických redundantních vyrovnávacích pamětí. Každá jednotka má svou
-vlastní jedinečnou MAC adresu a očekává adresu IP od serveru DHCP. Klient na PC
-má přístup ke všem snímačům místní sítě.
-
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.6\linewidth]{figures/borec}
         \caption{Telemedicínská jednotka BoRec použita během mise}
@@ -254,15 +237,28 @@ má přístup ke všem snímačům místní sítě.
     \end{center}
 \end{figure}
 
+Respirační aktivita byla měřena pomocí dechového pásu, který je založen na
+tenzometrickém principu. Elektrodermální aktivita byla měřena pomocí dvou
+elektrod na hrudi. Toto místo bylo pro potřeby mise vybráno na základě
+studie~\cite{Janssen2012}. Elektrická srdeční aktivita byla měřena využitím
+jednosvodového systému, přičemž byl svod zaznamenáván v konfiguraci II. Jednotka
+včetně snímačů biosignálů také obsahuje tlakové a gyroakcelometrické senzory.
+
+Bezdrátové připojení jednotek je zajištěno využitím bezdrátové sítě WLAN.
+Komunikačním protokol mezi zařízením a klientem na straně počítače je Modbus
+TCP~\cite{modbus}, který umožňuje přístup k senzorům jednotky a stažení dat z
+vyrovnávacích pamětí. Každá jednotka má svou vlastní jedinečnou MAC adresu a
+očekává adresu IP od serveru DHCP. Klient na PC má přístup ke všem snímačům
+sítě.
+
 \subsection{Studie}
 \label{subsec:studie}
-%!#TODO: Doplnit referenci na prilohu s informovanym souhlasem
-Měření dat probíhalo pod Filozofickou fakultou Univerzity Palackého v Olomouci
-(\gls{FF UPOL}). Všichni probandi poskytli informované souhlasy pro část
-diagnostickou i pro samotný experiment (viz Příloha~\ref{}). Informované
-souhlasy umožňují anonymizované využití dat. Získání dat pod FF UPOL probíhalo
-podle etického metakodexu Evropské federace psychologických asociací
-(\gls{EFPA}). Informované souhlasy jsou i ke všem nahrávkám obrazových dat a
-rozhovorů členů posádky. Bezpečí participantů bylo jištěno v několika
-technických rovinách prostřednictvím hlavního řešitele \textit{1st Cloud
-Republic a.s.} projektu TL05000228.
+Měření dat probíhalo v rámci projektu pod Filozofickou fakultou Univerzity
+Palackého v Olomouci (\gls{FF UPOL}). Všichni probandi poskytli informované
+souhlasy pro část diagnostickou i pro samotný experiment (viz
+Příloha~\ref{appendix:a}). Informované souhlasy umožňují anonymizované využití
+dat. Získání dat pod FF UPOL probíhalo podle etického metakodexu Evropské
+federace psychologických asociací (\gls{EFPA}). Informované souhlasy jsou i ke
+všem nahrávkám obrazových dat a rozhovorů členů posádky. Bezpečí participantů
+bylo jištěno v několika technických rovinách prostřednictvím hlavního řešitele
+\textit{1st Cloud Republic a.s.} projektu TL05000228.

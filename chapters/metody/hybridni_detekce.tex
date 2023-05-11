@@ -4,10 +4,10 @@ V předešlé sekci byl popsán proces předzpracování dat, jehož výsledkem 
 multidimenzionální množina segmentovaných fyziologických signálů $\mathcal{F}$.
 Dimenze této množiny je rovna počtu snímaných signálů, lze tedy dál hovořit jako
 o kanálech $c$. Vybraný segment z kanálu $c$ reprezentuje časovou řadu, jejiž
-každý vzorek je zachycen v určitém čase $t$, a představuje průběh fyziologické
+každý vzorek je zachycen v určitém čase $t$ a představuje průběh fyziologické
 události (\gls{NPF} událost).
 
-V rámci jednotlivých pozorovaných fyziologických událostí $X^i$, lze modelovat
+V rámci jednotlivých pozorovaných fyziologických událostí $X^i$ lze modelovat
 časově kauzální vztahy, které lze díky Grangerově kauzalitě (viz
 sekce~\ref{subsec:granger}) matematicky popsat unikátním orientovaným grafem
 $G=(V,E)$ -- definovanou uspořádanou množinou vrcholů a hran. Tím je umožněno
@@ -27,7 +27,7 @@ společně s jejich aplikací v rámci strojového učení.
 Pro zachycení časově kauzálních relací v použitých biosignálech byl zvolen
 přístup Kopula-Granger s Lasso ($\ell_1$) regularizací, který kombinuje koncept
 Grangerovy kauzality s teorií kopulí. Zmíněné přístupy spadají do oblasti
-statistických metod, a proto jsou dále jednotlivé popsány v
+statistických metod, a proto jsou dále jednotlivě popsány v
 sekci~\ref{sec:statisticke_metody}.
 
 Vytvoření kauzální matice ja založeno na použití fyziologické události $X^i$
@@ -51,11 +51,11 @@ kde $p_{\mathcal{N}}(z ; \mu, \sigma)$ je Gaussova funkce se střední hodnotou
 $\mu$ a rozptylem $\sigma^2$, $z_i^{t, \text {lag}}$ jsou předchozí hodnoty
 $z_i$ do času $t$ a ${\beta}_{i}^j$ je vektor koeficientů modelujících vliv
 časové řady $z_j$ na cílovou časovou řadu. Kauzalita je tedy definována časovou
-řadou $z_j$, jež je příčinou $z_i$ pokud je alespoň jedna hodnota vektoru
+řadou $z_j$, jež je příčinou $z_i$, pokud je alespoň jedna hodnota vektoru
 ${\beta}_{i}^j$ nenulová ve smyslu statistické významnosti
 (viz~\ref{subsec:granger}).
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/GCN}
         \caption{Diagram tvorby kauzálních vícerozměrných matic. 1) Aplikace
@@ -102,10 +102,10 @@ představili koncept této metody transformace časové řady do 2D obrazu v roc
     \tilde{x}_t=\frac{\left(x_t-\max (X^i)+\left(x_t-\min (X^i)\right)\right.}{\max (X^i)-\min (X^i)}
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/polar}
-        \caption{Ukázka \gls{GAF} mapování na EKG segmentu}
+        \caption{Ukázka jednotlivých kroků \gls{GAF} mapování na EKG segmentu}
         \label{fig:polar}
     \end{center}
 \end{figure}
@@ -132,7 +132,7 @@ identifikaci temporální korelace v rámci různých časových intervalů:
     GADF = \left[\sin \left(\phi_i-\phi_j\right)\right]
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/GADF}
         \caption{Diagram tvorby časoprostorových vzorů. 1) Aplikace GAF mapování
@@ -155,16 +155,18 @@ maticí, která je kvazi-Gramovou maticí:
 \end{equation}
 kde každý prvek odpovídá sinové funkci úhlového sinusového rozdílu v různých
 časových bodech. Výpočet a tvorba těchto příznaků, časoprostorových vzorů, byla
-implementována v programovacím jazyce Python.
+implementována v programovacím jazyce Python. Jednotlivé kroky \gls{GADF}
+mapování jsou ilustrovány na Obr.~\ref{fig:polar}. Schéma multimodální tvorby
+časoprostorového pole je zobrazeno na Obr.~\ref{fig:gadf}.
 
 \subsection{Kapsulární neuronová síť}
 \label{subsec:kapsularni_sit}
 Pro potřeby realizace úloh klasifikace (resp. hodnocení kognitivní zátěže), byla
 navržena architektura kapsulární neuronové sítě postavená na řešení, které
 představili Mazzia et al.~\cite{Mazzia2021}, \textit{Efficient-CapsNet}.
-Celkovou architekturu lze vidět na obrázku~\ref{fig:architektura}.
+Celkovou architekturu této sítě lze vidět na obrázku~\ref{fig:architektura}.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=1\linewidth]{figures/capsule}
         \caption{Schematické znázornění architektury sítě
@@ -173,41 +175,40 @@ Celkovou architekturu lze vidět na obrázku~\ref{fig:architektura}.
     \end{center}
 \end{figure}
 
-Zjednodušeně, v případě použití jednoho příznaku, je vstupem modelu obraz, který
-lze reprezentovat jako tenzor $X$ s tvarem $H \times W \times C$, kde $H$, $W$ a
-$C$ jsou výška, šířka a kanály. V našem případě se jedná o synergické spojení
-dvou sad příznaků vyplývajících z minulých sekcí, kauzálních matic $X_{COG} \in
-    \mathbb{R}^{T \times T \times C}$ a časoprostorových vzorů $X_{GAF} \in
-    \mathbb{R}^{T \times T \times C}$. Vstupním tenzorem je tedy příznak $X \in
-    \mathbb{R}^{2 \times T \times T \times C}$. Než se vstup dostane k primární
-kapsulové vrstvě, tak je provedena extrakce lokálních vlastnosti ze vstupu $X$
+V případě použití jednoho příznaku je vstupem modelu obraz, který lze
+reprezentovat jako tenzor $X$ s tvarem $H \times W \times C$, kde $H$, $W$ a $C$
+jsou výška, šířka a barevné kanály. V našem případě se jedná o synergické
+spojení dvou sad příznaků vyplývajících z minulých sekcí, kauzálních matic
+$X_{COG} \in \mathbb{R}^{T \times T \times C}$ a časoprostorových vzorů $X_{GAF}
+\in \mathbb{R}^{T \times T \times C}$. Vstupním tenzorem je tedy příznak $X \in
+\mathbb{R}^{2 \times T \times T \times C}$. Než se vstup dostane k primární
+kapsulové vrstvě, je provedena extrakce lokálních vlastností ze vstupu $X$
 pomocí sady několika typů vrstev\footnote{Jednotlivé vrstvy jsou pojmenovány
-    podle korespondujícího názvu v \textit{TensorFlow} a \textit{Keras} API}:
+podle korespondujícího názvu v \textit{TensorFlow} a \textit{Keras} API}:
 \begin{itemize}
-    \item \textbf{Conv2D} --- Tato vrstva vytváří konvoluční jádro, které je
-          konvolvováno se vstupem vrstvy a vytváří tenzor výstupů. V podstatě se jedná
-          o sadu naučitelných filtrů. Každý filtr transformuje část obrazu
-          (definovanou velikostí jádra) pomocí filtru jádra. Matice jádrového filtru
-          se aplikuje na celý obraz. Filtry lze chápat jako transformaci obrazu.
-    \item \textbf{BatchNormalization} --- Tato vrstva aplikuje normalizaci,
-          která udržuje průměrný výstup blízko nule a směrodatnou odchylku výstupu
-          blízko jedné.
-    \item \textbf{MaxPool2D} --- Tato vrstva funguje jednoduše jako filtr pro
-          podvzorkování. Podívá se na 2 sousední pixely a vybere maximální hodnotu.
-          Slouží ke snížení výpočetní náročnosti a do jisté míry také ke snížení
-          přeučení.
+    \item \textbf{Conv2D} --- Vytváří konvoluční jádro, které je konvolvováno se
+          vstupem vrstvy a vytváří tenzor výstupů. V podstatě se jedná o sadu
+          filtrů. Každý filtr transformuje část obrazu (definovanou velikostí
+          jádra) pomocí filtru jádra. Matice jádrového filtru se aplikuje na
+          celý obraz. Filtry lze chápat jako transformaci obrazu.
+    \item \textbf{BatchNormalization} --- Aplikuje normalizaci, která udržuje
+          průměrný výstup blízko nule a směrodatnou odchylku výstupu blízko
+          jedné.
+    \item \textbf{MaxPool2D} --- Funguje jako filtr pro podvzorkování na základě
+          výběru maximálně ze dvou sousedů. Slouží ke snížení výpočetní
+          náročnosti a do jisté míry také k redukci přeučení.
     \item \textbf{Dropout} --- Dropout je regularizační metoda, při níž je část
-          uzlů ve vrstvě náhodně ignorována (nastaveny na nulu) pro každý
-          tréninkový vzorek. Tím se náhodně vynechá část sítě a síť je nucena
-          učit se funkce distribuovaným způsobem. Tato technika také zlepšuje
-          generalizaci a snižuje přeučení.
+          uzlů ve vrstvě náhodně ignorována (nastavena na nulu) pro každý
+          tréninkový vzorek. Tím se náhodně vynechá část sítě a síť je nucena se
+          učit distribuovaným způsobem. Tato technika také zlepšuje generalizaci
+          a snižuje přeučení.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \begin{center}
         \includegraphics[width=0.85\linewidth]{figures/conv}
-        \caption{První část sítě ($H_{Conv}$), která mapuje vstupní obraz na
-            prostor vyšší dimenze}
+        \caption{První část sítě ($H_{Conv}$) navržené v rámci této práce, která
+            mapuje vstupní obraz na prostor vyšší dimenze}
         \label{fig:conv}
     \end{center}
 \end{figure}
@@ -244,7 +245,7 @@ jeho globálnějším rysům.
 
 \subsection{Self-attention směrování}
 \label{subsec:dynamicke_smerovani}
-Kapsulární síť byla také v této práci zvolena, vzhledem k její architektuře
+Kapsulární síť byla v této práci zvolena vzhledem ke své architektuře
 napodobující lidskou biologii, a tím pádem schopností lépe modelovat komplexní
 vztahy v datech. To vyplývá z použitého nového přístupu neiterativního
 paralelního směrování kapslí, které bylo představeno a popsáno
@@ -256,7 +257,7 @@ V případě této práce se jedná o binární klasifikační problém, pro kte
 normálních okolností použila ztrátová funkce ve smyslu binární nebo kategorické
 křížové entropie. Tyto ztrátové funkce ale nezachycují sémantiku vektorů, jak je
 používána v kapslích. Pro tyto potřeby byla využita marginální ztrátová funkce,
-kde v případě klasifikace více tříd, je pro každou třídu reprezentovanou kapslí
+kde v případě klasifikace více tříd je pro každou třídu reprezentovanou kapslí
 $n^L$ v poslední vrstvě $L$ vypočtena pravděpodobnost existence určité třídy
 následovně:
 \begin{equation}
@@ -270,25 +271,22 @@ fázi trénování.
 \subsection{Trénování a evaluace modelů}
 \label{subsec:trenovani_modelu}
 Trénovaní a evaluace modelů bylo realizováno využitím programovacího jazyka
-Python znovu ve spojení s interaktivním prostředím Jupyter Notebook. Pro tvorbu
-modelů byly využity dříve zmíněné knihovny \textit{TensorFlow} a \textit{Keras}.
-Trénování bylo akcelerováno pomocí grafické karty NVIDIA GeForce RTX 4080 s
-využitím \textit{CUDA
-Toolkitu}\footnote{\url{https://developer.nvidia.com/cuda-toolkit-archive}}
-společně s \textit{CuDNN}\footnote{\url{https://developer.nvidia.com/cudnn}}
-(NVIDIA CUDA® Deep Neural Network library) knihovnou. Pro účely trénování byly
-datasety rozděleny vždy v poměru 8:2 na trénovací a testovací množinu, přičemž
-validace probíhala během trénování využitím testovací množiny (resp. validační).
-Všechny uvedené přesnosti ve výsledcích jsou tím pádem validační přesnosti,
-nikoli trénovací. Pro trénování byl využit optimalizační algoritmus Adam s učící
-rychlostí $5 \times 10^{-4}$. Trénování probíhalo po dobu 100 epoch a batch size
-byl nastaven na 256. Pro zajištění rychlé konvergence optimalizátoru a co
-nejblíže globálnímu minimu ztrátové funkce, byla použita metoda žíhání
-(annealing) rychlosti učení (\gls{LR}, learning rate). Aby byla zachována výhoda
-rychlého času výpočtu s vysokým \gls{LR}, byla dynamicky snižována \gls{LR}
-každých $x$ kroků (epoch) v závislosti na tom, zda je to nutné (když se
-nezlepšuje přesnost). Bylo také realizováno kombinační srovnání příznaků ve
-smyslu použitých biosignálů. Veškeré výsledky jsou uvedeny v
-sekci~\ref{sec:vysledky_detekce_cl}. Bylo realizováno i srovnání se současným
-stavem. K evaluaci modelů byly využity hodnotící metriky, které jsou popsány v
-sekci~\ref{subsec:ml_metriky}.
+Python ve spojení s interaktivním prostředím Jupyter Notebook. Pro tvorbu modelů
+byly využity knihovny \textit{TensorFlow} a \textit{Keras}. Trénování bylo
+akcelerováno pomocí grafické karty NVIDIA GeForce RTX 4080 s využitím
+\textit{CUDA Toolkitu}\footnote{\url{https://developer.nvidia.com/cuda-toolkit-archive}}. Pro
+účely trénování byly datasety rozděleny vždy v poměru 8:2 na trénovací a
+testovací množinu, přičemž validace probíhala během trénování využitím testovací
+množiny (resp. validační). Všechny uvedené přesnosti ve výsledcích jsou tím
+pádem validační přesnosti, nikoli trénovací. Pro trénování byl využit
+optimalizační algoritmus Adam s učící rychlostí $5 \times 10^{-4}$. Trénování
+probíhalo po dobu 100 epoch a batch size byl nastaven na 256. Pro zajištění
+rychlé konvergence optimalizátoru a co nejblíže globálnímu minimu ztrátové
+funkce, byla použita metoda žíhání (annealing) rychlosti učení (\gls{LR},
+learning rate). Aby byla zachována výhoda rychlého času výpočtu s vysokým
+\gls{LR}, byla dynamicky snižována \gls{LR} každých $x$ kroků (epoch) v
+závislosti na tom, zda je to nutné (když se nezlepšuje přesnost). Bylo také
+realizováno kombinační srovnání příznaků ve smyslu použitých biosignálů. Veškeré
+výsledky jsou uvedeny v sekci~\ref{sec:vysledky_detekce_cl}. Bylo realizováno i
+srovnání se současným stavem. K evaluaci modelů byly využity hodnotící metriky,
+které jsou popsány v sekci~\ref{subsec:ml_metriky}.

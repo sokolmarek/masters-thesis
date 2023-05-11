@@ -77,12 +77,16 @@
 \setquotestyle{czech}
 
 % Citations
-\usepackage[backend=biber,style=iso-numeric,citestyle=numeric-comp]{biblatex}
+\usepackage[backend=biber,style=iso-numeric,citestyle=numeric-comp,maxbibnames=3,minbibnames=3]{biblatex}
 \addbibresource{library.bib}
 \renewcommand*{\bibfont}{\footnotesize}
 
 % Theorems
 \newtheorem{theorem}{Teorém}[chapter]
+
+% Change memoir appendices name
+\renewcommand{\appendixpagename}{Přílohy}
+\renewcommand{\appendixtocname}{Přílohy}
 
 % Line breaks in URL
 % \def \UrlBreaks {\do\/\do\-}
@@ -207,7 +211,7 @@
 \end{titlingpage}
 
 % Insert pdf assignment
-% \includepdf{assets/assignment.pdf}
+\includepdf{assets/assignment.pdf}
 
 % Declaration
 \null\vfill
@@ -265,7 +269,8 @@ $\langle$\url{https://github.com/sokolmarek/masters-thesis}$\rangle$.
 \subsection*{\nazev:}
 \input{chapters/abstract/abstract_cs.tex}
 \subsection*{Klíčová slova}
-%#TODO: Czech keywords
+kognitivní zátěž, fyziologický signál, elektrokardiogram, dechová aktivita,
+elektrodermální aktivita, strojové učení, neuronové sítě, vesmír, analogové mise
 \clearpage
 
 \null\vfill
@@ -273,7 +278,8 @@ $\langle$\url{https://github.com/sokolmarek/masters-thesis}$\rangle$.
 \subsection*{\nazevENG:}
 \input{chapters/abstract/abstract_en.tex}
 \subsection*{Key words}
-%#TODO: English keywords
+cognitive load, physiological signal, electrocardiogram, respiratory activity,
+electrodermal activity, machine learning, neural networks, space, analog missions
 \clearpage
 
 % Numberings starts from here
@@ -336,17 +342,17 @@ $\langle$\url{https://github.com/sokolmarek/masters-thesis}$\rangle$.
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \chapterstyle{madsen}
 \setlength\beforechapskip{-\baselineskip}
-
-% \renewcommand{\refname}{Seznam použité literatury}
+\renewcommand{\bibname}{Seznam použité literatury}
 % \addcontentsline{toc}{chapter}{Seznam použité literatury}
 \printbibliography
 \clearpage
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-% Attachements
+% Appendices
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 \begin{appendices}
+	\appendixpage
 	\input{chapters/prilohy}
 \end{appendices}
 

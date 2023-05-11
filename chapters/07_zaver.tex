@@ -1,1 +1,57 @@
+V diplomové práci bylo realizována evaluace vlivu extrémního prostředí na
+projevy kognitivní zátěže v biosignálech. Byla analyzována data získaná v
+průběhu analogové vesmírné mise, studující vliv izolace na člověka. Pro účely
+analýzy byly využity popisné statistiky, vizuální metody v podobě bodových
+rozsahů nebo krabicových grafů a statistické modelování. Výsledky byly srovnány
+v rámci prostředí s vysokým a standardním atmosférickým tlakem. 
+
+Dále byl hodnocen vliv úloh navozujících zvýšenou kognitivní zátěž na
+elektrickou srdeční, dechovou a elektrodermální aktivitu společně s využitím
+časových, frekvenčních a nelineárních parametrů sledovaných signálů. Pro
+hodnocení bylo využito popisných statistik, krabicových grafů a navržené metody
+využívající metody strojového učení. Výsledky byly srovnány jak na úrovni
+posádek mateřské lodi a přistávacího modelu, tak i mezi jednotlivými subjekty.
+
+Pro účely samotného hodnocení kognitivní zátěže bylo navrženo a realizováno
+multimodální řešení ve formě kapsulární neuronové sítě. Byla navržena metodika
+pro tvorbu fyziologických příznaků jakožto vstup pro neuronovou síť. Realizované
+řešení bylo otestováno na veřejně dostupných benchmarkovacích datasetech a
+srovnáno se současným stavem. 
+
 \section{Budoucí práce}
+V rámci projektu Hydronaut jsou chystány další vesmírné analogové mise, během
+kterých bude probíhat sběr dat. Tato data budou následně využita pro budoucí
+experimenty a širší statistické analýzy. Zároveň budou sloužit pro vývoj nových
+metod, například evaluace mentálního stavu posádky, které můžou být v
+budoucnosti kritické pro úspěšné průběhy dlouhodobých vesmírných misí. Dále bude
+rozšiřována navržená metodika hodnocení kognitivní zátěže o experimenty s
+metodami předzpracování a standardizace, optimalizací hyperparametrů nebo
+augmentací dat. 
+
+Ohled bude brán také na problematiku předzpracování biosignálů, ať už z hlediska
+návrhu systematického porovnání a výběru QRS detektorů nebo realizace nových
+řešení. Jedním z takových řešení by mohlo být převzetí koncepce ze statistiky a
+strojového učení, konkrétně ansámblového učení (ensemble learning). Metody by se
+tak mohly zkombinovat. Nejdříve by se ale musely některé vyřadit, jelikož
+algoritmy jako~\cite{Tompkins1985,Christov2004} (založené na
+integraci/prahování) nejsou ve skutečnosti detektory R vln. Jedná se o techniky
+založené na detekci QRS komplexu a vedou k horšímu temporálnímu rozlišení polohy
+R vln~\cite{Porr2019}. Stěžejní v tomto přístupu je také nejednoznačnost
+kombinace výsledků metod do jednoho určitého pravděpodobnostního výroku.
+Výsledkem metod jsou totiž ve většině případech indexy detekovaných R vln v
+signálu. 
+
+Dalším směrem budoucího výzkumu bude dále návrh postupů statistického hodnocení
+experimentů v extrémním prostředí s ohledem na jejich zásadní omezení. Cestou by
+mohlo být oproštění se od frekventistického přístupu zaměřeného na testování
+hypotéz, u něhož se také vyskytuje problém s nesprávným používáním p-hodnot,
+který kriticky přispívá ke krizi
+reprodukovatelnosti~\cite{Chambers2014,Szucs2016}. Postupem let čím dál více
+panuje přesvědčení, že zobecnění Bayesovského přístupu je jedním ze způsobů, jak
+tyto problémy překonat~\cite{Benjamin2018}. Bayesovský rámec pro statistiku
+rychle získává na popularitě, a to nejen díky technologickým
+pokrokům~\cite{Winkler2001,Ferreira2020}. Mezi důvody proč toto paradigma
+upřednostnit patří například: spolehlivost, přesnost (i v případě zašuměných dat
+a malých vzorků), možnost zahrnutí předchozích znalostí a intuitivní charakter
+výsledků s jejich jednoduchou
+interpretací~\cite{Etz2016,Kruschke2012,Kruschke2010,Winkler2001}. 

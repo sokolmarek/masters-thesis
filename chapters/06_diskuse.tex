@@ -1,6 +1,344 @@
-GUGU GAGA
+Diplomová práce se zabývá hodnocením kognitivní zátěže z periferních biosignálů
+získaných v průběhu vesmírné analogové mise studující vliv izolace na člověka.
+Měřenými biosignály byly zejména elektrická srdeční, respirační a
+elektrodermální aktivita. Pro účely hodnocení kognitivní zátěže představuje tato
+práce nový multimodální přístup. Experimentální část, realizované dílčí části
+práce a jejich výsledky jsou rozebrány v této kapitole na několika úrovních.
 
-\paragraph{Analogová vesmírné mise DIANA}
-\paragraph{Předzpracování dat}
+\paragraph{Analogová vesmírná mise}
+Extrémním prostředím je v kontextu diplomové práce myšlen vesmír vzhledem k
+charakteru experimentální části práce, která je popsána v
+sekci~\ref{sec:mise_diana}. Šesti členná posádka podstoupila po dobu osmi dní
+experiment v podobě analogové vesmírné mise, která simulovala přistání na
+měsíci. Posádka byla rozdělena na dvě tříčlenné skupiny, mateřskou loď a
+přistávací modul. Členové přistávacího modulu absolvovaly experiment v
+hyperbarickém saturačním prostředí ve formě podvodní laboratoře Hydronaut H03
+DeepLab (viz sekce~\ref{subsubsec:h03_deeplab}), kde žili a plnili celodenní
+úkoly po celou dobu mise. Úkoly zahrnovaly extravehikulární aktivity,
+nepřetržitou komunikaci s mateřskou lodí a řídícím střediskem, provádění výzkumu
+a další činnosti, jež byly analogické operačním požadavkům a rizikům spojeným s
+kosmickými lety a misemi. Mise proběhla bez významných komplikací.
+
+Zpětně lze říci, že analogová mise DIANA vykazovala vysokou míru provozní a
+infrastrukturní robustnosti a použitelnosti. To plyne primárně z rozsáhlých
+zkušeností týmu projektu Hydronaut a z integrace vybraných odborníků a studentů
+do jednotlivých kompartmentů mise. Experimentu také předcházela pečlivá a včasná
+příprava technických aspektů včetně specializovaných IT systémů pro její
+podporu. Mise DIANA přinesla bohaté zkušenosti, které je třeba zvážit a zahrnout
+do budoucích experimentů. Vzhledem k tomu, že jednou z myšlenek projektu
+Hydronaut je využití výzkumného prostředí Hydronaut H03 DeepLab pro výcvik
+budoucích astronautů, přichází v úvahu srovnání s \gls{NASA} \gls{NEEMO}
+podmořskou výzkumnou laboratoří Aquarius, kde každoročně probíhají analogové
+vesmírné mise. Experiment probíhal pod režií \gls{FF UPOL} a tudíž se orientoval
+primárně na psychologický výzkum. Pro potřeby diplomové práce nebo širšího
+biomedicínského výzkumu tak nebylo experimentální nastavení příliš vhodné. To
+hlavně z hlediska nezahrnutí dostatečného sběru biomedicínských dat před a po
+experimentu samotném. Tím pádem je možná analýza pouze dat získaných v průběhu
+bez možnosti porovnání se stavem před a po saturačním ponoru. Na rozdíl ale od
+\gls{NASA} \gls{NEEMO} experimentů~\cite{koutnik2021neemo}, kde měří vybrané
+veličiny pouze v určité dny a časové úseky, byla měřena biomedicínská data každý
+den nepřetržitě. To může poskytovat jistou výhodu v náhledu do vývoje fyziologie
+v průběhu adaptace organismu na extrémní prostředí. Avšak takové kvantum
+získaných dat je na druhou stranu velmi časově náročné zpracovat a anotovat.
+Proto anotace v rámci diplomové práce nebyla realizována a pro vyhodnocení vlivu
+úloh navozujících zvýšenou kognitivní zátěž bylo postačující označení úseků, ve
+kterých byli jedinci podrobeni baterii testů (viz
+sekce~\ref{subsubsec:neuro_testy}). K anotaci budou v budoucnu včetně
+harmonogramu sloužit kamerové záznamy, které byly pořízeny v průběhu celé mise.
+Naskytuje se tak možnost využití kamerových záznamů pro tvorbu anotačních
+nástrojů, které by mohli do jisté míry automatizovat a usnadnit tento proces.
+Dále by bylo vhodné zvážit rozšíření experimentálního protokolu o měření dalších
+biomedicínských dat, která využívá v experimentech \gls{NASA} pro zkoumání
+adaptace člověka na vícedenní hyperbarickou saturaci~\cite{koutnik2021neemo}.
+Jedná se například o monitorování periferní a cerebrovaskulární hemodynamiky,
+tělesné kompozice a teploty nebo kvality spánku.
+
+V neposlední řadě je třeba poukázat na problémy se sběrem biomedicínských dat v
+průběhu mise. Umístění senzorů lze vidět v
+sekci~\ref{subsubsec:mereni_biosignalu} na Obr.~\ref{fig:sensors}. Pro měření
+elektrické srdeční aktivity byly používány nalepovací elektrody, které poměrně
+často vysychaly a bylo tak nutné dodatečně používat vodivý gel a další fixaci
+pomocí kineziologických pásek. Vhodnou alternativou by mohlo být použití
+textilních elektrod, jejichž vývoj je v posledních letech velmi dynamický.
+Zároveň přináší výhodu opakovatelného použití, mytí a biokompatibility. Některé
+studie dokonce ukazují vyšší odolnost vůči pohybovým artefaktům než je tomu tak
+u standardních Ag/AgCl elektrod~\cite{Nigusse2020,Nigusse2021}. Dále nastával
+problém s nežádoucím posunem dechového pásu, který se ale vyřešil použitím
+kšand. Měření kožní vodivosti mimo laboratorní podmínky je velmi náročné samo o
+sobě vzhledem k velké citlivosti na pohybové artefakty. Pro potřeby experimentu
+nepřicházeli běžné umístění elektrod na prsty rukou v úvahu. Bylo tak zvoleno
+alternativní místo na základě studie~\cite{Janssen2012}. Elektrody byly lepeny v
+úrovni mečovitého výběžku sterna v oblastech mezi sternální a parasternální
+čárou na levé i pravé straně. Během spánku se také stávalo, že si jedinec
+přilehl či odpojil kabely z měřícího zařízení nebo došlo k jeho vybití. Vyskytlo
+se tak dilema, zdali je vhodné jedince budit nebo přečkat do jeho probuzení.
+Veškeré tyto zkušenosti by měly být využity a zohledněny v dalších iteracích
+vývoje měřícího systému pro účely analogových vesmírných misí.
+
+\paragraph{Zpracování dat}
+Metodika, která byla aplikována pro zpracování dat z mise DIANA je popsána v
+sekci~\ref{sec:zpracovani_dat_diana}. Samotnému zpracování biosignálů předcházel
+výběr vhodné metody předzpracování signálu a detekce komponentů. To se týkalo
+především elektrické srdeční aktivity vzhledem k hojnému počtu existujících
+metod pro její zpracování. Neexistuje však žádný konsensus ohledně toho, kterou
+z nich použít nebo která je nejlepší pro danou aplikaci. Je pravděpodobné, že
+všechny mají nějaké silné a slabé stránky. Běžně se pro účely hodnocení těchto
+metod využívají datasety, ve kterých jsou expertem anotovány jednotlivé
+komponenty, v tomto případě R vlny. Hodnocení tedy logicky probíhá na základě
+odchylky detekované R vlny od referenční anotované R vlny. Poslední
+studie~\cite{Porr2019}, která se věnuje rozsáhlejšímu porovnání populárních
+metod, využívá pro hodnocení tradiční metriky, jako je senzitivita a přesnost.
+Zároveň se vyhrazuje pouze na jednu databázi, což může být zavádějící z hlediska
+generalizace. Studie~\cite{Porr2019} ve výsledku prezentuje jako nejlepší
+metodu, se kterou přišli Elgendi et al.~\cite{Elgendi2010}. V této práci bylo
+porovnání metod provedeno využitím statistického modelování v rámci několika
+datasetů (viz sekce~\ref{subsubsec:vyberqrs}). Výsledky prezentované v
+Tabulce~\ref{tab:qrs} ukazují, že nejlepších výsledků dosáhla metoda, kterou
+představili autoři Kalidas et al.~\cite{kalidas2017}. Rozdíly mohou být
+způsobeny právě použitím více databází a modelování s ohledem na jejich
+hierarchickou strukturu pomocí lineárních smíšených modelů. I přestože se jedná
+o poměrně rozsáhlý způsob srovnání, tak se postupem práce ukázalo, že výběr
+nejlepší metody takovým způsobem nemusí být úplně vhodný. To se týká především
+datasetů, které byly použity pro strojové učení (viz sekce~\ref{sec:datasety}).
+V rámci datasetu CLAS vybraná metoda předzpracování nefungovala u značného
+množství záznamů zdaleka tak dobře, jako u datasetu WESAD. To se dále
+projevovalo přeučením modelů, které zahrnovaly dataset CLAS.
+
+V návaznosti na problematiku zvolení vhodných metod pro zpracování biosignálů se
+dále vyskytl poměrně zásadní problém v rámci hodnocení kvality signálu. To úzce
+souvisí s výběrem sledovaných veličin v této práci. Představa manuální inspekce
+kvality signálů u záznamů z mise se jevila jako nereálná (8 dní záznamů), a
+proto přicházelo v úvahu tento proces do určité míry automatizovat. V rámci
+literatury se vyskytuje poměrně velké množství metod pro evaluaci kvality EKG
+signálu, a to i veřejně dostupných~\cite{Bijl2022,Satija2018}. Postup hodnocení
+uplatněný v této práci je popsán v sekci~\ref{subsec:prezpracovani_segmentu}.
+Problém však nastal u hodnocení kvality respirační a elektrodermální aktivity,
+pro jejichž hodnocení nejsou k dispozici žádné veřejně dostupné nástroje. Z
+časových důvodu nebyl ani realizován žádný vlastní nástroj. Data tohoto
+charakteru proto byla použita pouze v rámci úloh strojového učení, nikoliv pro
+část práce, která se věnuje statistické analýze spojené s hodnocením \gls{NPF}
+změn v průběhu mise.
+
 \paragraph{Analýza dat mise}
+Logistika mise a bezpečnost přirozeně omezily počet subjektů v rámci měření dat
+s analýzou a i ve schopnosti vyvozovat statisticky významné závěry. Zároveň
+pouhé zastoupení mužů omezuje extrapolaci zjištění mezi pohlavími. Ohled je
+třeba brát také na porovnání skupin, jelikož se u skupiny přistávacího modulu
+jednalo o trénované certifikované potápěče. Popis posádky mise společně s
+metodikou jejího výběru se nachází v kapitole~\ref{sec:mise_diana}. K analýze
+dat bylo včetně grafických metod, jako jsou bodové rozsahy nebo krabicové grafy,
+využito lineárních smíšených modelů (viz sekce~\ref{subsec:tvorba_modelů}).
+
+Ačkoli nelze hovořit o statisticky signifikantních rozdílech, tyto modely
+poskytují určitý pohodlný vhled do objemných dat mise. Pro odhady smíšených
+modelů má zvláštní význam to, že pro praktické účely musí existovat přiměřený
+počet úrovní náhodných efektů~\cite{Clark2015}. To je v případě experimentu s
+šesti subjekty splněno~\cite{Gomes2022}. Následně bylo možné využít odhady
+smíšených modelů k vytvoření obrazu o průběhu změn sledovaných veličin na úrovní
+dnů, skupin a i jednotlivých subjektů. Pokud se vrátíme k otázce statistické
+významnosti, je třeba si uvědomit, že je nutno se orientovat dle síly modelu
+detekovat účinek zájmu. Stejně jako v případě t-testů, kde byla prokázána
+přijatelná statistická síla v rámci extrémně malých velikostí
+vzorků~\cite{Winter2013}, je možné takových charakteristik dosáhnout i u
+\gls{LMM}~\cite{Muth2016}. To se mimo jiné odvíjí od designu samotného modelu.
+Není tedy namístě při malém počtu subjektů ihned zavrhovat významné výsledky
+modelu. V případě modelů navržených v této práci byla analyzována i jejich síla
+(viz sekce~\ref{subsec:tvorba_modelů}). Síla modelů však podle předpokladů
+vycházela v rozmezí 45--65 \%, což je pravděpodobně způsobeno jeho složitějším
+designem společně s dolní hranicí počtu smíšených efektů. V této práci nebyly
+vysloveny žádné konkrétní hypotézy, tak tomu ale nemusí být v případě budoucích
+experimentů, které se budou potýkat s podobnými omezeními. \gls{NASA} například
+u svých \gls{NEEMO} experimentů, kde se počet subjektů pohybuje kolem deseti,
+využívá tradičních metod (t-testy, korelace, ANOVA, aj.) nebo jen popisné
+statistiky~\cite{koutnik2021neemo,Chappell2013}. Zdůrazňuje i limitaci
+schopnosti vyvozovat relevantní statistické závěry na základě takových
+dat~\cite{koutnik2021neemo}. \gls{NASA} však provádí tyto experimenty pravidelně
+každý rok a zároveň má k dispozici data před a po vesmírných letech, která
+nejsou veřejnosti dostupná. Vzniká tak každopádně prostor pro návrh metodiky
+statistického \enquote{ad-hoc} hodnocení \gls{ICE} experimentů s ohledem na
+jejich stěžejní specifika.
+
+\paragraph{Srdeční a autonomní regulace}
+U subjektů Lander1, MotherShip1 a MotherShip3 nedocházelo v průběhu mise u
+hodnoty SD2 k výrazným změnám, až na třetí den kdy došlo u MotherShip1 k
+viditelnému poklesu a stejně jako poslední den u Lander1. U Lander3 došlo k
+poklesu třetí den a následně k růstu hodnoty SD2 až do konce mise. Lander4
+vykazoval růst parametru do třetího dne, po kterém SD2 také klesal do konce. V
+rámci MotherShip2 si parametr SD2 udržoval klesající trend v průběhu mise.
+Vývoje parametru SD2 prezentuje Obr.~\ref{fig:results_pointrange_sd2}. Průměrné
+hodnoty parametru SD2 pro vybrané dny jsou uvedeny v
+Tabulce~\ref{tab:daily_params}.
+
+Parametr \gls{RMSSD} nevykazoval výrazné změny oproti vývojům parametru SD2.
+Pouze u Lander1 došlo k viditelnějšímu poklesu poslední den, kterému předcházel
+vyšší vzrůst. Vývoje parametru RMSSD jsou uvedeny na
+Obr.~\ref{fig:results_pointrange_rmssd}. Průměrné hodnoty parametru RMSSD
+společně se směrodatnými odchylkami pro vybrané dny jsou uvedeny v
+Tabulce~\ref{tab:daily_params}.
+
+U pNN50 byly pozorovány výrazně stabilnější vývoje něž u předchozích metrik.
+Denní výkyvy byly u všech subjektů menší a trendy byly zachovány. Mediánové
+průběhy pNN50 lze vidět na Obr.~\ref{fig:results_pointrange_rmssd} a průměrné
+hodnoty pro první, čtvrtý a osmý den jsou uvedeny v
+Tabulce~\ref{tab:daily_params}.
+
+Proměnná HF zachovává podobný průběh s předešlými parametry pouze pro jedince
+MotherShip3. MotherShip1 a MotherShip2 vykazují klesající charakter parametru po
+prvním dnu. U Lander1 drží stabilní hodnoty kromě náhlého vzrůstu třetí den.
+Lander3 má klesající vývoj do čtvrtého dne, od kterého dochází k růstu parametru
+až do konce mise. Lander4 má stejný vývoj jako Lander3 jen klesání lze pozorovat
+až do 5 dne. Průběhy HF je možné pozorovat na
+Obr.~\ref{fig:results_pointrange_rmssd} a průměrné hodnoty parametru pro
+začátek, střed a konec mise jsou uvedeny v Tabulce~\ref{tab:daily_params}.
+
+U všech sledovaných veličin dochází průměrně napříč dny k jejich poklesu,
+přičemž jsou tyto poklesy menší u skupiny přistávacího modulu než u mateřské
+lodi (viz Tabulky~\ref{tab:lmm_rmssd_SD2} a \ref{tab:lmm_pnn50_hf}). Velikost
+rozdílů je však relativně malá. Odhady fixních efektů referovaných tabulek jsou
+vyneseny na Obr.~\ref{fig:results_lmm_coefs1} a \ref{fig:results_lmm_coefs2}.
+Vizualizace \gls{LMM} je pro SD2 a RMSSD na Obr.~\ref{fig:results_lmm_fit1}
+a.~\ref{fig:results_lmm_fit2}. Pro pNN50 a HF na Obr.~\ref{fig:results_lmm_fit3}
+a.~\ref{fig:results_lmm_fit4}.
+
+Po saturačním ponoru lze u skupiny přistávacího modulu pozorovat v rámci
+bodových rozsahů jistý trend. Například u HF má tento trend v prvních dnech
+klesající charakter a následně do konce mise je rostoucí. Nabízí se tak myšlenka
+toho, že po prvním vystavení hyperbarickému prostředí by mohlo dojít k akutní
+stresové reakci, která by způsobila snížení HF v důsledku zvýšené aktivity
+sympatiku. Následně po aklimatizaci subjektu na hyperbarické podmínky může dojít
+k obnovení nebo zvýšení HF, protože převládne parasympatický
+systém~\cite{Lafere2021,Lund1999,Lund2000,Ma2022}. Pozorované změny jsou ale
+velmi malé (nevýznamné), což díky měřítku nemusí ihned vyplývat z bodových
+rozsahů (viz
+Obr.~\ref{fig:results_pointrange_sd2}--~\ref{fig:results_pointrange_hf}).
+Vypovídají o tom spíše statistické modely v sekci~\ref{sec:vysledky_lmm}. To
+platí pro všechny parametry. Minimální výkyvy na reakci prostředí jsou v souladu
+s faktem, že se jedná o trénované potápěče. U skupiny mateřské lodi lze
+pozorovat klesající charakter sledovaných veličin v průběhu mise. Rozdíly ale
+opět nejsou významné. Vzhledem k chybějícím datům před a po experimentu nelze
+učinit další závěry o vlivu hyperbarického prostředí.
+
+Obecně byla četnými studiemi prokázaná zvýšená parasympatická a potlačená
+sympatická modulace~\cite{Lafere2021,Lund1999,Lund2000,Ma2022}. Současné
+poznatky tak v případě prostředí hyperbarické saturace vypovídají o stimulaci
+vagové modulace, snížení HR, zvýšení variability R--R intervalů a zvýšení
+HF~\cite{Goyal2023}. Další studie zároveň poukazují na zvýšení parametrů RMSSD,
+pNN50 nebo SD2~\cite{koutnik2021neemo,Lafere2021,Lund2000,Ma2022}. Zvýšená
+vagová modulace v hyperbarickém prostředí je přisuzována jak zvýšenému obsahu
+$\text{O}_2$, tak zvýšenému tlaku (nezávisle na
+$\text{O}_2$)~\cite{koutnik2021neemo,Lund1999}. Mechanismy pro tuto vagovou
+odezvu jsou připisovány vagové aktivitě kompenzující nedostatek kyslíku,
+vazokonstrikci (baroreflex), zvýšenou srdeční účinností v důsledku vystavení
+zvýšenému $\text{PPO}_2$ v srdeční tkáni, prodloužením Q--T intervalu nebo
+inhibicí karotického chemoreflexu~\cite{koutnik2021neemo,Goyal2023,Paula2019}.
+Otázkou zůstává, zdali je možné vlivem hyperbarického prostředí
+\enquote{saturovat} HRV parametry, které se běžně využívají k hodnocení
+kognitivní zátěže, a učinit tak jejich interpretaci pro tuto úlohu stěžejní.
+
+\paragraph{Neuropsychofyziologická regulace}
+Během vesmírné analogové mise DIANA podstoupil každý subjekt dvě až tří sezení,
+během kterých byl podroben baterii kognitivních testů (viz
+sekce~\ref{subsubsec:neuro_testy}). Vypočtené sledované veličiny pro jednotlivá
+sezení jsou pro každého člena posádky vyneseny na
+Obr.~\ref{fig:results_boxplot_SD2_tests} až \ref{fig:results_boxplot_hf_tests} v
+podobě krabicových grafů. Průměrné hodnoty parametrů pro každé sezení jsou
+uvedeny v Tabulce~\ref{tab:tests_params_lander}
+a~\ref{tab:tests_params_mothership}. U subjektů Lander3 a MotherShip1 lze každé
+sezení sledovat vzrůstající trend parametrů SD2, RMSSD a pNN50. Pouze u HF
+klesající. Studie~\cite{Castaldo2019,Pham2021,Ishaque2021} uvádí, že v reakci na
+kognitivní zátěž dochází ke snížení sledovaných parametrů. To vyplývá také z
+modelu neuroviscerální integrace, jež je popsán v
+sekci~\ref{sec:neurovisceralni_integrace}. U těchto subjektů je tedy možné
+usuzovat zlepšení kognitivní výkonnosti v průběhu mise. To však není v souladu s
+průběhem složky HF, která podle~\cite{Forte2019} vypovídá o adaptaci jedince na
+měnící se požadavky prostředí. Její redukce by mohla naznačovat nedostatečnou
+schopnost jedince flexibilně reagovat na enviromentální nároky a tedy vypovídat
+o jistém konfliktu na úrovni kognitivní regulace v rámci \gls{ICE}
+prostředí~\cite{Forte2019,Ayres2021}. Naopak u subjektů MotherShip2 a
+MotherShip3 bylo pozorováno snížení všech parametrů mezi sezeními, a tudíž by
+šlo hovořit o zhoršení kognitivní výkonnosti v průběhu mise. U subjektů Lander1
+a Lander4 dochází k minimálním změnám, které naznačují, že ke zlepšení došlo
+pouze u prostředního sezení (časově uprostřed mise). Sledované veličiny,
+variabilita srdečního rytmu a její regulace byly popsány v
+kapitole~\ref{sec:hrv}.	
+
+Při vyhodnocení vlivu úloh navozujících zvýšenou kognitivní zátěž pomocí
+sledovaných veličin, neboli časových, frekvenčních a nelineárních parametrů,
+nastává však zásadní problém z hlediska interpretace. Jak již bylo řečeno v
+úvodu práce, veškeré kognitivní funkce se promítají do fyziologie člověka.
+Sekce~\ref{subsec:hrv_indices} poukazuje na pragmatické problémy, jako je
+nejasnost asociace HRV ukazatelů s fyziologickými mechanismy nebo podobnosti a
+překryvy mezi množstvím z těchto metrik. Další otázkou je, zdali při dlouhodobém
+pobytu lidského organismu ve vesmíru lze z hlediska smyslu a podstaty
+předpokládat stálost těchto parametrů pro účely hodnocení \gls{CL}. V ideálním
+případě by bylo vhodné realizovat systematické porovnání vypočtených parametrů
+pro každého jedince a inkorporovat metody, například z oborů analýzy dat genové
+exprese, které se zabývají klasifikací velkého souboru objektů podle přirozených
+vztahů. Jednou z takových metod je konsenzuální shlukování~\cite{Monti2003},
+které vychází z představy, že provedení nekonečného počtu shlukovacích algoritmů
+odhalí \enquote{skutečné} shluky. V rámci aplikace této metody na soubor
+fyziologických parametrů by bylo následně možné z pravděpodobnostní perspektivy
+nahlédnout nejen na asociace a vztahy mezi jednotlivými parametry, ale také na
+jejich fyziologický smysl. Na druhou stranu se jedná o poměrně časově a datově
+náročné řešení včetně nezbytnosti zahrnutí \gls{NVI} modelu.
+
 \paragraph{Hodnocení kognitivní zátěže}
+Pro potřeby této práce byl navržen nový multimodální přístup k hodnocení
+kognitivní zátěže z periferních biosignálu pojmenovaný \textit{Hodnocení
+kognitivní zátěže využitím vícerozměrných časoprostorových kauzálních vzorů}.
+Metoda je popsána v samostatné kapitole~\ref{sec:hybridni_detekce}. Celkem bylo
+natrénováno $3 \times 6$ modelů na datasetech, jejichž popis je uveden v
+sekci~\ref{sec:datasety}. Bylo experimentováno i s augmentací dat
+(viz~\ref{subsec:augmentace_dat}). Výsledky trénování na datasetu WESAD jsou
+uvedeny v sekci~\ref{subsec:wesad_models}. Největší validační přesnost 98,25 \%
+byla dosažena u augmentovaného modelu WESAD-5s50 (viz
+Tabulka~\ref{tab:wesad_eval}). Natrénované modely pro dataset CLAS jsou
+prezentovány v sekci~\ref{subsec:clas_models}, přičemž nejvyšší testovací
+přesnosti 99,5 \% dosáhl augmentovaný model CLAS-5s50 (viz
+Tabulka~\ref{tab:clas_eval}). Poslední sada modelů byla natrénována na
+sjednocených datasetech WESAD a CLAS. Tyto modely byly pojmenovány jako
+\enquote{Merged} a jejich výsledky se nacházejí v sekci
+\ref{subsec:merged_models}. Nejvyšší přesnosti 99,55 \% dosáhl augmentovaný
+model Merged-5s50 (viz Tabulka~\ref{tab:merged}). 
+
+Natrénované modely byly následně otestovány na datech z mise DIANA. Došlo k
+zjištění, že u modelu CLAS (tedy i Merged) došlo do jisté míry pravděpodobně k
+přeučení vzhledem ke špatné generalizaci. To je přisuzováno především nevhodnému
+předzpracování biosignálu, jak již vyplývá z dřívější části diskuze. Pro
+testovací účely byl tedy primárně zvolen model WESAD-5s. Výsledek testování lze
+vidět v sekci~\ref{subsec:ml_diana_data_test} na Obr.~\ref{fig:hydro_test}. V
+případě tohoto výsledku jsou zájmem primárně vzniklé trendy, které mají v drtivé
+většině případů inverzní charakter v porovnání s výsledky \gls{NPF} stimulace
+(modré čárkované trendy na
+Obr.~\ref{fig:results_boxplot_SD2_tests}--~\ref{fig:results_boxplot_hf_tests}).
+To je v souladu s očekáváním a tvrzeními o vlivu úloh navozujících zvýšenou
+kognitivní zátěž během mise v předešlých odstavcích. Osa $y$ ale v této podobě
+není příliš intuitivní. Proto byl vytvořen Obr.~\ref{fig:hydro_test_bar}, který
+prezentuje relativní četnosti výskytu pravděpodobností \gls{CL} vyšších než
+50~\% pro jednotlivá sezení. Zde je již patrnější, během kterých sezení a v jaké
+míře byla zaznamenána kognitivní zátěž. Pro další a podrobnější testování
+generalizace je však nutné data detailněji anotovat. Protože byly cílem primárně
+5s modely, je nutné v budoucích experimentech otestovat například i realizované
+1s modely. Předběžné testy nevykazovaly přeučení 1s modelů (WESAD), což by mohlo
+znamenat, že lze \gls{CL} hodnotit pouze z morfologického hlediska. Vzhledem k
+charakteru tvorby příznaků z biosignálu lze také předpokládat vysokou citlivost
+na šum a artefakty (viz sekce~\ref{sec:hybridni_detekce}). Je třeba dále
+poznamenat, že se jedná o pouhé \enquote{beta} testy a modely, vzhledem k tomu,
+že nebyla věnována pozornost širší optimalizaci. I přes tento fakt bylo ve
+srovnání se současným stavem dosaženo velmi dobrých výsledků v rámci
+benchmarkovacích datasetů, což naznačuje, že navržené řešení je efektivnější a
+flexibilnější. Srovnání je uvedeno v Tabulce~\ref{tab:state_comparison}.
+
+Velka část současných řešení využívá přístupy strojového učení založené na učení
+s učitelem nebo hlubokém učení (viz
+kapitola~\ref{sec:machine_learning})~\cite{Ishaque2021}. V případě technik učení
+s učitelem lze hovořit o takzvaných \enquote{data-driven} metodách, protože k
+hodnocení kognitivní zátěže využívají \gls{HRV} parametry. To přináší omezení
+například v podobě délky časového úseku, které parametry potřebují pro svůj
+výpočet. Zároveň všechny tyto přístupy nezohledňují příčinné souvislosti mezi
+použitými příznaky. To činí interpretaci výsledků složitou, a proto jsou
+přístupy poměrně omezené při dalším zkoumání kauzálních vztahů mezi příznaky.
+Obvykle také tyto modely využívají po natrénování desítky milionů extrahovaných
+parametrů pro účely predikce. Realizované řešení se díky kapsulární neuronové
+síti dostává na řád tisíců. Přichází tak v úvahu i myšlenka embedded aplikací.
+Navržená metodika je detailně rozebrána v kapitole~\ref{sec:hybridni_detekce}.

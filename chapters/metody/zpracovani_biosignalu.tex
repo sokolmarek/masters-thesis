@@ -3,10 +3,11 @@
 Pro zpracování EKG záznamů byla implementována metoda podle Kalidase a
 Tamila~\cite{kalidas2017}, která je založena na stacionární vlnkové transformaci
 (\gls{SWT}). Metoda vychází z populárního Pan-Tompkinsova~\cite{Tompkins1985}
-algoritmu ale pro odstranění šumu a zvýraznění QRS komplexů používá \gls{SWT}
-namísto pásmové propusti. Stacionární vlnková transformace je metoda rozkladu
-signálu na jednotlivá frekvenční pásma pomocí mateřské vlnky~\cite{Nason1995}.
-Metoda byla zvolena na základě následující sekce~\ref{subsubsec:vyberqrs}.
+algoritmu, nicméně pro odstranění šumu a zvýraznění QRS komplexů používá
+\gls{SWT} namísto pásmové propusti. Stacionární vlnková transformace je metoda
+rozkladu signálu na jednotlivá frekvenční pásma pomocí mateřské
+vlnky~\cite{Nason1995}. Metoda byla zvolena na základě následující
+sekce~\ref{subsubsec:vyberqrs}.
 
 \begin{figure}[H]
     \begin{center}
@@ -21,22 +22,21 @@ Metoda byla zvolena na základě následující sekce~\ref{subsubsec:vyberqrs}.
 \end{figure}
 
 V tomto algoritmu se stacionární vlnková transformace provádí na EKG signálu
-využitím Daubechiesové vlnky třetího řádu. Po provedení \gls{SWT} se extrahují
-koeficienty, které se následně vyčíslí na čtverec. Následně je využito filtrace
-pásmovou propustí ke zvýšení citlivosti a přesnosti detekce. Postup detekce R
-vln na filtrovaném signálu je pak totožná s detekcí Pan-Tompkinsova
-algoritmu~\cite{Tompkins1985}. Jednotlivé částí zpracování lze vidět na
-Obr.~\ref{fig:kalidas_processing}.
+využitím vlnky rodiny Daubechies třetího řádu. Po provedení \gls{SWT} se
+extrahují koeficienty, které se následně umocní. Následně je využito filtrace
+pásmovou propustí (Butterworthův filtr) ke zvýšení citlivosti a přesnosti
+detekce. Postup detekce R vln na filtrovaném signálu je pak totožná s detekcí
+Pan-Tompkinsova algoritmu~\cite{Tompkins1985}. Jednotlivé části zpracování lze
+vidět na Obr.~\ref{fig:kalidas_processing}.
 
 \subsubsection{Metodika výběru QRS detektoru}
 \label{subsubsec:vyberqrs}
 Vzhledem k tomu, že neexistuje žádný jednotný standard či systematický postup
 pro zpracování EKG a výběr \enquote{správného} QRS detektoru pro určitou
-aplikaci, tak bylo v rámci této práce realizováno statistické porovnání
-populárních algoritmů. Jakožto měřítko přesnosti QRS detekce algoritmu bylo
-vycházeno z výpočtu absolutní vzdálenosti od původní \enquote{skutečné} polohy R
-vlny. Pro benchmarking detektorů byly tedy použity následující anotované
-datasety:
+aplikaci, bylo v rámci této práce realizováno statistické porovnání populárních
+algoritmů. Měřítko přesnosti QRS detekce algoritmu vycházelo z výpočtu absolutní
+vzdálenosti od původní \enquote{skutečné} polohy R vlny. Pro benchmarking
+detektorů byly použity následující anotované datasety:
 
 \begin{table}[h]
     % \footnotesize
@@ -59,7 +59,7 @@ datasety:
     \end{center}
 \end{table}
 
-Byly vybrány různorodé datasety za účelem zjištění adaptability algoritmu. Pro
+Za účelem zjištění adaptability byly vybrány různorodé datasety algoritmu. Pro
 statistické zpracování bylo využito lineárních smíšených modelů (\gls{LMM}).
 Použité statistické metody jsou podrobněji popsány v
 kapitole~\ref{sec:statisticke_metody}. Pro srovnání metod byl v programovacím
@@ -77,12 +77,12 @@ pozornost, jelikož není předmětem této práce.
 \label{subsec:zpracovani_rsp}
 Pro zpracování respirační aktivity byl implementován
 algoritmus~\cite{Khodadad2018}, který je založen na průchodech nulou (\gls{ZC},
-Zero-Crossing). Originální signál je nejdříve filtrován pásmovou propustí pro
-odstranění stejnosměrné složky, aby bylo možné spolehlivě detekovat \gls{ZC}. K
-tomu byla využita pásmová propust 0,05--3~Hz , která zároveň zachovává dechové
-frekvence menší než tři a vyšší než 180 dechů za minutu. Následně jsou pomocí
-logických operací detekovány indexy náběžných a sestupných průchodů nulou, mezi
-kterými došlo k hledání lokálních extrémů.
+Zero-Crossing). Originální signál je nejdříve filtrován pásmovou propustí
+0,05--3~Hz pro odstranění stejnosměrné složky a vyšších nežádoucích frekvencí
+tak, aby bylo možné spolehlivě detekovat \gls{ZC}. Tím jsou zachovány dechové
+frekvence menší než tři a vyšší než 180 dechů za minutu. Následně jsou
+detekovány indexy náběžných a sestupných průchodů nulou, mezi kterými došlo k
+hledání lokálních extrémů.
 
 \begin{figure}[h]
     \begin{center}
@@ -94,8 +94,10 @@ kterými došlo k hledání lokálních extrémů.
 
 Zachovány jsou ve výsledku pouze ty extrémy, které mají minimální vertikální
 vzdálenost od svého přímého souseda, tudíž kritérium pro detekci odlehlých
-hodnot bylo definováno v absolutním rozdílu amplitud mezi sousedními extrémy.
-Aplikace metody na reálném signálu lze vidět na Obrázku~\ref{fig:rsp_test}.
+hodnot bylo definováno v absolutním rozdílu amplitud mezi sousedními extrémy. V
+rámci dechové frekvence jsou mezi jednotlivými nádechy interpolovány data
+využita monotónní kubické interpolace. Aplikace metody na reálném signálu lze
+vidět na Obrázku~\ref{fig:rsp_test}.
 
 \subsection{Zpracování elektrodermální aktivity}
 \label{subsec:zpracovani_eda}
@@ -113,17 +115,17 @@ tonická složka pomocí dolní a horní propusti o mezních frekvencích 0,05~\
 \end{figure}
 
 Dále byl použit Savitzky-Golayův frekvenčně neselektivní filtr k dalšímu
-vyhlazení fázické složky za účelem hledání \gls{SCR} vrcholků. K detekti
+vyhlazení fázické složky za účelem hledání \gls{SCR} vrcholků. K detekci
 vrcholků byla využita funkce \texttt{find\_peaks()} z knihovny
 Scipy\footnote{\url{https://docs.scipy.org}}. Kritérium pro detekci vrcholků
-bylo definováno jako konzistentní nárůst o 0,5s následovaný stejným poklesem.
+bylo definováno jako monotónní nárůst o 0,5s následovaný stejným poklesem.
 Výsledek aplikované metody lze vidět na Obrázku~\ref{fig:eda_test}.
 
 \subsection*{Neurokit}
 \label{subsec:neurokit}
 Knihovna \textit{Neurokit2}, na jejíž vývoji se
-podílím\footnote{\url{https://neuropsychology.github.io/NeuroKit/authors.html}}, poskytuje
-pokročilé metody pro zpracování a vizualizaci biosignálu. Jednotlivé metody
-zároveň nabízejí možnost si vybrat z mnoha implementovaných algoritmů. V této
-práci byla knihovna použita pro zpracování respirační, elektrodermální a
-elektrické srdeční aktivity včetně zpracování a výpočet \gls{HRV} parametrů.
+podílím\footnote{\url{https://neuropsychology.github.io/NeuroKit/authors.html}},
+poskytuje pokročilé metody pro zpracování a vizualizaci biosignálu. Jednotlivé
+metody zároveň nabízejí možnost si vybrat z mnoha implementovaných algoritmů. V
+této práci byla knihovna použita pro zpracování respirační, elektrodermální a
+elektrické srdeční aktivity včetně zpracování a výpočtu \gls{HRV} parametrů.

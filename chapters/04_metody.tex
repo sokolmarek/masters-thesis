@@ -29,37 +29,39 @@ Python, využitím knihovny \textit{Neurokit2} (viz sekce~\ref{subsec:neurokit})
 \input{chapters/metody/zpracovani_biosignalu}
 
 \section{Zpracování a analýza dat z mise DIANA}
+\label{sec:zpracovani_dat_diana}
 V následující sekci je popsána metodika zpracování a analýzy dat z vesmírné
 analogové mise DIANA. Data z mise byla poskytnuta v podobě komprimovaného
 záložního souboru obsahující snímek databáze InfluxDB (viz
 sekce~\ref{subsec:influx}). Tento snímek byl použit pro obnovu databáze, která
-obsahovala veškeré data s časovými značkami. Pro export a práci s daty byla
+obsahovala veškerá data s časovými značkami. Pro export a práci s daty byla
 využita Python knihovna
 \textit{InfluxDB-Python}\footnote{\url{https://github.com/influxdata/influxdb-python}},
 jež poskytuje rozhraní mezi InfluxDB a programovacím jazykem Python. 
-\label{sec:zpracovani_dat_diana}
 \input{chapters/metody/zpracovani_dat_diana}
 
 \section{Explorační analýza a předzpracování datasetů}
 \label{sec:exploracni_analyza}
-V této sekci je rozebrán proces zpracování a zkoumání souborů dat, konkrétně
-datasetů CLAS a WESAD, jehož cílem bylo identifikovat vzorce, vztahy a trendy,
-které nemusí být okamžitě zřejmé. Cílem explorační analýzy bylo získat poznatky
-a vytvořit hypotézy o datech, které napomáhali při tvorbě paradigmatu hodnocení \gls{CL}.
+V této sekci je rozebrán proces zpracování a zkoumání souborů dat (CLAS a
+WESAD), jehož cílem bylo identifikovat vzorce, vztahy a trendy, které nemusí být
+okamžitě zřejmé. Cílem explorační analýzy bylo získat poznatky a vytvořit
+hypotézy o datech, které napomáhaly při tvorbě paradigmatu hodnocení \gls{CL}.
 \input{chapters/metody/exploracni_analyza}
 
-\section{Hodnocení CL využitím vícerozměrných časoprostorových kauzálních vzorů}
+\section[Hodnocení kognitivní zátěže využitím vícerozměrných \\ časoprostorových kauzálních vzorů][Hodnocení CL využitím vícerozměrných časoprostorových kauzálních vzorů]{Hodnocení CL využitím vícerozměrných časoprostorových kauzálních vzorů}
 \label{sec:hybridni_detekce}
-V této podkapitole je popsán postup realizace multimodálního přístupu pro
-hodnocení kognitivní zátěže pomocí periferních biosignálů (\gls{EKG}, \gls{RSP},
-\gls{EDA}), které bylo vytvořeného v rámci této diplomové práce.
+V této podkapitole je popsán postup návrhu a realizace multimodálního přístupu
+pro hodnocení kognitivní zátěže pomocí periferních biosignálů, konkrétně
+využitím elektrické srdeční, respirační a elektrodermální aktivity, které bylo
+vytvořeno v rámci diplomové práce. První část se věnuje primárně tvorbě
+fyziologických příznaků. Druhá část podkapitoly popisuje kapsulární neuronovou
+síť, jejíž vstupem jsou právě vytvořené fyziologické příznaky.
 \input{chapters/metody/hybridni_detekce}
 
 \section{Statistické metody}
 \label{sec:statisticke_metody}
-V této sekci jsou stručně popsány statistické metody použité pro účely této
-práce. Zvolení a vhodnost konkrétních metod pro účely hodnocení kognitivní
-zátěže je rozebráno v samotné diskuzi.
+V této sekci jsou stručně rozebrány statistické metody použité v této práci pro
+účely analýzy dat a hodnocení kognitivní zátěže.
 \input{chapters/metody/statisticke_metody}
 
 % \section{}

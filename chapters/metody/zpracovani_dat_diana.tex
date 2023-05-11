@@ -11,12 +11,12 @@ U každého segmentu proběhlo hodnocení jeho kvality podle dvou kritérií:
       \item Hodnocení detekovaných R vln z hlediska časové kontroly náhlých
             nefyziologických změn v po sobě jdoucích R-R intervalech.
 \end{itemize}
-Segmenty které vykazovali nežádoucí anomálie v rámci hodnotících kritérií byly
-vyřazeny. Ze segmentů bylo dále vypočteno následně přes 100 různých parametrů
-pro účely analýzy dat. Mezi tyto parametry patřily například běžné statistické
-charakteristiky (průměr, medián, směrodatná odchylka a další) nebo nelineární a
-časové \gls{HRV} parametry. Dále byly identifikovány a označeny v časech
-kognitivních testů. Z časových důvodu nebyly pro účely této práce ostatní
+Segmenty, které vykazovali nežádoucí anomálie v rámci hodnotících kritérií, byly
+vyřazeny. Ze segmentů bylo dále vypočteno přes 100 různých parametrů pro účely
+analýzy dat. Mezi tyto parametry patřily například běžné statistické
+charakteristiky (průměr, medián, směrodatná odchylka a další), nelineární a
+časové \gls{HRV} parametry. Dále byly identifikovány a označeny úseky v časech
+kognitivních testů. Z časových důvodů nebyly pro účely této práce ostatní
 aktivity během mise anotovány, i přes dostupnost kamerových záznamů. Seznam
 všech počítaných parametrů je součástí přílohy v souboru
 \texttt{all\_params.csv}. 
@@ -25,8 +25,9 @@ všech počítaných parametrů je součástí přílohy v souboru
 \label{subsec:cisteni_dat}
 Ze souborů vypočtených parametrů byly vynechány všechny parametry, jejichž
 sloupce obsahovali \texttt{NaN} hodnoty. Dále byly parametry korelovány a
-odstranili se ty, které byly vzájemně dokonale korelované ($|r| > 0,999$). Poté
-se odstranili odlehlé hodnoty na základě absolutní odchylky mediánu od mediánu.
+odstranily se ty, které byly vzájemně dokonale korelované ($|r| > 0,999$). Poté
+se odstranily odlehlé hodnoty na základě absolutní odchylky mediánu (MAD) od
+mediánu.
 
 \subsection{Sledované veličiny}
 \label{subsec:sledovane_veliciny}
@@ -43,11 +44,13 @@ základě~\cite{Pereira2017,Shaffer2017} vybrány a sledovány především nás
       \item \textbf{HF} --- Vysokofrekvenční složka výkonu variability srdeční
             frekvence.
 \end{itemize}
+Průběhy jednotlivých sledovaných veličin během analogové vesmírné mise DIANA
+jsou vizualizovány na Obr.~\ref{fig:params_example}.
 
 \begin{figure}[H]
       \begin{center}
             \includegraphics[width=1\linewidth]{figures/stats/hourly_params.pdf}
-            \caption{Příklad průběhu sledovaných veličin během týdne. Jedná se o
+            \caption{Příklad průběhu sledovaných veličin během mise. Jedná se o
              agregované hodnoty mediánem za každých 10 minut. Data jsou
              proložena využitím loess regrese ($\alpha = 0,01$).}
             \label{fig:params_example}
@@ -61,13 +64,13 @@ jejich analýzy namísto statistických testů a dalších nástrojů použity z
 vizuální metody. Pro zobrazení denního vývoje v rámci sledovaných parametrů byly
 vypočtené parametry agregovány mediánem na úrovní hodin i dnů. Vizualizace byla
 v tomto případě spojena i s výsledky statistického modelování popsaného v
-následující sekci. Pro účely vizuální analýzy byly použity také krabicové grafy.
+následující sekci. Pro účely vizuální analýzy byly použity krabicové grafy.
 
 Dále byly identifikovány, exportovány a vizualizovány segmenty biosignálů v
 časech, kdy subjekt vykonával \gls{NPF} baterii testů. Segmenty byly
-vizualizovány taktéž využitím krabicových grafů. Výsledky v rámci vizuálních
-analýz se nacházejí v sekci~\ref{sec:vysledky_vizual} a dále jsou probírány v
-samotné diskuzi.
+vizualizovány využitím krabicových grafů. Výsledky v rámci vizuálních analýz se
+nacházejí v sekci~\ref{sec:vysledky_vizual} a dále jsou probírány v samotné
+diskuzi.
 
 \subsection{Statistické modelování}
 \label{subsec:tvorba_modelů}
@@ -87,7 +90,13 @@ modelování vlivu \enquote{dne} a \enquote{skupiny} model zohledňuje také
 případnou interakci mezi nimi. Jinými slovy, model počítá s možností, že vliv
 \enquote{dne} na proměnnou odezvy (závislou proměnnou) se může lišit v
 závislosti na úrovni \enquote{skupiny}. Zároveň díky zvoleným náhodným efektům
-je dovoleno individuálním rozdílům u každého subjektu na úrovni dnů.
+je v rámci dnů dovoleno individuálním rozdílům na úrovni subjektů. V případě
+všech navržených modelů byla také analyzována i jejich síla. Jelikož bývá
+obtížné přesně určit sílu smíšeného modelu pomocí tradičních statistických
+metod, byla zvolena simulace, která je často účinnějším a preferovanějším
+přístupem~\cite{Green2016}. Konkrétně byla zvolena Monte Carlo simulace pro svou
+flexibilitu a přesnost~\cite{Bolker2008,Johnson2015}. Simulace je součástí
+přílohy v podobě skriptu s názvem \texttt{MC\_Simulation.R}.
 
 Výsledky modelování jsou uvedeny v sekci~\ref{sec:vysledky_lmm} a rozebrány v
 diskuzi. Modelování bylo realizováno v programovém jazyce R. Vzhledem k tomu, že
