@@ -1,8 +1,44 @@
-% % Symbols
-% \glsxtrnewsymbol[description={the set containing no elements},unit={\si{m}}]{emptyset}{\ensuremath{\emptyset}}
-% \glsxtrnewsymbol[description={the set no elements},unit={\si{m}}]{empty}{\ensuremath{\emptyset}}
+%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%! Symbols
+%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\glsxtrnewsymbol[description={Mapovací funkce},symbol={}]{h}{\ensuremath{h}}
+\glsxtrnewsymbol[description={$d$-rozměrný příznakový prostor},symbol={}]{R}{\ensuremath{\mathbb{R}^d}}
+\glsxtrnewsymbol[description={Prostor všech možných tříd},symbol={}]{C}{\ensuremath{\mathcal{C}}}
+\glsxtrnewsymbol[description={Neznámé rozdělení},symbol={}]{P}{\ensuremath{\mathcal{P}}}
+\glsxtrnewsymbol[description={Prostor hypotéz},symbol={}]{H}{\ensuremath{\mathcal{H}}}
+\glsxtrnewsymbol[description={Ztrátová funkce},symbol={}]{L}{\ensuremath{\mathcal{L}}}
+\glsxtrnewsymbol[description={Rychlost učení},symbol={}]{gamma}{\ensuremath{\gamma}}
 
-% Acronyms
+\glsxtrnewsymbol[description={Gradient ztrátové funkce},symbol={}]{Ld}{\ensuremath{\nabla\mathcal{L}}}
+\glsxtrnewsymbol[description={Intercept},symbol={}]{B0}{\ensuremath{\beta_0}}
+\glsxtrnewsymbol[description={Vektor koeficientů},symbol={}]{Bi}{\ensuremath{\beta_i}}
+\glsxtrnewsymbol[description={Náhodný efekt},symbol={}]{u}{\ensuremath{u}}
+\glsxtrnewsymbol[description={Člen reziduální chyby},symbol={}]{epsilon}{\ensuremath{\epsilon}}
+
+\glsxtrnewsymbol[description={Multidimenzionální množina segmentovaných fyziologických signálů},symbol={}]{F}{\ensuremath{\mathcal{F}}}
+\glsxtrnewsymbol[description={Počet snímaných signálů},symbol={}]{c}{\ensuremath{c}}
+\glsxtrnewsymbol[description={Orientovaný graf},symbol={}]{G}{\ensuremath{G}}
+\glsxtrnewsymbol[description={Množina vrcholů},symbol={}]{V}{\ensuremath{V}}
+\glsxtrnewsymbol[description={Množina hran},symbol={}]{E}{\ensuremath{E}}
+\glsxtrnewsymbol[description={Hyperparametr},symbol={}]{lambda}{\ensuremath{\lambda}}
+\glsxtrnewsymbol[description={Maximální časové zpoždění},symbol={}]{lag}{\ensuremath{L}}
+\glsxtrnewsymbol[description={Gaussova funkce},symbol={}]{Gauss}{\ensuremath{p_{\mathcal{N}}}}
+\glsxtrnewsymbol[description={Střední hodnota},symbol={}]{mu}{\ensuremath{\mu}}
+\glsxtrnewsymbol[description={Rozptyl},symbol={}]{sigma}{\ensuremath{\sigma^2}}
+\glsxtrnewsymbol[description={Empirické marginální rozdělení},symbol={}]{Fi}{\ensuremath{\hat{F_i}}}
+\glsxtrnewsymbol[description={Kumulativní distribuční funkce Gaussova rozdělení},symbol={}]{phi}{\ensuremath{\Phi}}
+\glsxtrnewsymbol[description={Vektor odhadů koeficientů},symbol={}]{Bh}{\ensuremath{\hat{\beta}_i}}
+\glsxtrnewsymbol[description={Úhlová složka},symbol={}]{phiuhel}{\ensuremath{\phi_i}}
+\glsxtrnewsymbol[description={Radiální složka},symbol={}]{r}{\ensuremath{r_i}}
+\glsxtrnewsymbol[description={Konstantní faktor pro regulaci rozpětí polárního souřadného systému},symbol={}]{N}{\ensuremath{N}}
+\glsxtrnewsymbol[description={Výška},symbol={}]{Hvyska}{\ensuremath{H}}
+\glsxtrnewsymbol[description={Šířka},symbol={}]{Wsirka}{\ensuremath{W}}
+\glsxtrnewsymbol[description={Inverzní kumulativní distribuční funkce Gaussova rozdělení},symbol={}]{Phi1}{\ensuremath{\Phi^{-1}}}
+\glsxtrnewsymbol[description={Vícerozměrná distribuční funkce},symbol={}]{Fc}{\ensuremath{F}}
+
+%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%! Acronyms
+%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newacronym{HRV}{HRV}{Variabilita srdeční frekvence (Heart rate variability)}
 \newacronym{NPF}{NPF}{Neuropsychofyziologie}
 \newacronym{CL}{CL}{Kognitivní zátěž (Cognitive load)}
@@ -30,7 +66,7 @@
 \newacronym{SCL}{SCL}{Úroveň kožní vodivosti (Skin conductance level)}
 \newacronym{SCR}{SCR}{Odezva kožní vodivosti (Skin conductance response)}
 \newacronym{RMSSD}{RMSSD}{Odmocnina průměru umocněných rozdílů po sobě jdoucích N--N intervalů (Root mean square of the successive differences)}
-\newacronym{pNN50}{pNN50}{Poměr NN500 k počtu všech N--N intervalů (Proportion of NN500 divided by the total number of N--N)}
+\newacronym{pNN50}{pNN50}{Poměr NN50 k počtu všech N--N intervalů (Proportion of NN50 divided by the total number of N--N)}
 \newacronym{NN50}{NN50}{Počet párů sousedních N--N intervalů, které se od sebe liší o více než 50ms (Number of times successive heartbeat intervals exceed 50ms)}
 \newacronym{PCA}{PCA}{Analýza hlavních komponent (Principal component analysis)}
 \newacronym{UMAP}{UMAP}{Uniform Manifold Approximation and Projection}
@@ -76,7 +112,6 @@
 \newacronym{VAR}{VAR}{Model vektorové autoregrese (Vector autoregressive model)}
 \newacronym{CDF}{CDF}{Kumulativní distribuční funkce (Cumulative distribution function)}
 \newacronym{AIC}{AIC}{Akaikeho informační kritérium (Akaike information criterion)}
-\newacronym{Lasso}{Lasso}{Least absolute shrinkage and selection operator}
 \newacronym{ROC}{ROC}{Receiver operating characteristic curve}
 \newacronym{AUC}{AUC}{Plocha pod křivkou (Area under the curve)}
 \newacronym{TPR}{TPR}{Pravdivě pozitivní míra (True positive rate)}

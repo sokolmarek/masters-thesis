@@ -52,7 +52,7 @@ shlukování (\gls{DBSCAN}), k-means nebo hierarchické shlukování.
 
 \begin{figure}[!htb]
     \begin{center}
-        \begin{tikzpicture}[board/.style={minimum width=6em,minimum height=1em,
+        \begin{tikzpicture}[board/.style={minimum width=5em,minimum height=1em,
                         draw,fill=gray!20,path picture={
                                 \foreach \XX in {0,...,5}
                                     {\ifnum\XX>0
@@ -96,7 +96,7 @@ shlukování (\gls{DBSCAN}), k-means nebo hierarchické shlukování.
                 \end{tabular}
                 \nodepart{lower}
                 \begin{tabular}{@{}c@{}}
-                    \textbf{Vybraný algortimus} \\
+                    \textbf{Vybraný algoritmus} \\
                     \textbf{strojového učení}
                 \end{tabular}};
             \node[below=2em of 2ell,regular polygon,regular polygon
@@ -279,7 +279,7 @@ hyperparametr a pro každou kombinaci vyhodnocuje ztrátovou funkci modelu. Za
 optimální je považována konfigurace s nejnižší validační ztrátou. Počet
 vyhodnocení však rychle roste s počtem hyperparametrů, tudíž je tato metoda
 vhodná pouze pro jednoduché modely, u nichž není trénování a hodnocení
-výpočetně náročené~\cite{Liashchynskyi2019}.
+výpočetně náročné~\cite{Liashchynskyi2019}.
 
 Alternativou k mřížkovému vyhledávání je náhodné vyhledávání (anglicky Random
 Search Method). Namísto úplného vyhodnocení všech kombinací jako v předešlé
@@ -431,7 +431,7 @@ aktualizaci vah GD popsat následovně:
     w_{t+1} = w_t - \gamma \nabla L(w_t)
 \end{equation}
 kde $w_t$ je aktuální hodnota vektoru vah v čase $t$, $\gamma$ je rychlost učení
-(anglicky Learning Rate) a $\nabla L(w_t)$ je gradient cílové funkce v čase $t$.
+(anglicky Learning Rate) a $\nabla\mathcal{L}(w_t)$ je gradient cílové funkce v čase $t$.
 Různé volby rychlosti učení $\gamma$ a techniky odhadu pro
 $\nabla\mathcal{L}(w)$ mohou vést k různým implementacím. Gradientní sestup má
 proto řadu variant, včetně stochastického gradientního sestupu a mini-batch

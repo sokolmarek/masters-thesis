@@ -57,14 +57,30 @@
 % Support for acronyms
 \usepackage[nopostdot,symbols,acronym,nonumberlist,toc,automake,nolangwarn,section]{glossaries-extra}
 \usepackage{glossary-longextra}
-\glsaddkey{unit}{\glsentrytext{\glslabel}}{\glsentryunit}{\GLsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+% \glsaddkey{unit}{\glsentrytext{\glslabel}}{\glsentryunit}{\GLsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+% \glssetnoexpandfield{symbol}
 \glstocfalse
 \makeglossaries
 \loadglsentries{glossary.tex}
 \renewcommand*{\acronymname}{Seznam zkratek}
 \renewcommand*{\glssymbolsgroupname}{Seznam symbolů}
-\renewcommand*{\entryname}{Zkratka}
+% \renewcommand*{\entryname}{Notace}
+% \renewcommand{\symbolname}{Jednotka}
 \renewcommand*{\descriptionname}{Význam}
+
+% Change entry name in the symbol list
+\newglossarystyle{long-cz-symbols}{%
+ \setglossarystyle{long-name-desc}% 
+ 	\renewcommand*{\glsgroupskip}{}
+    \renewcommand{\entryname}{Symbol}
+    \renewcommand{\symbolname}{Jednotka}
+}
+
+% Change entry name in the acronym list
+\newglossarystyle{long-cz-acronyms}{%
+ \setglossarystyle{long-name-desc}% 
+    \renewcommand{\entryname}{Zkratka}
+}
 
 % Czech quotes 
 \usepackage{csquotes}
@@ -77,7 +93,7 @@
 \setquotestyle{czech}
 
 % Citations
-\usepackage[backend=biber,style=iso-numeric,citestyle=numeric-comp,maxbibnames=3,minbibnames=3]{biblatex}
+\usepackage[backend=biber,style=iso-numeric,citestyle=numeric-comp,maxbibnames=5,minbibnames=5]{biblatex}
 \addbibresource{library.bib}
 \renewcommand*{\bibfont}{\footnotesize}
 
@@ -252,7 +268,7 @@ předpisů.
 	straně, je nezbytný souhlas autora.}
 
 \subsection*{Odkaz na tuto práci} Sokol, Marek. \textit{\nazev}. \typ. Praha:
-České vysoké učení technické v Praze, Fakulta biomedicínského inženýrství, 2022.
+České vysoké učení technické v Praze, Fakulta biomedicínského inženýrství, 2023.
 Dostupné z:
 $\langle$\url{https://github.com/sokolmarek/masters-thesis}$\rangle$.
 \clearpage
@@ -298,8 +314,8 @@ electrodermal activity, machine learning, neural networks, space, analog mission
 % Glossaries
 \chapter*{\sffamily Seznam symbolů a zkratek}
 \addcontentsline{toc}{chapter}{Seznam symbolů a zkratek}
-% \printsymbols[style=namedescunit]
-\printacronyms[style=long-name-desc]
+\printsymbols[style=long-cz-symbols]
+\printacronyms[style=long-cz-acronyms]
 \clearpage
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
