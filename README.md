@@ -67,6 +67,33 @@ For the purposes of classification tasks (cognitive load assessment), a capsular
 <img src="assets/github/nn_scheme_en.png" style="width:100%"><figcaption><p align="center"><b>Figure 4 - Schematic of the proposed capsular neural network model based on the <a href="https://github.com/EscVM/Efficient-CapsNet">Efficient-CapsNet</a> architecture. Each convolutional layer in the proposed solution is additionally followed by BatchNormalization, MaxPool2D and Dropout layers. (scheme adapted from <a href="https://pubmed.ncbi.nlm.nih.gov/34901796/">Wang et al. (2021)</a>)</b></p></figcaption>
 </figure>
 
+## Results
+The proposed solution (cognitive load recognition and classification) in this work was compared to selected existing approaches that utilize machine learning for cognitive load assessment. The comparison can be seen in the table below.
+
+<div style="table {width: 100%;}">
+
+| Author | Dataset | Window | Test accuracy | Year |
+| :--- | :---: | :---: | :---: | :---: |
+| [Feradov et al.](https://ieeexplore.ieee.org/document/9244287) | CLAS | 30s | 84% | 2020 |
+| [Ahmad et al.](https://arxiv.org/abs/2107.04566) | WESAD | 1s | 72% | 2021 |
+| [Garg et al.](https://dl.acm.org/doi/10.1145/3397482.3450732) | WESAD | 10s | 84% | 2021 |
+| [Rabbani et al.](https://www.mdpi.com/2306-5354/9/8/374) | WESAD | 10s | 87% | 2022 |
+| [Zhu et al.](https://ieeexplore.ieee.org/document/9856558) | CLAS | 30s | 86% | 2022 |
+| [Quadrini et al.](https://link.springer.com/chapter/10.1007/978-3-031-18840-4_13) | WESAD | 60s | 91% | 2022 |
+| [Chatterjee et al.](https://link.springer.com/article/10.1007/s11334-022-00470-6) | WESAD | 30s | 94% | 2022 |
+| [Dair et al.](https://link.springer.com/chapter/10.1007/978-3-031-26438-2_1) | WESAD | 10s | 69% | 2023 |
+| [Rashid et al.](https://ieeexplore.ieee.org/document/10097874) | WESAD | 30s | 93% | 2023 |
+| [Galarraga et al.](https://link.springer.com/article/10.1007/s00521-022-07435-7) | WESAD | 20s | 90% | 2023 |
+| [Henry et al.](https://www.techrxiv.org/articles/preprint/On_the_robustness_of_machine_learning_models_for_stress_and_anxiety_recognition_from_heart_activity_signals/21688352/2) | WESAD | 6s | 81% | 2023 |
+| [Yong et al.](https://link.springer.com/chapter/10.1007/978-3-031-26422-1_20) | CLAS | 5s | 75% | 2023 |
+| [Singh et al.](https://onlinelibrary.wiley.com/doi/10.1111/exsy.13239) | WESAD | 5s | 91% | 2023 |
+| **Author of the work** | **WESAD** | **5s** | **97%** | **2023** |
+| **Author of the work** | **CLAS** | **5s** | **92%** | **2023** |
+| **Author of the work** | **WESAD** | **1s** | **95%** | **2023** |
+| **Author of the work** | **WESAD** | **1s** | **92%** | **2023** |
+
+</div>
+
 ## Acknowledgements
 I would like to thank the supervisor of my master thesis, Mgr. Ksenia Sedová,
 Ph.D. for help, advice, and professional management of this work. I would also
