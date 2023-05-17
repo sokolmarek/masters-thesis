@@ -64,7 +64,7 @@ correlation within physiological signals.
 For the purposes of classification tasks (cognitive load assessment), a capsular neural network architecture based on the solution presented by [Mazzia et al. (2021)](https://www.nature.com/articles/s41598-021-93977-0), Efficient-CapsNet, was proposed. To synergistically unify the generated physiological features, autoencoder compression into a single latent space is used to capture spatiotemporal causal relations across biosignals.
 
 <figure>
-<img src="assets/github/nn_scheme_en.png" style="width:100%"><figcaption><p align="center"><b>Figure 4 - Schematic of the proposed capsular neural network model based on the <a href="https://github.com/EscVM/Efficient-CapsNet">Efficient-CapsNet</a> architecture. Each convolutional layer in the proposed solution is additionally followed by BatchNormalization, MaxPool2D and Dropout layers (scheme adapted from <a href="https://pubmed.ncbi.nlm.nih.gov/34901796/">Wang et al. (2021)</a>.</b></p></figcaption>
+<img src="assets/github/nn_scheme_en.png" style="width:100%"><figcaption><p align="center"><b>Figure 4 - Schematic of the proposed capsular neural network model based on the <a href="https://github.com/EscVM/Efficient-CapsNet">Efficient-CapsNet</a> architecture. Each convolutional layer in the proposed solution is additionally followed by BatchNormalization, MaxPool2D and Dropout layers. (scheme adapted from <a href="https://pubmed.ncbi.nlm.nih.gov/34901796/">Wang et al. (2021)</a>)</b></p></figcaption>
 </figure>
 
 ## Acknowledgements
