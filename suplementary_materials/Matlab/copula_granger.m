@@ -1,45 +1,54 @@
 function cause = copula_granger(series)
-    % Function for computing Granger-Copula as described in the following paper:
-    % Yan Liu, Mohammad Taha Bahadori, and Hongfei Li, "Sparse-GEV: Sparse Latent Space Model for Multivariate Extreme Value Time Series Modeling", ICML 2012
+% This is the code for computing Granger-Copula as described in the following paper:
+% 	Yan Liu, Mohammad Taha Bahadori, and Hongfei Li, "Sparse-GEV: Sparse Latent Space Model for Multivariate Extreme Value Time Series Modeling", ICML 2012
+% INPUT: 'series': N by T matrix
+% OUTPUT: 'cause': The N by N Granger causal coefficients (sum of L coefficients)
+% Dependency: lassoGranger (which depends on GLMnet package).
+% The code performs automatic tuning of Lambda, using the metric that is defined in lassoGranger function.
+% The user should provide the 'P' parameter value which specifies the number of lags used in Granger causality analysis.
 
-    % Define parameters
-    p = 3; % Order of AR model
-    num_lambdas = 6; % Number of lambda values to test
-    lambda_min = 1e-3;
-    lambda_max = 1e2;
-    lambda_vals = exp(linspace(log(lambda_min), log(lambda_max), num_lambdas));
+P = 4;  % Number of Lags
+% Setting the range of Lambda
+nLam = 6; 
+lambda = logspace(-3, 2, nLam);
 
-    % Calculate normalization factor delta
-    t = size(series, 2);
-    delta = 1 / (4 * (t^(1/4)) * sqrt(pi * log(t)));
+T = size(series, 2);
+N = size(series, 1);
 
-    % Apply mapping and normalization to input series
-    m_series = norminv(arrayfun(@(x) map(series(x,:), delta), 1:size(series,1), 'UniformOutput', false), 0, 1);
+delta = 1/(4*(T^(1/4))*sqrt(pi*log(T)));
+mSeries = 0*series;
+for i = 1:N
+    mSeries(i, :) = map(series(i, :), delta);
+end
+mSeries = norminv(mSeries, 0, 1);
 
-    % Initialize output arrays
-    p_error = zeros(1, num_lambdas);
-    cause_temp = zeros(size(series));
-    cause = zeros(size(series));
 
-    % Compute Granger causality for each node
-    for i = 1:size(series, 1)
-        % Reorder the input series so that the current node is first
-        index = [i, 1:i-1, i+1:size(series,1)];
-        
-        % Test each lambda value using Lasso Granger causality
-        for j = 1:num_lambdas
-            [~, cause_temp(index,j), p_error(j)] = lasso(m_series(index,:), p, lambda_vals(j));
-        end
-        
-        % Choose the lambda value with the lowest prediction error
-        [~, best_lambda] = min(p_error);
-        
-        % Reorder the output to match the original order of nodes
-        index = [2:i, 1, i+1:size(series,1)];
-        cause(:,i) = cause_temp(index,best_lambda);
+pError = 0*lambda;
+causeTemp = zeros(N, nLam);
+cause = zeros(N, N);
+% fprintf('Node #: %5d', 0);
+for in = 1:N
+    index = [in, 1:(in-1), (in+1):N];
+    for i = 1:nLam
+        [~, causeTemp(:, i), pError(i)] = lasso_granger(mSeries(index, :), P, lambda(i), 'l');
     end
+    
+    [~, id] = min(pError);
+    index = [2:in, 1, (in+1):N];
+    cause(:, in) = causeTemp(index, id);
+    % fprintf('%c%c%c%c%c%c', 8,8,8,8,8,8);
+    % fprintf('%5d ', in);
 end
 
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function out = map(Seri, delta)
-    out = arrayfun(@(x) max(delta, min(1-delta, sum(Seri<Seri(x))/length(Seri))), 1:length(Seri));
+out = 0*Seri;
+for i = 1:length(Seri)
+    out(i) = sum(Seri < Seri(i))/length(Seri);
+end
+
+out( out < delta) = delta;
+out( out > 1-delta) = 1-delta;
 end
