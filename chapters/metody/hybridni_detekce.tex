@@ -79,7 +79,7 @@ podle~\cite{Bahdori2012}. Nechť vybraná fyziologická událost $X^i = \{x_t^i 
 \begin{equation}
     \hat{\beta}_i(\lambda)=\arg \min _{\beta_i}\left(\sum_{t=1}^T\left\|x_i^t-X_{t, L}^{lag} \beta_i\right\|^2+\lambda\left\|\beta_i\right\|_1\right)
 \end{equation}
-kde $X_{lag}^{t, L}$ reprezentuje spojený vektor všech zpožděných pozorování s
+kde $X_{t, L}^{lag}$ reprezentuje spojený vektor všech zpožděných pozorování s
 maximálním zpožděním $L$ až do času $t$. Tvorba kauzálních matic byla
 realizována v programovém prostředí Matlab s využitím knihovny
 \textit{GLMNET}\footnote{\url{https://hastie.su.domains/glmnet_matlab}}, která
@@ -111,7 +111,7 @@ představili koncept této metody transformace časové řady do 2D obrazu v roc
 \end{figure}
 
 Dále jsou normalizovaná data časové řady převedeny do polárních souřadnic
-výpočtem úhlové složky $\theta_i$ a radiální složky $r_i$ pro každý vzorek
+výpočtem úhlové složky $\phi_i$ a radiální složky $r_i$ pro každý vzorek
 $\tilde{x}_t$:
 \begin{equation}
     \begin{cases}
