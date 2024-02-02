@@ -8,7 +8,7 @@ Prague. The work was made possible thanks to the [Hydronaut project](https://hyd
 auspices of the European Space Agency (ESA). Unfortunately, the whole work is written
 in the Czech language. I may translate it into English in the future.
 
-### [Click here to read the thesis.](https://firebasestorage.googleapis.com/v0/b/mareksokol-e3c61.appspot.com/o/main.pdf?alt=media&token=e7535079-74f3-4463-b7b9-7fdc4eb9b3a2)
+### [Click here to read the thesis.](https://dspace.cvut.cz/handle/10467/112590)
 
 ## Abstract
 The thesis focuses on the assessment of cognitive load in extreme environments,
